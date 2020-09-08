@@ -1,0 +1,33 @@
+name: elave
+description: A new Flutter project.
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.3
+  flutter_svg: ^0.18.1 
+  get: ^3.8.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: AndadaSC
+      fonts:
+        - asset: assets/fonts/AndadaSC-Regular.ttf
+
+    - family: BaiJamjuree
+      fonts:
+        - asset: assets/fonts/BaiJamjuree-Regular.ttf
