@@ -69,7 +69,7 @@ class AuthSignInForm extends StatelessWidget {
               width: 105.0,
               height: 35.0,
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () => Get.put(AuthLogoController()).onLoading(),
                 color: Color(0xFF2F4C80),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
