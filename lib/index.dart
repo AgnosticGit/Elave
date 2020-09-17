@@ -5,7 +5,7 @@ export 'package:flutter/material.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:get/get.dart';
 
-export 'controllers/auth/auth_logo_controller.dart';
+export 'controllers/animated_logo_controller.dart';
 
 export 'models/logo_element_model.dart';
 

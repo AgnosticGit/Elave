@@ -1,21 +1,25 @@
 import 'package:elave/index.dart';
 
-class AuthLogoController extends GetxController {
+class AnimatedLogoController extends GetxController {
+  AnimatedLogoController({this.logoSize});
+
+  double logoSize;
   bool started = false;
   bool increased = false;
-  double rectangleSize = 45.0;
-  double increasedRectangleSize = 50.0;
-  double logoSize = 160.0;
   Curve curve = Curves.linear;
-  int firstStageDuration = 300;
-  int secondStageDuration = 300;
+  int duration = 300;
   double firstStateOpacity = 0.75;
   double secondStageOpacity = 0.5;
-  double alignment = 27.0;
+  double rotate = 0;
 
+  Timer timer;
+
+  get borderRadius => logoSize / 16;
+  get rectangleSize => logoSize / 3.75;
+  get alignment => logoSize / 6;
   get _halfRectangle => rectangleSize / 2;
   get centerY => logoSize / 2 - _halfRectangle;
-  get centerX => Get.width / 2 - _halfRectangle;
+  get centerX => logoSize / 2 - _halfRectangle;
 
   LogoElementModel logoElement0;
   LogoElementModel logoElement1;
@@ -28,6 +32,14 @@ class AuthLogoController extends GetxController {
   LogoElementModel logoElement8;
 
   void onInit() {
+    setInitialPositions();
+    Timer(Duration(milliseconds: 500), () {
+      started = true;
+      update();
+    });
+  }
+
+  void setInitialPositions() {
     logoElement0 = LogoElementModel(
       x: centerX,
       y: centerY,
@@ -73,11 +85,6 @@ class AuthLogoController extends GetxController {
       y: centerY,
       opacity: secondStageOpacity,
     );
-
-    Timer(Duration(milliseconds: 500), () {
-      started = true;
-      update();
-    });
   }
 
   void shuffle() {
@@ -129,6 +136,12 @@ class AuthLogoController extends GetxController {
   }
 
   void onLoading() {
-    update();
+    duration = 0;
+    setInitialPositions();
+    timer = Timer.periodic(Duration(milliseconds: 2), (timer) { 
+      rotate = rotate + 0.1;
+      update();
+    });    
+    duration = 300;
   }
 }

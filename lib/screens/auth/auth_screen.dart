@@ -1,5 +1,5 @@
 import 'package:elave/index.dart';
-import 'package:elave/screens/auth/widgets/auth_logo.dart';
+import 'package:elave/widgets/animated_logo.dart';
 
 class AuthScreen extends StatefulWidget {
   State<AuthScreen> createState() => AuthScreenState();
@@ -28,7 +28,7 @@ class AuthScreenState extends State<AuthScreen> {
           child: Column(
             children: [
               const SizedBox(height: 150.0),
-              AuthLogo(),
+              AnimatedLogo(),
               const SizedBox(height: 50.0),
               Text(
                 Constants.ELAVE,

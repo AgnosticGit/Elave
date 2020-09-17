@@ -37,7 +37,7 @@ class AuthSignInForm extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onChanged: (_) => Get.put(AuthLogoController()).shuffle(),
+                  onChanged: (_) => Get.put(AnimatedLogoController()).shuffle(),
                 ),
                 TextFormField(
                   style: TextStyle(fontSize: 14.0, color: Colors.white),
@@ -56,7 +56,7 @@ class AuthSignInForm extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onChanged: (_) => Get.put(AuthLogoController()).shuffle(),
+                  onChanged: (_) => Get.put(AnimatedLogoController()).shuffle(),
                 ),
                 const SizedBox(height: 20.0),
               ],
@@ -69,7 +69,7 @@ class AuthSignInForm extends StatelessWidget {
               width: 105.0,
               height: 35.0,
               child: RaisedButton(
-                onPressed: () => Get.put(AuthLogoController()).onLoading(),
+                onPressed: () => Get.put(AnimatedLogoController()).onLoading(),
                 color: Color(0xFF2F4C80),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
