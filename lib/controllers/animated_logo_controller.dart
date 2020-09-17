@@ -10,9 +10,9 @@ class AnimatedLogoController extends GetxController {
   int duration = 300;
   double firstStateOpacity = 0.75;
   double secondStageOpacity = 0.5;
-  double rotate = 0;
 
   Timer timer;
+  double rotate = 0;
 
   get borderRadius => logoSize / 16;
   get rectangleSize => logoSize / 3.75;
@@ -88,6 +88,12 @@ class AnimatedLogoController extends GetxController {
   }
 
   void shuffle() {
+    duration = 300;
+    rotate = 0;
+    if (timer != null) {
+      timer.cancel();
+    }
+
     int rnd = Random().nextInt(8);
     int rnd2 = Random().nextInt(8);
 
@@ -136,12 +142,25 @@ class AnimatedLogoController extends GetxController {
   }
 
   void onLoading() {
+    rotate = 0;
     duration = 0;
     setInitialPositions();
-    timer = Timer.periodic(Duration(milliseconds: 2), (timer) { 
-      rotate = rotate + 0.1;
+    rotateFirstState();
+  }
+
+  void rotateFirstState() {
+    timer = Timer.periodic(Duration(milliseconds: 10), (timer) {
+      if (timer.tick < 500) {
+        rotate = rotate + timer.tick / 1000;
+      } else {
+        if (1000 / timer.tick < 0.11) {
+          rotate = 0;
+        } else {
+          rotate = rotate + 1000 / timer.tick;
+        }
+      }
+
       update();
-    });    
-    duration = 300;
+    });
   }
 }

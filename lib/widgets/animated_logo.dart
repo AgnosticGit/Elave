@@ -18,29 +18,29 @@ class AnimatedLogo extends StatelessWidget {
                 animatedLogoController,
                 animatedLogoController.logoElement0,
               ),
-              // Transform.rotate(
-              //   angle: animatedLogoController.rotate,
-              //   origin: Offset(50.0, 50.0),
-              //   child: Stack(children: [
+              Transform.rotate(
+                  angle: animatedLogoController.rotate,
 
-              //   ],)
-              // ), 
-              _buildLogoElement(
-                animatedLogoController,
-                animatedLogoController.logoElement1,
-              ),
-              _buildLogoElement(
-                animatedLogoController,
-                animatedLogoController.logoElement2,
-              ),
-              _buildLogoElement(
-                animatedLogoController,
-                animatedLogoController.logoElement3,
-              ),
-              _buildLogoElement(
-                animatedLogoController,
-                animatedLogoController.logoElement4,
-              ),
+                  child: Stack(
+                    children: [
+                      _buildLogoElement(
+                        animatedLogoController,
+                        animatedLogoController.logoElement1,
+                      ),
+                      _buildLogoElement(
+                        animatedLogoController,
+                        animatedLogoController.logoElement2,
+                      ),
+                      _buildLogoElement(
+                        animatedLogoController,
+                        animatedLogoController.logoElement3,
+                      ),
+                      _buildLogoElement(
+                        animatedLogoController,
+                        animatedLogoController.logoElement4,
+                      ),
+                    ],
+                  )),
               _buildLogoElement(
                 animatedLogoController,
                 animatedLogoController.logoElement5,
