@@ -3,7 +3,8 @@ import 'package:elave/index.dart';
 class AuthSignInForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10.0),
+      constraints: BoxConstraints(maxWidth: 500),
+      width: Get.width * 0.95,
       height: 200.0,
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xFF2F4C80)),
@@ -117,7 +118,9 @@ class AuthSignInForm extends StatelessWidget {
             bottom: -1.0,
             left: -1.0,
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Get.put(AnimatedLogoController()).stopRotate();
+              },
               child: Container(
                 alignment: Alignment.center,
                 width: 105.0,

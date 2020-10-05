@@ -97,6 +97,11 @@ class AnimatedLogoController extends GetxController {
     int rnd = Random().nextInt(8);
     int rnd2 = Random().nextInt(8);
 
+    while (rnd == rnd2) {
+      rnd = Random().nextInt(8);
+      rnd2 = Random().nextInt(8);
+    }
+
     List<LogoElementModel> poses = [
       logoElement1,
       logoElement2,
@@ -145,21 +150,26 @@ class AnimatedLogoController extends GetxController {
     rotate = 0;
     duration = 0;
     setInitialPositions();
-    rotateFirstState();
+    startRotate();
   }
 
-  void rotateFirstState() {
+  void startRotate() {
     timer = Timer.periodic(Duration(milliseconds: 10), (timer) {
-      if (timer.tick < 500) {
-        rotate = rotate + timer.tick / 1000;
-      } else {
-        if (1000 / timer.tick < 0.11) {
-          rotate = 0;
-        } else {
-          rotate = rotate + 1000 / timer.tick;
-        }
-      }
+      rotate = rotate + 0.03;
+      update();
+    });
+  }
 
+  void stopRotate() {
+    if (timer != null) {
+      timer.cancel();
+    }
+
+    Timer.periodic(Duration(milliseconds: 10), (timer) {
+      rotate = rotate - rotate / 15;
+      if (rotate < 0.01) {
+        timer.cancel();
+      }
       update();
     });
   }

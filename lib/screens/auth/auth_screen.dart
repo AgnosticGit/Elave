@@ -1,11 +1,7 @@
 import 'package:elave/index.dart';
 import 'package:elave/widgets/animated_logo.dart';
 
-class AuthScreen extends StatefulWidget {
-  State<AuthScreen> createState() => AuthScreenState();
-}
-
-class AuthScreenState extends State<AuthScreen> {
+class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColors.blue1A,
@@ -27,9 +23,9 @@ class AuthScreenState extends State<AuthScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 150.0),
+              SizedBox(height: Get.height * 0.2),
               AnimatedLogo(),
-              const SizedBox(height: 50.0),
+              const SizedBox(height: 20.0),
               Text(
                 Constants.ELAVE,
                 style: TextStyle(
@@ -39,7 +35,8 @@ class AuthScreenState extends State<AuthScreen> {
                 ),
               ),
               const SizedBox(height: 50.0),
-              AuthSignInForm()
+              AuthSignInForm(),
+              // AuthSwiper(),
             ],
           ),
         ),

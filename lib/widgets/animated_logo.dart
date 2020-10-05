@@ -14,48 +14,55 @@ class AnimatedLogo extends StatelessWidget {
           height: animatedLogoController.logoSize,
           child: Stack(
             children: [
+              Transform.rotate(
+                angle: -animatedLogoController.rotate,
+                child: Stack(
+                  children: [
+                    _buildLogoElement(
+                      animatedLogoController,
+                      animatedLogoController.logoElement5,
+                    ),
+                    _buildLogoElement(
+                      animatedLogoController,
+                      animatedLogoController.logoElement6,
+                    ),
+                    _buildLogoElement(
+                      animatedLogoController,
+                      animatedLogoController.logoElement7,
+                    ),
+                    _buildLogoElement(
+                      animatedLogoController,
+                      animatedLogoController.logoElement8,
+                    ),
+                  ],
+                ),
+              ),
+              Transform.rotate(
+                angle: animatedLogoController.rotate,
+                child: Stack(
+                  children: [
+                    _buildLogoElement(
+                      animatedLogoController,
+                      animatedLogoController.logoElement1,
+                    ),
+                    _buildLogoElement(
+                      animatedLogoController,
+                      animatedLogoController.logoElement2,
+                    ),
+                    _buildLogoElement(
+                      animatedLogoController,
+                      animatedLogoController.logoElement3,
+                    ),
+                    _buildLogoElement(
+                      animatedLogoController,
+                      animatedLogoController.logoElement4,
+                    ),
+                  ],
+                ),
+              ),
               _buildLogoElement(
                 animatedLogoController,
                 animatedLogoController.logoElement0,
-              ),
-              Transform.rotate(
-                  angle: animatedLogoController.rotate,
-
-                  child: Stack(
-                    children: [
-                      _buildLogoElement(
-                        animatedLogoController,
-                        animatedLogoController.logoElement1,
-                      ),
-                      _buildLogoElement(
-                        animatedLogoController,
-                        animatedLogoController.logoElement2,
-                      ),
-                      _buildLogoElement(
-                        animatedLogoController,
-                        animatedLogoController.logoElement3,
-                      ),
-                      _buildLogoElement(
-                        animatedLogoController,
-                        animatedLogoController.logoElement4,
-                      ),
-                    ],
-                  )),
-              _buildLogoElement(
-                animatedLogoController,
-                animatedLogoController.logoElement5,
-              ),
-              _buildLogoElement(
-                animatedLogoController,
-                animatedLogoController.logoElement6,
-              ),
-              _buildLogoElement(
-                animatedLogoController,
-                animatedLogoController.logoElement7,
-              ),
-              _buildLogoElement(
-                animatedLogoController,
-                animatedLogoController.logoElement8,
               ),
             ],
           ),
