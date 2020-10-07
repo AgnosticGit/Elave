@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:elave/index.dart';
 import 'package:elave/widgets/animated_logo.dart';
 
