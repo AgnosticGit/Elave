@@ -10,29 +10,37 @@ class AppBarWithSearch extends StatelessWidget with PreferredSizeWidget {
   final String title;
 
   Widget build(BuildContext context) {
-    return Container(
-      height: kToolbarHeight,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Flexible(flex: 1, child: Search()),
-          Flexible(
-            flex: 1,
-            child: Text(
-              title ?? '',
-              style: TextStyle(color: Colors.white),
-            ),
+    return GetBuilder<AppbarWithSearchController>(
+      init: AppbarWithSearchController(),
+      builder: (appbarWithSearchController) {
+        return Container(
+          margin: const EdgeInsets.only(top: 25.0),
+          height: 35.0,
+          child: Stack(
+            children: [
+              Search(),
+              Align(
+                alignment: Alignment.center,
+                child: _buildTitle(appbarWithSearchController.isSearchEnabled),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: actions,
+              ),
+            ],
           ),
-          Flexible(
-            flex: 1,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: actions,
-            ),
-          )
-        ],
-      ),
+        );
+      },
+    );
+  }
+
+  Widget _buildTitle(isSearchEnabled) {
+    if (isSearchEnabled) {
+      return const SizedBox();
+    }
+    return Text(
+      title ?? '',
+      style: TextStyle(color: Colors.white),
     );
   }
 
