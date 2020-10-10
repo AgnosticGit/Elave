@@ -30,11 +30,7 @@ class AuthScreen extends StatelessWidget {
               const SizedBox(height: 20.0),
               Text(
                 Constants.ELAVE,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 36.0,
-                  fontFamily: Fonts.ANDADASC,
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 36.0),
               ),
               const SizedBox(height: 50.0),
               AuthSignInForm(),

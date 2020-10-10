@@ -7,7 +7,8 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:get/get.dart';
 
 export 'controllers/animated_logo_controller.dart';
-export 'controllers/auth/auth_swiper_controller.dart';
+export 'controllers/auth_swiper_controller.dart';
+export 'controllers/appbard_with_search_controller.dart';
 
 export 'models/logo_element_model.dart';
 
@@ -23,5 +24,5 @@ export 'utilities/custom_colors.dart';
 export 'utilities/images.dart';
 
 export 'widgets/animated_logo.dart';
-export 'widgets/advanced_appbar.dart';
+export 'widgets/appbar_with_search.dart';
 export 'widgets/search.dart';

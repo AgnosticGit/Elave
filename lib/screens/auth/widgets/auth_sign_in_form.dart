@@ -27,10 +27,7 @@ class AuthSignInForm extends StatelessWidget {
                       -10.0,
                     ),
                     hintText: Constants.EMAIL,
-                    hintStyle: TextStyle(
-                      color: Colors.white,
-                      fontFamily: Fonts.BAIJAMJUREE,
-                    ),
+                    hintStyle: TextStyle(color: Colors.white),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF2F4C80),
@@ -47,8 +44,7 @@ class AuthSignInForm extends StatelessWidget {
                         const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, -10.0),
                     hintText: Constants.PASSWORD,
                     hintStyle: TextStyle(
-                      color: Colors.white,
-                      fontFamily: Fonts.BAIJAMJUREE,
+                      color: Colors.white
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
@@ -81,8 +77,7 @@ class AuthSignInForm extends StatelessWidget {
                 child: Text(
                   Constants.SIGN_IN,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: Fonts.BAIJAMJUREE,
+                    color: Colors.white
                   ),
                 ),
               ),
@@ -107,8 +102,7 @@ class AuthSignInForm extends StatelessWidget {
                 child: Text(
                   Constants.RECOVER_ACC,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: Fonts.BAIJAMJUREE,
+                    color: Colors.white
                   ),
                 ),
               ),
@@ -135,8 +129,7 @@ class AuthSignInForm extends StatelessWidget {
                 child: Text(
                   Constants.SIGN_UP,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: Fonts.BAIJAMJUREE,
+                    color: Colors.white
                   ),
                 ),
               ),

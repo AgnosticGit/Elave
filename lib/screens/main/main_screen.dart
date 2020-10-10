@@ -2,10 +2,9 @@ import 'package:elave/index.dart';
 
 class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
-    return Scaffold( 
-      appBar: AdvancedAppBar(
+    return Scaffold(
+      appBar: AppBarWithSearch(
         title: 'Chats',
-        leading: Search(),
         actions: [
           IconButton(
             onPressed: () {},
