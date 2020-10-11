@@ -19,8 +19,9 @@ class Search extends StatelessWidget {
             appbarWithSearchController.isSearchEnabled ? 1 : 0;
 
         return AnimatedContainer(
+          
           duration: Duration(milliseconds: 300),
-          height: 45.0,
+          height: 35.0,
           width: mainWidth,
           child: GestureDetector(
             onTap: appbarWithSearchController.enableSearch,

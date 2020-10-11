@@ -45,7 +45,7 @@ class ChatsItem extends StatelessWidget {
                       'Roll my drum bitch',
                       style: TextStyle(color: Colors.white, fontSize: 16.0),
                     ),
-                    _buildMessagesCount(),
+                    _buildMessagesCount(100),
                   ],
                 )
               ],
@@ -99,18 +99,21 @@ class ChatsItem extends StatelessWidget {
     );
   }
 
-  Widget _buildMessagesCount() {
+  Widget _buildMessagesCount(int messagesCount) {
+    double fontSize = messagesCount < 10 ? 12 : 10;
+    String count = messagesCount < 100 ? messagesCount.toString() : "99+";
+
     return Container(
       alignment: Alignment.center,
-      width: 15.0,
-      height: 15.0,
+      width: 21.0,
+      height: 21.0,
       decoration: BoxDecoration(
         color: CustomColors.purple95,
         borderRadius: BorderRadius.circular(100.0),
       ),
       child: Text(
-        '10',
-        style: TextStyle(color: Colors.white, fontSize: 10.0),
+        count,
+        style: TextStyle(color: Colors.white, fontSize: fontSize),
       ),
     );
   }

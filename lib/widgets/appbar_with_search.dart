@@ -15,23 +15,30 @@ class AppBarWithSearch extends StatelessWidget with PreferredSizeWidget {
     return GetBuilder<AppbarWithSearchController>(
       init: AppbarWithSearchController(),
       builder: (appbarWithSearchController) {
-        return ClipRect(
+        return ClipRRect(
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+            filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
             child: Container(
-              margin: const EdgeInsets.only(top: 25.0),
-              height: 35.0,
+              
+              margin: const EdgeInsets.only(top: 35.0),
+              height: 40.0,
               child: Stack(
                 children: [
-                  Search(),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Search(),
+                  ),
                   Align(
                     alignment: Alignment.center,
                     child:
                         _buildTitle(appbarWithSearchController.isSearchEnabled),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: actions,
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: actions,
+                    ),
                   ),
                 ],
               ),
@@ -46,6 +53,7 @@ class AppBarWithSearch extends StatelessWidget with PreferredSizeWidget {
     if (isSearchEnabled) {
       return const SizedBox();
     }
+
     return Text(
       title ?? '',
       style: TextStyle(color: Colors.white),

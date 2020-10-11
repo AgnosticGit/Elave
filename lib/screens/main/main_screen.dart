@@ -35,7 +35,7 @@ class MainScreen extends StatelessWidget {
           ),
         ),
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(25.0, 60.0, 25.0, 0.0),
+          padding: const EdgeInsets.fromLTRB(25.0, 80.0, 25.0, 0.0),
           child: Column(
             children: [
               ChatsItem(),
