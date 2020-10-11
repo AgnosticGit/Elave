@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:elave/index.dart';
 
 class AppBarWithSearch extends StatelessWidget with PreferredSizeWidget {
@@ -13,21 +15,27 @@ class AppBarWithSearch extends StatelessWidget with PreferredSizeWidget {
     return GetBuilder<AppbarWithSearchController>(
       init: AppbarWithSearchController(),
       builder: (appbarWithSearchController) {
-        return Container(
-          margin: const EdgeInsets.only(top: 25.0),
-          height: 35.0,
-          child: Stack(
-            children: [
-              Search(),
-              Align(
-                alignment: Alignment.center,
-                child: _buildTitle(appbarWithSearchController.isSearchEnabled),
+        return ClipRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+            child: Container(
+              margin: const EdgeInsets.only(top: 25.0),
+              height: 35.0,
+              child: Stack(
+                children: [
+                  Search(),
+                  Align(
+                    alignment: Alignment.center,
+                    child:
+                        _buildTitle(appbarWithSearchController.isSearchEnabled),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: actions,
+                  ),
+                ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: actions,
-              ),
-            ],
+            ),
           ),
         );
       },

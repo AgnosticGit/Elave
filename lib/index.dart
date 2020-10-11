@@ -18,6 +18,7 @@ export 'screens/auth/widgets/auth_swiper.dart';
 export 'screens/main/main_screen.dart';
 export 'screens/main/find_people_screen.dart';
 export 'screens/main/chats_screen.dart';
+export 'screens/main/widgets/chats_item.dart';
 
 export 'utilities/constants.dart';
 export 'utilities/custom_colors.dart';

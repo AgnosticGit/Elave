@@ -13,6 +13,10 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
+      // bottomNavigationBar: Container(
+      //   height: 30.0,
+
+      // ),
       extendBodyBehindAppBar: true,
       backgroundColor: CustomColors.blue1A,
       body: Container(
@@ -30,8 +34,38 @@ class MainScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: Column(
-          children: [],
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(25.0, 60.0, 25.0, 0.0),
+          child: Column(
+            children: [
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+              ChatsItem(),
+              const SizedBox(height: 20.0),
+            ],
+          ),
         ),
       ),
     );

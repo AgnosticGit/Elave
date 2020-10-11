@@ -6,4 +6,6 @@ class Images {
     'assets/images/loupe.svg',
     width: 20.0,
   );
+  static final Widget cloud = SvgPicture.asset('assets/images/cloud.svg');
+  static final Widget people = SvgPicture.asset('assets/images/people.svg');
 }
