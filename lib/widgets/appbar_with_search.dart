@@ -19,7 +19,6 @@ class AppBarWithSearch extends StatelessWidget with PreferredSizeWidget {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
             child: Container(
-              
               margin: const EdgeInsets.only(top: 35.0),
               height: 40.0,
               child: Stack(
