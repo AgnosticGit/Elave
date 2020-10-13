@@ -7,7 +7,7 @@ void main() {
 class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: AuthScreen(),
+      home: ProfileScreen(),
     );
   }
 }

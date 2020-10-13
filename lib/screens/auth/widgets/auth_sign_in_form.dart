@@ -26,7 +26,7 @@ class AuthSignInForm extends StatelessWidget {
                       0.0,
                       -10.0,
                     ),
-                    hintText: Constants.EMAIL,
+                    hintText: "E-mail",
                     hintStyle: TextStyle(
                       color: Colors.white,
                       fontFamily: Fonts.BAIJAMJUREE,
@@ -45,7 +45,7 @@ class AuthSignInForm extends StatelessWidget {
                   decoration: InputDecoration(
                     contentPadding:
                         const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, -10.0),
-                    hintText: Constants.PASSWORD,
+                    hintText: 'Password',
                     hintStyle: TextStyle(
                       color: Colors.white,
                       fontFamily: Fonts.BAIJAMJUREE,
@@ -79,7 +79,7 @@ class AuthSignInForm extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  Constants.SIGN_IN,
+                  "Sign In",
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: Fonts.BAIJAMJUREE,
@@ -105,7 +105,7 @@ class AuthSignInForm extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  Constants.RECOVER_ACC,
+                  "Recover Account",
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: Fonts.BAIJAMJUREE,
@@ -133,7 +133,7 @@ class AuthSignInForm extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  Constants.SIGN_UP,
+                  'Sign Up',
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: Fonts.BAIJAMJUREE,
