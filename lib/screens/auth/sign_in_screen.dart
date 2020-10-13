@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:elave/index.dart';
 import 'package:elave/widgets/animated_logo.dart';
 
-class AuthScreen extends StatelessWidget {
+class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColors.blue1A,
@@ -29,8 +29,12 @@ class AuthScreen extends StatelessWidget {
               AnimatedLogo(),
               const SizedBox(height: 20.0),
               Text(
-                Constants.ELAVE,
-                style: TextStyle(color: Colors.white, fontSize: 36.0),
+                'Elave',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 36.0,
+                  fontFamily: Fonts.ANDADASC,
+                ),
               ),
               const SizedBox(height: 50.0),
               AuthSignInForm(),
