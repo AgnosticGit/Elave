@@ -6,6 +6,7 @@ class CustomColors {
   static const Color blue1A = Color(0xFF1A243E);
   static const Color blue91 = Color(0xFF91A0D0);
   static const Color blueE6 = Color(0xFFbac4e6);
+  static const Color blue12 = Color(0xFF121A30);
   static const Color green00 = Color(0xFF00C853);
   static const Color blue3D = Color(0xFF3D486C);
   static const Color purple95 = Color(0xFF958CFF);
