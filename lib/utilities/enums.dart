@@ -1,0 +1,4 @@
+enum BottomBarItems {
+  findPeople,
+  chats,
+}

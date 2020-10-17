@@ -4,27 +4,26 @@ class Search extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<AppbarWithSearchController>(
       init: AppbarWithSearchController(),
-      builder: (appbarWithSearchController) {
-        double mainWidth = appbarWithSearchController.isSearchEnabled
+      builder: (appbarController) {
+        double mainWidth = appbarController.isSearchEnabled
             ? Get.width / 1.3
             : Get.width / 3.0;
-        double searchOpacity =
-            appbarWithSearchController.isSearchEnabled ? 0.0 : 1.0;
+        double searchOpacity = appbarController.isSearchEnabled ? 0.0 : 1.0;
         double textFieldWidth =
-            appbarWithSearchController.isSearchEnabled ? Get.width / 2 : 0.0;
+            appbarController.isSearchEnabled ? Get.width / 2.5 : 0.0;
         double lineLeftMargin =
-            appbarWithSearchController.isSearchEnabled ? Get.width / 2 : 40.0;
-        double cleanButtomLeftMargin = Get.width / 1.9;
-        double cleanButtonOpacity =
-            appbarWithSearchController.isSearchEnabled ? 1 : 0;
+            appbarController.isSearchEnabled ? Get.width / 2 + 6 : 40.0;
+        double cleanButtomLeftMargin = Get.width / 1.85;
+        double cleanButtonOpacity = appbarController.isSearchEnabled ? 1 : 0;
+        double bottomLineWidth =
+            appbarController.isSearchEnabled ? Get.width / 1.9 : 0;
 
-        return AnimatedContainer(
-          
-          duration: Duration(milliseconds: 300),
-          height: 35.0,
-          width: mainWidth,
-          child: GestureDetector(
-            onTap: appbarWithSearchController.enableSearch,
+        return GestureDetector(
+          onTap: appbarController.enableSearch,
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 300),
+            height: 45.0,
+            width: mainWidth,
             child: Stack(
               alignment: Alignment.center,
               children: [
@@ -45,28 +44,38 @@ class Search extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: -10.0,
+                  top: -5.0,
                   left: 45.0,
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: 300),
                     width: textFieldWidth,
                     height: 42.0,
                     child: TextField(
-                      focusNode: appbarWithSearchController.focusNode,
-                      controller:
-                          appbarWithSearchController.textEditingController,
+                      focusNode: appbarController.focusNode,
+                      controller: appbarController.textEditingController,
                       style: TextStyle(color: Colors.white),
                       cursorColor: CustomColors.blue91,
                       decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: const BorderSide(
-                            color: CustomColors.blueE6,
-                            width: 1.2,
-                          ),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: CustomColors.blue91),
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 35.0,
+                  left: 45.0,
+                  child: AnimatedContainer(
+                    width: bottomLineWidth,
+                    duration: Duration(milliseconds: 300),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: CustomColors.blue91,
+                          width: 1.2,
                         ),
                       ),
                     ),
@@ -89,7 +98,7 @@ class Search extends StatelessWidget {
                     opacity: cleanButtonOpacity,
                     duration: Duration(milliseconds: 0),
                     child: GestureDetector(
-                      onTap: appbarWithSearchController.cleanSearch,
+                      onTap: appbarController.cleanSearch,
                       child: Text(
                         'Clean',
                         style: TextStyle(

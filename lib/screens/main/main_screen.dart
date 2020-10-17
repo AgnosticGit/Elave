@@ -3,22 +3,41 @@ import 'package:elave/index.dart';
 class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      extendBody: true,
+      backgroundColor: CustomColors.blue1A,
       appBar: AppBarWithSearch(
         title: 'Chats',
         actions: [
           IconButton(
             onPressed: () {},
-            splashRadius: 20.0,
+            splashRadius: 22.0,
             icon: Images.settings,
           ),
         ],
       ),
-      // bottomNavigationBar: Container(
-      //   height: 30.0,
+      bottomNavigationBar:  BottomBar(),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   elevation: 0,
+      //   onTap: (_) => print(_),
+      //   backgroundColor: Colors.transparent,
+      //   selectedItemColor: CustomColors.blue91,
+      //   unselectedItemColor: CustomColors.blue51,
+      //   currentIndex: 1,
+      //   items: [
+      //     BottomNavigationBarItem( 
+      //       activeIcon: Images.peopleWhite,
+      //       icon: Images.people,
+      //       label: 'Find People',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       activeIcon: Images.cloudWhite,
+      //       icon: Images.cloud,
+      //       label: 'Chats',
+      //     ),
 
+      //   ],
       // ),
-      extendBodyBehindAppBar: true,
-      backgroundColor: CustomColors.blue1A,
       body: Container(
         height: double.infinity,
         width: double.infinity,

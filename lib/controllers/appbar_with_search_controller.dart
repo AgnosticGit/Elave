@@ -3,6 +3,7 @@ import 'package:elave/index.dart';
 class AppbarWithSearchController extends GetxController {
   final textEditingController = TextEditingController();
   final focusNode = FocusNode();
+  final List<Widget> headerBlur = [];
 
   bool isSearchEnabled = false;
 
