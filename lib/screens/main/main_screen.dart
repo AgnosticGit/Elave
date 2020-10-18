@@ -16,28 +16,7 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar:  BottomBar(),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   elevation: 0,
-      //   onTap: (_) => print(_),
-      //   backgroundColor: Colors.transparent,
-      //   selectedItemColor: CustomColors.blue91,
-      //   unselectedItemColor: CustomColors.blue51,
-      //   currentIndex: 1,
-      //   items: [
-      //     BottomNavigationBarItem( 
-      //       activeIcon: Images.peopleWhite,
-      //       icon: Images.people,
-      //       label: 'Find People',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       activeIcon: Images.cloudWhite,
-      //       icon: Images.cloud,
-      //       label: 'Chats',
-      //     ),
-
-      //   ],
-      // ),
+      bottomNavigationBar: BottomBar(),
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -53,38 +32,22 @@ class MainScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(25.0, 80.0, 25.0, 0.0),
-          child: Column(
-            children: [
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-              ChatsItem(),
-              const SizedBox(height: 20.0),
-            ],
-          ),
+        // child: Align(
+        //   child: RollingTile(
+        //     callback: (callbackFunc) => callbackFunc,
+        //     child: Container(
+        //       color: Colors.red,
+        //       width: 100,
+        //       height: 100,
+        //     ),
+        //   ),
+        // ),
+
+        child: ListView.builder(
+          itemCount: 1,
+          itemBuilder: (context, index) {
+            return ChatsItem();
+          },
         ),
       ),
     );

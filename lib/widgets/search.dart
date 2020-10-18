@@ -13,16 +13,17 @@ class Search extends StatelessWidget {
             appbarController.isSearchEnabled ? Get.width / 2.5 : 0.0;
         double lineLeftMargin =
             appbarController.isSearchEnabled ? Get.width / 2 + 6 : 40.0;
-        double cleanButtomLeftMargin = Get.width / 1.85;
+        double cleanButtomLeftMargin = Get.width / 1.95;
         double cleanButtonOpacity = appbarController.isSearchEnabled ? 1 : 0;
         double bottomLineWidth =
             appbarController.isSearchEnabled ? Get.width / 1.9 : 0;
 
         return GestureDetector(
           onTap: appbarController.enableSearch,
+          behavior: HitTestBehavior.opaque,
           child: AnimatedContainer(
             duration: Duration(milliseconds: 300),
-            height: 45.0,
+            height: 60.0,
             width: mainWidth,
             child: Stack(
               alignment: Alignment.center,
@@ -44,7 +45,7 @@ class Search extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: -5.0,
+                  top: 0.0,
                   left: 45.0,
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: 300),
@@ -66,7 +67,7 @@ class Search extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 35.0,
+                  top: 40.0,
                   left: 45.0,
                   child: AnimatedContainer(
                     width: bottomLineWidth,
@@ -99,11 +100,18 @@ class Search extends StatelessWidget {
                     duration: Duration(milliseconds: 0),
                     child: GestureDetector(
                       onTap: appbarController.cleanSearch,
-                      child: Text(
-                        'Clean',
-                        style: TextStyle(
-                          color: CustomColors.blue91,
-                          fontSize: 12.0,
+                      behavior: HitTestBehavior.opaque,
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 50.0,
+                        width: 50.0,
+                        // color: Colors.red,
+                        child: Text(
+                          'Clean',
+                          style: TextStyle(
+                            color: CustomColors.blue91,
+                            fontSize: 12.0,
+                          ),
                         ),
                       ),
                     ),

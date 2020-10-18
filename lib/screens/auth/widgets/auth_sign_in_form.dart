@@ -46,9 +46,7 @@ class AuthSignInForm extends StatelessWidget {
                     contentPadding:
                         const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, -10.0),
                     hintText: 'Password',
-                    hintStyle: TextStyle(
-                      color: Colors.white
-                    ),
+                    hintStyle: TextStyle(color: Colors.white),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF2F4C80),
@@ -69,7 +67,7 @@ class AuthSignInForm extends StatelessWidget {
               width: 105.0,
               height: 35.0,
               child: RaisedButton(
-                onPressed: () => Get.put(AnimatedLogoController()).onLoading(),
+                onPressed: Get.put(AnimatedLogoController()).onLoading,
                 color: Color(0xFF2F4C80),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
@@ -79,9 +77,7 @@ class AuthSignInForm extends StatelessWidget {
                 ),
                 child: Text(
                   "Sign In",
-                  style: TextStyle(
-                    color: Colors.white
-                  ),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),
@@ -104,9 +100,7 @@ class AuthSignInForm extends StatelessWidget {
                 ),
                 child: Text(
                   "Recover Account",
-                  style: TextStyle(
-                    color: Colors.white
-                  ),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),
@@ -131,9 +125,7 @@ class AuthSignInForm extends StatelessWidget {
                 ),
                 child: Text(
                   'Sign Up',
-                  style: TextStyle(
-                    color: Colors.white
-                  ),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),
