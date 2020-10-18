@@ -24,4 +24,5 @@ class Images {
     color: Colors.white,
     width: 35.0,
   );
+  static final Widget basket = SvgPicture.asset('assets/images/basket.svg');
 }

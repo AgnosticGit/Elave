@@ -2,70 +2,91 @@ import 'package:elave/index.dart';
 
 class ChatsItem extends StatelessWidget {
   Widget build(BuildContext context) {
-    return AnimatedAlign(
-      duration: Duration(seconds: 1),
-      alignment: Alignment.center,
-      child: Container(
-        width: Get.width * 0.88,
-        child: Row(
-          children: [
-            _buildAvatar(),
-            const SizedBox(width: 15.0),
-            Expanded(
-              child: Container(
-                height: 80.0,
-                decoration: BoxDecoration(
-                  border:
-                      Border(bottom: BorderSide(color: CustomColors.blue3D)),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  'John Dohn',
-                                  style: TextStyle(color: CustomColors.blue91),
-                                ),
-                                const SizedBox(width: 5.0),
-                                _buildStatus(),
-                              ],
-                            ),
-                            Text(
-                              'Roll my drum bitch',
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 16.0),
-                            ),
-                          ],
+    Function openChatsItemMenu;
+    Function closeChatItemMenu;
+    return GetBuilder<ChatsController>(
+      init: ChatsController(),
+      builder: (chatsController) {
+        return GestureDetector(
+          onLongPress: () => openChatsItemMenu(),
+          onTap: () => closeChatItemMenu(),
+          child: AnimatedAlign(
+            duration: Duration(seconds: 1),
+            alignment: Alignment.center,
+            child: Container(
+              width: Get.width * 0.88,
+              child: Row(
+                children: [
+                  _buildAvatar(),
+                  const SizedBox(width: 15.0),
+                  Expanded(
+                    child: Container(
+                      height: 80.0,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: CustomColors.blue3D),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              '22 aug',
-                              style: TextStyle(
-                                color: Colors.white,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'John Dohn',
+                                        style: TextStyle(
+                                          color: CustomColors.blue91,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 5.0),
+                                      _buildStatus(),
+                                    ],
+                                  ),
+                                  Text(
+                                    'Roll my drum bitch',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            _buildMessagesCount(100),
-                          ],
-                        )
-                      ],
+                              RollingTile(
+                                openTile: (func) => openChatsItemMenu = func,
+                                closeTile: (func) => closeChatItemMenu = func,
+                                firstSide: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      '22 aug',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    _buildMessagesCount(100),
+                                  ],
+                                ),
+                                secondSide: _buildBasket(),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ],
-                ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
-      ),
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -127,6 +148,22 @@ class ChatsItem extends StatelessWidget {
       child: Text(
         count,
         style: TextStyle(color: Colors.white, fontSize: fontSize),
+      ),
+    );
+  }
+
+  GestureDetector _buildBasket() {
+    return GestureDetector(
+      child: Column(
+        children: [
+          Images.basket,
+          Text(
+            'Delete',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          )
+        ],
       ),
     );
   }

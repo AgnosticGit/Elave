@@ -10,6 +10,7 @@ export 'controllers/animated_logo_controller.dart';
 export 'controllers/auth_swiper_controller.dart';
 export 'controllers/appbar_with_search_controller.dart';
 export 'controllers/bottom_bar_controller.dart';
+export 'controllers/chats_controller.dart';
 
 export 'models/logo_element_model.dart';
 

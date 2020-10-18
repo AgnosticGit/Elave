@@ -32,19 +32,8 @@ class MainScreen extends StatelessWidget {
             ],
           ),
         ),
-        // child: Align(
-        //   child: RollingTile(
-        //     callback: (callbackFunc) => callbackFunc,
-        //     child: Container(
-        //       color: Colors.red,
-        //       width: 100,
-        //       height: 100,
-        //     ),
-        //   ),
-        // ),
-
         child: ListView.builder(
-          itemCount: 1,
+          itemCount: 2,
           itemBuilder: (context, index) {
             return ChatsItem();
           },
