@@ -1,15 +1,17 @@
 import 'package:elave/index.dart';
 
 class ChatsItem extends StatelessWidget {
+  ChatsItem(this.index);
+
+  final int index;
+
   Widget build(BuildContext context) {
-    Function openChatsItemMenu;
-    Function closeChatItemMenu;
-    return GetBuilder<ChatsController>(
-      init: ChatsController(),
-      builder: (chatsController) {
+    return GetBuilder<ChatsItemController>(
+      init: ChatsItemController(),
+      builder: (chatsItemController) {
         return GestureDetector(
-          onLongPress: () => openChatsItemMenu(),
-          onTap: () => closeChatItemMenu(),
+          onLongPress: () => chatsItemController.openMenu(index),
+          onTap: () => chatsItemController.closeMenu(index),
           child: AnimatedAlign(
             duration: Duration(seconds: 1),
             alignment: Alignment.center,
@@ -49,6 +51,7 @@ class ChatsItem extends StatelessWidget {
                                       _buildStatus(),
                                     ],
                                   ),
+                                  const SizedBox(height: 5.0),
                                   Text(
                                     'Roll my drum bitch',
                                     style: TextStyle(
@@ -59,8 +62,19 @@ class ChatsItem extends StatelessWidget {
                                 ],
                               ),
                               RollingTile(
-                                openTile: (func) => openChatsItemMenu = func,
-                                closeTile: (func) => closeChatItemMenu = func,
+                                openTile: (func) =>
+                                    chatsItemController.setOpenBasket(func),
+                                closeTile: (func) =>
+                                    chatsItemController.setCloseBasket(func),
+                                duration: Duration(milliseconds: 1),
+                                secondSide: _buildMute(),
+                              ),
+                              RollingTile(
+                                openTile: (func) =>
+                                    chatsItemController.setOpenMute(func),
+                                closeTile: (func) =>
+                                    chatsItemController.setCloseMute(func),
+                                duration: Duration(milliseconds: 1),
                                 firstSide: Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
@@ -70,11 +84,12 @@ class ChatsItem extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                     ),
+                                    const SizedBox(height: 5.0),
                                     _buildMessagesCount(100),
                                   ],
                                 ),
                                 secondSide: _buildBasket(),
-                              )
+                              ),
                             ],
                           ),
                         ],
@@ -153,6 +168,22 @@ class ChatsItem extends StatelessWidget {
   }
 
   GestureDetector _buildBasket() {
+    return GestureDetector(
+      child: Column(
+        children: [
+          Images.basket,
+          Text(
+            'Delete',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  GestureDetector _buildMute() {
     return GestureDetector(
       child: Column(
         children: [

@@ -35,7 +35,7 @@ class MainScreen extends StatelessWidget {
         child: ListView.builder(
           itemCount: 2,
           itemBuilder: (context, index) {
-            return ChatsItem();
+            return ChatsItem(index);
           },
         ),
       ),
