@@ -1,9 +1,18 @@
 import 'package:elave/index.dart';
 
 class ChatsItem extends StatelessWidget {
-  ChatsItem(this.index);
+  ChatsItem({
+    this.name,
+    this.lastMessage,
+    this.unreadMessagesCount,
+    this.index,
+  });
 
+  final String name;
+  final String lastMessage;
+  final int unreadMessagesCount;
   final int index;
+  //Date
 
   Widget build(BuildContext context) {
     return GetBuilder<ChatsItemController>(
@@ -16,7 +25,6 @@ class ChatsItem extends StatelessWidget {
             duration: Duration(seconds: 1),
             alignment: Alignment.center,
             child: Container(
-              width: Get.width * 0.88,
               child: Row(
                 children: [
                   _buildAvatar(),
@@ -42,7 +50,7 @@ class ChatsItem extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        'John Dohn',
+                                        name,
                                         style: TextStyle(
                                           color: CustomColors.blue91,
                                         ),
@@ -53,7 +61,7 @@ class ChatsItem extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 5.0),
                                   Text(
-                                    'Roll my drum bitch',
+                                    lastMessage,
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
@@ -61,34 +69,44 @@ class ChatsItem extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              RollingTile(
-                                openTile: (func) =>
-                                    chatsItemController.setOpenBasket(func),
-                                closeTile: (func) =>
-                                    chatsItemController.setCloseBasket(func),
-                                duration: Duration(milliseconds: 1),
-                                secondSide: _buildMute(),
-                              ),
-                              RollingTile(
-                                openTile: (func) =>
-                                    chatsItemController.setOpenMute(func),
-                                closeTile: (func) =>
-                                    chatsItemController.setCloseMute(func),
-                                duration: Duration(milliseconds: 1),
-                                firstSide: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      '22 aug',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                      ),
+                              Row(
+                                children: [
+                                  RollingTile(
+                                    openTile: (func) => chatsItemController
+                                        .setOpenBasket(func, index),
+                                    closeTile: (func) => chatsItemController
+                                        .setCloseBasket(func, index),
+                                    duration: Duration(milliseconds: 1),
+                                    secondSide: _buildMute(),
+                                  ),
+                                  const SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  RollingTile(
+                                    openTile: (func) => chatsItemController
+                                        .setOpenMute(func, index),
+                                    closeTile: (func) => chatsItemController
+                                        .setCloseMute(func, index),
+                                    duration: Duration(milliseconds: 1),
+                                    firstSide: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          '22 aug',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5.0),
+                                        _buildMessagesCount(
+                                          unreadMessagesCount,
+                                        ),
+                                      ],
                                     ),
-                                    const SizedBox(height: 5.0),
-                                    _buildMessagesCount(100),
-                                  ],
-                                ),
-                                secondSide: _buildBasket(),
+                                    secondSide: _buildBasket(),
+                                  )
+                                ],
                               ),
                             ],
                           ),
@@ -169,32 +187,64 @@ class ChatsItem extends StatelessWidget {
 
   GestureDetector _buildBasket() {
     return GestureDetector(
-      child: Column(
-        children: [
-          Images.basket,
-          Text(
-            'Delete',
-            style: TextStyle(
-              color: Colors.white,
+      child: Container(
+        height: 43.0,
+        width: 43.0,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: CustomColors.blue36,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.white),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 15.0,
+              height: 15.0,
+              child: Images.basket,
             ),
-          )
-        ],
+            Text(
+              'Delete',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10.0,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
 
   GestureDetector _buildMute() {
     return GestureDetector(
-      child: Column(
-        children: [
-          Images.basket,
-          Text(
-            'Delete',
-            style: TextStyle(
-              color: Colors.white,
+      child: Container(
+        height: 43.0,
+        width: 43.0,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: CustomColors.blue36,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.white),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 15.0,
+              height: 15.0,
+              child: Images.mute,
             ),
-          )
-        ],
+            Text(
+              'Mute',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10.0,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

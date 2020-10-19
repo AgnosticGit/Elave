@@ -33,9 +33,15 @@ class MainScreen extends StatelessWidget {
           ),
         ),
         child: ListView.builder(
-          itemCount: 2,
+          padding: const EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 90.0),
+          itemCount: 20,
           itemBuilder: (context, index) {
-            return ChatsItem(index);
+            return ChatsItem(
+              name: "Вячеслав Елизарьев " + index.toString(),
+              lastMessage: 'Where my money ' + index.toString(),
+              unreadMessagesCount: 10,
+              index: index,
+            );
           },
         ),
       ),

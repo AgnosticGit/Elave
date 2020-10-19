@@ -41,6 +41,7 @@ class Images {
     'assets/images/mute.svg',
     color: Colors.white,
   );
+
   static final Widget black = SvgPicture.asset(
     'assets/images/black.svg',
     color: Colors.white,
