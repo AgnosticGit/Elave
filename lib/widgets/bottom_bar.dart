@@ -10,12 +10,12 @@ class BottomBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(100.0),
+            borderRadius: BorderRadius.circular(20.0),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100.0),
+                  borderRadius: BorderRadius.circular(20.0),
                   border: Border.all(color: Colors.white),
                   color: Colors.white.withOpacity(0.1),
                 ),
