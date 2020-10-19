@@ -81,9 +81,9 @@ class BottomBar extends StatelessWidget {
     final bottomBarItems = Get.put(BottomBarController()).bottomBarItems;
 
     if (bottomBarItems == BottomBarItems.findPeople) {
-      return Images.peopleWhite;
+      return Images.humansWhite;
     } else {
-      return Images.people;
+      return Images.humans;
     }
   }
 
