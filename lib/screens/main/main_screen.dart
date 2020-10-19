@@ -33,7 +33,7 @@ class MainScreen extends StatelessWidget {
           ),
         ),
         child: ListView.builder(
-          padding: const EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 90.0),
+          padding: const EdgeInsets.only(top: 100.0, bottom: 90.0),
           itemCount: 20,
           itemBuilder: (context, index) {
             return ChatsItem(

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:elave/index.dart';
 
 class ChatsItem extends StatelessWidget {
@@ -12,112 +14,116 @@ class ChatsItem extends StatelessWidget {
   final String lastMessage;
   final int unreadMessagesCount;
   final int index;
-  //Date
+  // TODO Date
 
   Widget build(BuildContext context) {
     return GetBuilder<ChatsItemController>(
       init: ChatsItemController(),
       builder: (chatsItemController) {
-        return GestureDetector(
-          onLongPress: () => chatsItemController.openMenu(index),
-          onTap: () => chatsItemController.closeMenu(index),
-          child: AnimatedAlign(
-            duration: Duration(seconds: 1),
-            alignment: Alignment.center,
-            child: Container(
-              child: Row(
-                children: [
-                  _buildAvatar(),
-                  const SizedBox(width: 15.0),
-                  Expanded(
-                    child: Container(
-                      height: 80.0,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(color: CustomColors.blue3D),
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        return Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              child: GestureDetector(
+                onLongPress: () => chatsItemController.openMenu(index),
+                onTap: () => chatsItemController.closeMenu(index),
+                child: Container(
+                  child: Row(
+                    children: [
+                      _buildAvatar(),
+                      const SizedBox(width: 15.0),
+                      Expanded(
+                        child: Container(
+                          height: 80.0,
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(color: CustomColors.blue3D),
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Row(
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            name,
+                                            style: TextStyle(
+                                              color: CustomColors.blue91,
+                                            ),
+                                          ),
+                                          // const SizedBox(width: 5.0),
+                                          // _buildStatus(),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 5.0),
                                       Text(
-                                        name,
+                                        lastMessage,
                                         style: TextStyle(
-                                          color: CustomColors.blue91,
+                                          color: Colors.white,
+                                          fontSize: 16.0,
                                         ),
                                       ),
-                                      const SizedBox(width: 5.0),
-                                      _buildStatus(),
                                     ],
                                   ),
-                                  const SizedBox(height: 5.0),
-                                  Text(
-                                    lastMessage,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  RollingTile(
-                                    openTile: (func) => chatsItemController
-                                        .setOpenBasket(func, index),
-                                    closeTile: (func) => chatsItemController
-                                        .setCloseBasket(func, index),
-                                    duration: Duration(milliseconds: 1),
-                                    secondSide: _buildMute(),
-                                  ),
-                                  const SizedBox(
-                                    width: 5.0,
-                                  ),
-                                  RollingTile(
-                                    openTile: (func) => chatsItemController
-                                        .setOpenMute(func, index),
-                                    closeTile: (func) => chatsItemController
-                                        .setCloseMute(func, index),
-                                    duration: Duration(milliseconds: 1),
-                                    firstSide: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          '22 aug',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
+                                  Row(
+                                    children: [
+                                      RollingTile(
+                                        openTile: (func) => chatsItemController
+                                            .setOpenBasket(func, index),
+                                        closeTile: (func) => chatsItemController
+                                            .setCloseBasket(func, index),
+                                        duration: Duration(milliseconds: 1),
+                                        secondSide: _buildMute(),
+                                      ),
+                                      const SizedBox(width: 5.0),
+                                      RollingTile(
+                                        openTile: (func) => chatsItemController
+                                            .setOpenMute(func, index),
+                                        closeTile: (func) => chatsItemController
+                                            .setCloseMute(func, index),
+                                        duration: Duration(milliseconds: 1),
+                                        firstSide: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              '22 aug',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 5.0),
+                                            _buildMessagesCount(
+                                              unreadMessagesCount,
+                                            ),
+                                          ],
                                         ),
-                                        const SizedBox(height: 5.0),
-                                        _buildMessagesCount(
-                                          unreadMessagesCount,
-                                        ),
-                                      ],
-                                    ),
-                                    secondSide: _buildBasket(),
-                                  )
+                                        secondSide: _buildBasket(),
+                                      )
+                                    ],
+                                  ),
                                 ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
+            _buildDeleteConfirmation(),
+          ],
         );
       },
     );
@@ -187,6 +193,7 @@ class ChatsItem extends StatelessWidget {
 
   GestureDetector _buildBasket() {
     return GestureDetector(
+      onTap: () => Get.put(ChatsItemController()).setBlurredItemIndex(index),
       child: Container(
         height: 43.0,
         width: 43.0,
@@ -247,5 +254,67 @@ class ChatsItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildDeleteConfirmation() {
+    if (Get.put(ChatsItemController()).blurredItemIndex == index) {
+      return ClipRRect(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+          child: Container(
+            height: 80.0,
+            color: Colors.transparent,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Are you sure?',
+                  style: TextStyle(color: Colors.white),
+                ),
+                const SizedBox(height: 10.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 30.0,
+                      width: 80.0,
+                      child: RaisedButton(
+                        onPressed: () {},
+                        color: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Text(
+                          'Delete',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 15.0),
+                    SizedBox(
+                      height: 30.0,
+                      width: 80.0,
+                      child: RaisedButton(
+                        onPressed: () {},
+                        color: CustomColors.blue16,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+    } else {
+      return const SizedBox();
+    }
   }
 }
