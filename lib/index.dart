@@ -12,6 +12,7 @@ export 'controllers/appbar_with_search_controller.dart';
 export 'controllers/bottom_bar_controller.dart';
 export 'controllers/chats_controller.dart';
 export 'controllers/chats_item_controller.dart';
+export 'controllers/profile_controller.dart';
 
 export 'models/logo_element_model.dart';
 
@@ -25,6 +26,12 @@ export 'screens/main/widgets/chats_item.dart';
 export 'screens/auth/sign_up_screen.dart';
 export 'screens/auth/recover_screen.dart';
 export 'screens/profile/profile_screen.dart';
+export 'screens/profile/profile_screen.dart';
+export 'screens/profile/widgets/profile_media_list.dart';
+export 'screens/profile/widgets/profile_voices_list.dart';
+export 'screens/profile/widgets/profile_menu.dart';
+export 'screens/profile/widgets/profile_selector.dart';
+export 'screens/profile/widgets/profile_media_item.dart';
 
 export 'utilities/constants.dart';
 export 'utilities/custom_colors.dart';
