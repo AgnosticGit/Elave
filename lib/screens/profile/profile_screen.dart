@@ -71,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(5.0, 10.0, 0, 0),
                     child: ProfileSelector(),
                   ),
-                  Expanded(child: ProfileMediaList()),
+                  Expanded(child: ProfileVoicesList()),
                 ],
               ),
             ),

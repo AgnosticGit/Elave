@@ -22,6 +22,7 @@ export 'screens/main/chats_screen.dart';
 export 'screens/main/widgets/chats_item.dart';
 export 'screens/profile/profile_screen.dart';
 export 'screens/profile/widgets/profile_media_list.dart';
+export 'screens/profile/widgets/profile_voices_list.dart';
 export 'screens/profile/widgets/profile_menu.dart';
 export 'screens/profile/widgets/profile_selector.dart';
 export 'screens/profile/widgets/profile_media_item.dart';
