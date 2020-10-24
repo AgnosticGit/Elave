@@ -6,131 +6,122 @@ class ChatsItem extends StatefulWidget {
 
   final ChatItemModel chatItemModel;
 
-  State<StatefulWidget> createState() => ChatsItemState();
+  final chatsItemState = ChatsItemState();
+
+  void openMenu() => chatsItemState.openMenu();
+  void closeMenu() => chatsItemState.closeMenu();
+  
+  void enableBlur() => chatsItemState.enableBlur();
+  void disableBlur() => chatsItemState.disableBlur();
+
+  State<StatefulWidget> createState() => chatsItemState;
 }
 
 class ChatsItemState extends State<ChatsItem> {
+  Function openBasket;
+  Function openMute;
+  Function closeBasket;
+  Function closeMute;
+  bool isBlurred = false;
+
   Widget build(BuildContext context) {
-    return GetBuilder<ChatsItemController>(
-      init: ChatsItemController(),
-      builder: (chatsItemController) {
-        return Stack(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: GestureDetector(
-                onLongPress: () {
-                  chatsItemController.openMenu(widget.chatItemModel.index);
-                },
-                onTap: () {
-                  chatsItemController.closeMenu(widget.chatItemModel.index);
-                },
-                child: Container(
-                  child: Row(
-                    children: [
-                      _buildAvatar(),
-                      const SizedBox(width: 15.0),
-                      Expanded(
-                        child: Container(
-                          height: 80.0,
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(color: CustomColors.blue3D),
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+    return Stack(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          child: GestureDetector(
+            onLongPress: openMenu,
+            onTap: closeMenu,
+            child: Container(
+              child: Row(
+                children: [
+                  _buildAvatar(),
+                  const SizedBox(width: 15.0),
+                  Expanded(
+                    child: Container(
+                      height: 80.0,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: CustomColors.blue3D),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            widget.chatItemModel.name,
-                                            style: TextStyle(
-                                              color: CustomColors.blue91,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 5.0),
-                                      Text(
-                                        widget.chatItemModel.lastMessage,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16.0,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
                                   Row(
                                     children: [
-                                      RollingTile(
-                                        openTile: (func) {
-                                          chatsItemController.setOpenBasket(
-                                              func, widget.chatItemModel.index);
-                                        },
-                                        closeTile: (func) {
-                                          chatsItemController.setCloseBasket(
-                                              func, widget.chatItemModel.index);
-                                        },
-                                        duration: Duration(milliseconds: 1),
-                                        secondSide: _buildMute(),
-                                      ),
-                                      const SizedBox(width: 5.0),
-                                      RollingTile(
-                                        openTile: (func) {
-                                          chatsItemController.setOpenMute(
-                                              func, widget.chatItemModel.index);
-                                        },
-                                        closeTile: (func) {
-                                          chatsItemController.setCloseMute(
-                                              func, widget.chatItemModel.index);
-                                        },
-                                        duration: Duration(milliseconds: 1),
-                                        firstSide: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              '22 aug',
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            const SizedBox(height: 5.0),
-                                            _buildMessagesCount(
-                                              widget.chatItemModel
-                                                  .unreadMessagesCount,
-                                            ),
-                                          ],
+                                      Text(
+                                        widget.chatItemModel.name,
+                                        style: TextStyle(
+                                          color: CustomColors.blue91,
                                         ),
-                                        secondSide: _buildBasket(),
-                                      )
+                                      ),
                                     ],
                                   ),
+                                  const SizedBox(height: 5.0),
+                                  Text(
+                                    widget.chatItemModel.lastMessage,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  RollingTile(
+                                    openTile: (func) => openBasket = func,
+                                    closeTile: (func) => closeBasket = func,
+                                    duration: Duration(milliseconds: 1),
+                                    secondSide: _buildMute(),
+                                  ),
+                                  const SizedBox(width: 5.0),
+                                  RollingTile(
+                                    openTile: (func) => openMute = func,
+                                    closeTile: (func) => closeMute = func,
+                                    duration: Duration(milliseconds: 1),
+                                    firstSide: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          '22 aug',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5.0),
+                                        _buildMessagesCount(
+                                          widget.chatItemModel
+                                              .unreadMessagesCount,
+                                        ),
+                                      ],
+                                    ),
+                                    secondSide: _buildBasket(),
+                                  )
                                 ],
                               ),
                             ],
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
-            _buildDeleteConfirmation(),
-          ],
-        );
-      },
+          ),
+        ),
+        _buildDeleteConfirmation(),
+      ],
     );
   }
 
@@ -158,25 +149,6 @@ class ChatsItemState extends State<ChatsItem> {
     );
   }
 
-  Widget _buildStatus() {
-    return Container(
-      alignment: Alignment.center,
-      width: 40.0,
-      height: 10.0,
-      decoration: BoxDecoration(
-        color: CustomColors.green00,
-        borderRadius: BorderRadius.circular(12.0),
-      ),
-      child: Text(
-        'Online',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 8,
-        ),
-      ),
-    );
-  }
-
   Widget _buildMessagesCount(int messagesCount) {
     double fontSize = messagesCount < 10 ? 12 : 10;
     String count = messagesCount < 100 ? messagesCount.toString() : "99+";
@@ -198,10 +170,7 @@ class ChatsItemState extends State<ChatsItem> {
 
   GestureDetector _buildBasket() {
     return GestureDetector(
-      onTap: () {
-        Get.put(ChatsItemController())
-            .enableBlurOnItem(widget.chatItemModel.index);
-      },
+      onTap: enableBlur,
       child: Container(
         height: 43.0,
         width: 43.0,
@@ -265,9 +234,7 @@ class ChatsItemState extends State<ChatsItem> {
   }
 
   Widget _buildDeleteConfirmation() {
-    final chatsItemController = Get.put(ChatsItemController());
-
-    if (chatsItemController.blurredItemIndex == widget.chatItemModel.index) {
+    if (isBlurred) {
       return ClipRRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
@@ -308,10 +275,7 @@ class ChatsItemState extends State<ChatsItem> {
                       height: 30.0,
                       width: 80.0,
                       child: RaisedButton(
-                        onPressed: () {
-                          chatsItemController
-                              .disableBlurOnItem(widget.chatItemModel.index);
-                        },
+                        onPressed: disableBlur,
                         color: CustomColors.blue16,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
@@ -332,5 +296,28 @@ class ChatsItemState extends State<ChatsItem> {
     } else {
       return const SizedBox();
     }
+  }
+
+  void openMenu() {
+    Get.put(ChatsController()).closeEveryChatMenu();
+    openBasket();
+    openMute();
+  }
+
+  void closeMenu() {
+    closeBasket();
+    closeMute();
+  }
+
+  void enableBlur() {
+    setState(() {
+      isBlurred = true;
+    });
+  }
+
+  void disableBlur() {
+    setState(() {
+      isBlurred = false;
+    });
   }
 }
