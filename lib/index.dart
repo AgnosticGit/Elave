@@ -15,6 +15,7 @@ export 'controllers/chats_item_controller.dart';
 export 'controllers/profile_controller.dart';
 
 export 'models/logo_element_model.dart';
+export 'models/chat_item_model.dart';
 
 export 'screens/auth/sign_in_screen.dart';
 export 'screens/auth/widgets/auth_sign_in_form.dart';
@@ -36,6 +37,8 @@ export 'screens/profile/widgets/profile_media_item.dart';
 export 'utilities/constants.dart';
 export 'utilities/custom_colors.dart';
 export 'utilities/images.dart';
+export 'utilities/constants.dart';
+export 'utilities/custom_colors.dart';
 
 export 'widgets/animated_logo.dart';
 export 'widgets/appbar_with_search.dart';
@@ -43,8 +46,6 @@ export 'widgets/search.dart';
 export 'widgets/bottom_bar.dart';
 export 'widgets/rolling_tile.dart';
 export 'widgets/smooth_blur.dart';
-
-export 'utilities/constants.dart';
-export 'utilities/custom_colors.dart';
-
 export 'widgets/animated_logo.dart';
+
+export 'states/chats_state.dart';

@@ -1,21 +1,15 @@
 import 'dart:ui';
-
 import 'package:elave/index.dart';
 
-class ChatsItem extends StatelessWidget {
-  ChatsItem({
-    this.name,
-    this.lastMessage,
-    this.unreadMessagesCount,
-    this.index,
-  });
+class ChatsItem extends StatefulWidget {
+  ChatsItem(this.chatItemModel);
 
-  final String name;
-  final String lastMessage;
-  final int unreadMessagesCount;
-  final int index;
-  // TODO Date
+  final ChatItemModel chatItemModel;
 
+  State<StatefulWidget> createState() => ChatsItemState();
+}
+
+class ChatsItemState extends State<ChatsItem> {
   Widget build(BuildContext context) {
     return GetBuilder<ChatsItemController>(
       init: ChatsItemController(),
@@ -25,8 +19,12 @@ class ChatsItem extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: GestureDetector(
-                onLongPress: () => chatsItemController.openMenu(index),
-                onTap: () => chatsItemController.closeMenu(index),
+                onLongPress: () {
+                  chatsItemController.openMenu(widget.chatItemModel.index);
+                },
+                onTap: () {
+                  chatsItemController.closeMenu(widget.chatItemModel.index);
+                },
                 child: Container(
                   child: Row(
                     children: [
@@ -55,18 +53,16 @@ class ChatsItem extends StatelessWidget {
                                       Row(
                                         children: [
                                           Text(
-                                            name,
+                                            widget.chatItemModel.name,
                                             style: TextStyle(
                                               color: CustomColors.blue91,
                                             ),
                                           ),
-                                          // const SizedBox(width: 5.0),
-                                          // _buildStatus(),
                                         ],
                                       ),
                                       const SizedBox(height: 5.0),
                                       Text(
-                                        lastMessage,
+                                        widget.chatItemModel.lastMessage,
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16.0,
@@ -77,19 +73,27 @@ class ChatsItem extends StatelessWidget {
                                   Row(
                                     children: [
                                       RollingTile(
-                                        openTile: (func) => chatsItemController
-                                            .setOpenBasket(func, index),
-                                        closeTile: (func) => chatsItemController
-                                            .setCloseBasket(func, index),
+                                        openTile: (func) {
+                                          chatsItemController.setOpenBasket(
+                                              func, widget.chatItemModel.index);
+                                        },
+                                        closeTile: (func) {
+                                          chatsItemController.setCloseBasket(
+                                              func, widget.chatItemModel.index);
+                                        },
                                         duration: Duration(milliseconds: 1),
                                         secondSide: _buildMute(),
                                       ),
                                       const SizedBox(width: 5.0),
                                       RollingTile(
-                                        openTile: (func) => chatsItemController
-                                            .setOpenMute(func, index),
-                                        closeTile: (func) => chatsItemController
-                                            .setCloseMute(func, index),
+                                        openTile: (func) {
+                                          chatsItemController.setOpenMute(
+                                              func, widget.chatItemModel.index);
+                                        },
+                                        closeTile: (func) {
+                                          chatsItemController.setCloseMute(
+                                              func, widget.chatItemModel.index);
+                                        },
                                         duration: Duration(milliseconds: 1),
                                         firstSide: Column(
                                           crossAxisAlignment:
@@ -103,7 +107,8 @@ class ChatsItem extends StatelessWidget {
                                             ),
                                             const SizedBox(height: 5.0),
                                             _buildMessagesCount(
-                                              unreadMessagesCount,
+                                              widget.chatItemModel
+                                                  .unreadMessagesCount,
                                             ),
                                           ],
                                         ),
@@ -193,7 +198,10 @@ class ChatsItem extends StatelessWidget {
 
   GestureDetector _buildBasket() {
     return GestureDetector(
-      onTap: () => Get.put(ChatsItemController()).setBlurredItemIndex(index),
+      onTap: () {
+        Get.put(ChatsItemController())
+            .enableBlurOnItem(widget.chatItemModel.index);
+      },
       child: Container(
         height: 43.0,
         width: 43.0,
@@ -257,7 +265,9 @@ class ChatsItem extends StatelessWidget {
   }
 
   Widget _buildDeleteConfirmation() {
-    if (Get.put(ChatsItemController()).blurredItemIndex == index) {
+    final chatsItemController = Get.put(ChatsItemController());
+
+    if (chatsItemController.blurredItemIndex == widget.chatItemModel.index) {
       return ClipRRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
@@ -279,7 +289,10 @@ class ChatsItem extends StatelessWidget {
                       height: 30.0,
                       width: 80.0,
                       child: RaisedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.put(ChatsController())
+                              .onDeleteChatItem(widget.chatItemModel.index);
+                        },
                         color: Colors.red,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
@@ -295,7 +308,10 @@ class ChatsItem extends StatelessWidget {
                       height: 30.0,
                       width: 80.0,
                       child: RaisedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          chatsItemController
+                              .disableBlurOnItem(widget.chatItemModel.index);
+                        },
                         color: CustomColors.blue16,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),

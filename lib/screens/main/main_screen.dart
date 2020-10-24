@@ -2,6 +2,7 @@ import 'package:elave/index.dart';
 
 class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
+    Get.put(ChatsState()).setChatsList();
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
@@ -32,19 +33,22 @@ class MainScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: ListView.builder(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 100.0, bottom: 90.0),
-          itemCount: 20,
-          itemBuilder: (context, index) {
-            return ChatsItem(
-              name: "Вячеслав Елизарьев " + index.toString(),
-              lastMessage: 'Where my money ' + index.toString(),
-              unreadMessagesCount: 10,
-              index: index,
-            );
-          },
+          child: _buildChats(),
         ),
       ),
+    );
+  }
+
+  GetBuilder _buildChats() {
+    return GetBuilder<ChatsState>(
+      init: ChatsState(),
+      builder: (chatsState) {
+        return Column(
+          children: Get.put(ChatsState()).chatsList,
+        );
+      },
     );
   }
 }

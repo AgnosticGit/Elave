@@ -12,12 +12,19 @@ class ChatsItemController extends GetxController {
   void setOpenMute(Function func, int index) => openMute[index] = func;
   void setCloseBasket(Function func, int index) => closeBasket[index] = func;
   void setCloseMute(Function func, int index) => closeMute[index] = func;
-  void setBlurredItemIndex(int index) {
-    blurredItemIndex = index;    
+
+  void enableBlurOnItem(int index) {
+    blurredItemIndex = index;
+    update();
+  }
+
+  void disableBlurOnItem(int index) {
+    blurredItemIndex = null;
     update();
   }
 
   void openMenu(int index) {
+    closeAllMenus();
     openBasket[index]();
     openMute[index]();
   }
@@ -25,5 +32,16 @@ class ChatsItemController extends GetxController {
   void closeMenu(int index) {
     closeBasket[index]();
     closeMute[index]();
+  }
+
+  void closeAllMenus() {
+    if (closeBasket.length > 0 && closeMute.length > 0) {
+      closeBasket.forEach((closeFunc) {
+        if (closeFunc != null) closeFunc();
+      });
+      closeMute.forEach((closeFunc) {
+        if (closeFunc != null) closeFunc();
+      });
+    }
   }
 }
