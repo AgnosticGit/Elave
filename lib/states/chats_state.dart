@@ -18,4 +18,8 @@ class ChatsState extends GetxController {
     }
     update();
   }
+
+  deleteChatListItem(){
+    
+  }
 }
