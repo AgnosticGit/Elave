@@ -9,33 +9,29 @@ class BottomBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  border: Border.all(color: Colors.white),
-                  color: Colors.white.withOpacity(0.1),
-                ),
-                child: GetBuilder<BottomBarController>(
-                  init: BottomBarController(),
-                  builder: (bottomBarController) {
-                    return Row(
-                      children: [
-                        const SizedBox(width: 30.0),
-                        _buildFindPeople(),
-                        SizedBox(width: Get.width * 0.1),
-                        _buildChats(),
-                        const SizedBox(width: 15.0),
-                      ],
-                    );
-                  },
-                ),
+          Blurred(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                border: Border.all(color: Colors.white),
+                color: Colors.white.withOpacity(0.1),
+              ),
+              child: GetBuilder<BottomBarController>(
+                init: BottomBarController(),
+                builder: (bottomBarController) {
+                  return Row(
+                    children: [
+                      const SizedBox(width: 30.0),
+                      _buildFindPeople(),
+                      SizedBox(width: Get.width * 0.1),
+                      _buildChats(),
+                      const SizedBox(width: 15.0),
+                    ],
+                  );
+                },
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -45,7 +45,7 @@ export 'widgets/appbar_with_search.dart';
 export 'widgets/search.dart';
 export 'widgets/bottom_bar.dart';
 export 'widgets/rolling_tile.dart';
-export 'widgets/smooth_blur.dart';
+export 'widgets/blurred.dart';
 export 'widgets/animated_logo.dart';
 
 export 'states/chats_state.dart';

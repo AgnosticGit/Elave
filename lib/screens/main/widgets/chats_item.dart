@@ -10,7 +10,7 @@ class ChatsItem extends StatefulWidget {
 
   void openMenu() => chatsItemState.openMenu();
   void closeMenu() => chatsItemState.closeMenu();
-  
+
   void enableBlur() => chatsItemState.enableBlur();
   void disableBlur() => chatsItemState.disableBlur();
 
@@ -235,61 +235,59 @@ class ChatsItemState extends State<ChatsItem> {
 
   Widget _buildDeleteConfirmation() {
     if (isBlurred) {
-      return ClipRRect(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-          child: Container(
-            height: 80.0,
-            color: Colors.transparent,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Are you sure?',
-                  style: TextStyle(color: Colors.white),
-                ),
-                const SizedBox(height: 10.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 30.0,
-                      width: 80.0,
-                      child: RaisedButton(
-                        onPressed: () {
-                          Get.put(ChatsController())
-                              .onDeleteChatItem(widget.chatItemModel.index);
-                        },
-                        color: Colors.red,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Text(
-                          'Delete',
-                          style: TextStyle(color: Colors.white),
-                        ),
+      return Blurred(
+        enableFlow: true,
+        child: Container(
+          height: 80.0,
+          color: Colors.transparent,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Are you sure?',
+                style: TextStyle(color: Colors.white),
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 30.0,
+                    width: 80.0,
+                    child: RaisedButton(
+                      onPressed: () {
+                        Get.put(ChatsController())
+                            .onDeleteChatItem(widget.chatItemModel.index);
+                      },
+                      color: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Text(
+                        'Delete',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    const SizedBox(width: 15.0),
-                    SizedBox(
-                      height: 30.0,
-                      width: 80.0,
-                      child: RaisedButton(
-                        onPressed: disableBlur,
-                        color: CustomColors.blue16,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Text(
-                          'Cancel',
-                          style: TextStyle(color: Colors.white),
-                        ),
+                  ),
+                  const SizedBox(width: 15.0),
+                  SizedBox(
+                    height: 30.0,
+                    width: 80.0,
+                    child: RaisedButton(
+                      onPressed: disableBlur,
+                      color: CustomColors.blue16,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Text(
+                        'Cancel',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
-                  ],
-                )
-              ],
-            ),
+                  ),
+                ],
+              )
+            ],
           ),
         ),
       );
