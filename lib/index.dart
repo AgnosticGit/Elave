@@ -43,7 +43,7 @@ export 'utilities/custom_colors.dart';
 export 'widgets/animated_logo.dart';
 export 'widgets/appbar_with_search.dart';
 export 'widgets/search.dart';
-export 'widgets/bottom_bar.dart';
+export 'screens/main/widgets/bottom_bar.dart';
 export 'widgets/rolling_tile.dart';
 export 'widgets/blurred.dart';
 export 'widgets/animated_logo.dart';

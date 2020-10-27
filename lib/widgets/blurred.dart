@@ -7,7 +7,7 @@ class Blurred extends StatefulWidget {
     this.sigmaX = 4.0,
     this.sigmaY = 4.0,
     this.enableFlow = false,
-    this.flowSpeed = const Duration(milliseconds: 30),
+    this.flowSpeed = const Duration(milliseconds: 1),
   });
 
   final Widget child;
@@ -49,8 +49,8 @@ class _BlurredState extends State<Blurred> {
     return ClipRRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: flowSigmaX == 0 ? sigmaX : flowSigmaX,
-          sigmaY: flowSigmaY == 0 ? sigmaY : flowSigmaY,
+          sigmaX: enableFlow ? flowSigmaX : sigmaX,
+          sigmaY: enableFlow ? flowSigmaY : sigmaY,
         ),
         child: widget.child,
       ),
@@ -61,8 +61,8 @@ class _BlurredState extends State<Blurred> {
     Timer.periodic(flowSpeed, (timer) {
       if (flowSigmaX <= sigmaX && flowSigmaY <= sigmaY) {
         setState(() {
-          flowSigmaX += 0.1;
-          flowSigmaY += 0.1;
+          flowSigmaX += 0.01;
+          flowSigmaY += 0.01;
         });
       } else {
         timer.cancel();

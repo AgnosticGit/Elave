@@ -28,7 +28,7 @@ class ChatsItemState extends State<ChatsItem> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 5.0),
           child: GestureDetector(
             onLongPress: openMenu,
             onTap: closeMenu,
@@ -39,7 +39,7 @@ class ChatsItemState extends State<ChatsItem> {
                   const SizedBox(width: 15.0),
                   Expanded(
                     child: Container(
-                      height: 80.0,
+                      height: 75.0,
                       decoration: BoxDecoration(
                         border: Border(
                           bottom: BorderSide(color: CustomColors.blue3D),
@@ -236,6 +236,8 @@ class ChatsItemState extends State<ChatsItem> {
   Widget _buildDeleteConfirmation() {
     if (isBlurred) {
       return Blurred(
+        sigmaX: 2.0,
+        sigmaY: 2.0,
         enableFlow: true,
         child: Container(
           height: 80.0,
