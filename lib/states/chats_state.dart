@@ -26,6 +26,7 @@ class ChatsState extends GetxController {
   void deleteChatListItem(int index) {
     chatsList
         .removeWhere((chatsItem) => chatsItem.chatItemModel.index == index);
+
     update();
   }
 }

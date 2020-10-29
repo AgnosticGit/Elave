@@ -6,7 +6,7 @@ class ChatsItem extends StatefulWidget {
 
   final ChatItemModel chatItemModel;
 
-  final chatsItemState = ChatsItemState();
+  final chatsItemState = _ChatsItemState();
 
   void openMenu() => chatsItemState.openMenu();
   void closeMenu() => chatsItemState.closeMenu();
@@ -17,7 +17,7 @@ class ChatsItem extends StatefulWidget {
   State<StatefulWidget> createState() => chatsItemState;
 }
 
-class ChatsItemState extends State<ChatsItem> {
+class _ChatsItemState extends State<ChatsItem> {
   Function openBasket;
   Function openMute;
   Function closeBasket;
@@ -333,4 +333,11 @@ class ChatsItemState extends State<ChatsItem> {
       });
     }
   }
+
+  // @override
+  // void didUpdateWidget(covariant ChatsItem oldWidget) {
+  //   disableBlur();
+  //   closeMenu();
+  //   super.didUpdateWidget(oldWidget);
+  // }
 }

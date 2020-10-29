@@ -5,7 +5,7 @@ class ChatsController extends GetxController {
     Get.put(ChatsState()).deleteChatListItem(index);
   }
 
-  void closeEveryChatMenu() {
+  void closeEveryChatMenu() { 
     Get.put(ChatsState()).chatsList.forEach((chatsItem) {
       chatsItem.disableBlur();
       chatsItem.closeMenu();
