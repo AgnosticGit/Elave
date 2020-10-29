@@ -2,13 +2,14 @@ import 'package:elave/index.dart';
 
 class ChatsController extends GetxController {
   void onDeleteChatItem(int index) {
-    //TODO Delete from backend function
+    // closeEveryChatMenu();
+    Get.put(ChatsState()).deleteChatListItem(index);
   }
 
   void closeEveryChatMenu() {
     Get.put(ChatsState()).chatsList.forEach((chatsItem) {
-      chatsItem.closeMenu();
       chatsItem.disableBlur();
+      chatsItem.closeMenu();
     });
   }
 }

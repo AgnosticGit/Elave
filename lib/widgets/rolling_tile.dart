@@ -19,7 +19,7 @@ class RollingTile extends StatefulWidget {
 }
 
 class _RollingTileState extends State<RollingTile> {
-  double _degree = 0;
+  double degree = 0;
 
   void initState() {
     super.initState();
@@ -31,9 +31,9 @@ class _RollingTileState extends State<RollingTile> {
     return Transform(
       transform: Matrix4.identity()
         ..setEntry(3, 2, 0.001)
-        ..rotateY(_degree),
+        ..rotateY(degree),
       alignment: FractionalOffset.center,
-      child: _degree < pi / 2
+      child: degree < pi / 2
           ? widget.firstSide
           : Transform(
               alignment: Alignment.center,
@@ -45,8 +45,8 @@ class _RollingTileState extends State<RollingTile> {
 
   void openTile() {
     Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
-      if (_degree < pi) {
-        setState(() => _degree += pi / 100);
+      if (degree < pi) {
+        if (this.mounted) setState(() => degree += pi / 100);
       } else {
         timer.cancel();
       }
@@ -55,10 +55,10 @@ class _RollingTileState extends State<RollingTile> {
 
   void closeTile() {
     Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
-      if (_degree > 0) {
-        setState(() => _degree -= pi / 100);
+      if (degree > 0) {
+        if (this.mounted) setState(() => degree -= pi / 100);
       } else {
-        setState(() => _degree = 0);
+        if (this.mounted) setState(() => degree = 0);
         timer.cancel();
       }
     });

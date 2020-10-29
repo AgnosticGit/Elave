@@ -2,7 +2,6 @@ import 'package:elave/index.dart';
 
 class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
-    Get.put(ChatsState()).setChatsList();
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
@@ -45,9 +44,7 @@ class MainScreen extends StatelessWidget {
     return GetBuilder<ChatsState>(
       init: ChatsState(),
       builder: (chatsState) {
-        return Column(
-          children: Get.put(ChatsState()).chatsList,
-        );
+        return Column(children: Get.put(ChatsState()).chatsList);
       },
     );
   }

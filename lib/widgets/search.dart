@@ -45,12 +45,10 @@ class Search extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 0.0,
                   left: 45.0,
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: 300),
                     width: textFieldWidth,
-                    height: 42.0,
                     child: TextField(
                       focusNode: appbarController.focusNode,
                       controller: appbarController.textEditingController,

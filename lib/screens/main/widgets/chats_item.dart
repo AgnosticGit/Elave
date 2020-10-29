@@ -6,7 +6,7 @@ class ChatsItem extends StatefulWidget {
 
   final ChatItemModel chatItemModel;
 
-  final chatsItemState = ChatsItemState();
+  final chatsItemState = _ChatsItemState();
 
   void openMenu() => chatsItemState.openMenu();
   void closeMenu() => chatsItemState.closeMenu();
@@ -17,7 +17,7 @@ class ChatsItem extends StatefulWidget {
   State<StatefulWidget> createState() => chatsItemState;
 }
 
-class ChatsItemState extends State<ChatsItem> {
+class _ChatsItemState extends State<ChatsItem> {
   Function openBasket;
   Function openMute;
   Function closeBasket;
@@ -258,8 +258,9 @@ class ChatsItemState extends State<ChatsItem> {
                     width: 80.0,
                     child: RaisedButton(
                       onPressed: () {
-                        Get.put(ChatsController())
-                            .onDeleteChatItem(widget.chatItemModel.index);
+                        Get.put(ChatsController()).onDeleteChatItem(
+                          widget.chatItemModel.index,
+                        );
                       },
                       color: Colors.red,
                       shape: RoundedRectangleBorder(
@@ -310,14 +311,18 @@ class ChatsItemState extends State<ChatsItem> {
   }
 
   void enableBlur() {
-    setState(() {
-      isBlurred = true;
-    });
+    if (this.mounted) {
+      setState(() {
+        isBlurred = true;
+      });
+    }
   }
 
   void disableBlur() {
-    setState(() {
-      isBlurred = false;
-    });
+    if (this.mounted) {
+      setState(() {
+        isBlurred = false;
+      });
+    }
   }
 }
