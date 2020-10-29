@@ -8,11 +8,11 @@ class ChatsItem extends StatefulWidget {
 
   final chatsItemState = _ChatsItemState();
 
-  void openMenu() => chatsItemState.openMenu();
-  void closeMenu() => chatsItemState.closeMenu();
+  get openMenu => chatsItemState.openMenu;
+  get closeMenu => chatsItemState.closeMenu;
 
-  void enableBlur() => chatsItemState.enableBlur();
-  void disableBlur() => chatsItemState.disableBlur();
+  get enableBlur => chatsItemState.enableBlur;
+  get disableBlur => chatsItemState.disableBlur;
 
   State<StatefulWidget> createState() => chatsItemState;
 }
@@ -334,7 +334,6 @@ class _ChatsItemState extends State<ChatsItem> {
     }
   }
 
-  // @override
   // void didUpdateWidget(covariant ChatsItem oldWidget) {
   //   disableBlur();
   //   closeMenu();

@@ -2,6 +2,7 @@ import 'package:elave/index.dart';
 
 class ChatsState extends GetxController {
   List<ChatsItem> chatsList = [];
+  List<ChatsItem> chatsListCopy = [];
 
   void onReady() {
     setChatsList();
@@ -20,6 +21,8 @@ class ChatsState extends GetxController {
         ),
       );
     }
+    //Когда удаляется элемент из массива hashCode функций closeMenu и disableBlur перебрасывается на следующий элемент(не понятно почему). Поэтому я создал дополнительную копию где есть все функции с hashCode.
+    chatsListCopy = chatsList.map((el) => el).toList();
     update();
   }
 
