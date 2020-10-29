@@ -16,7 +16,7 @@ class Blurred extends StatefulWidget {
   final bool enableFlow;
   final Duration flowSpeed;
 
-  State<Blurred> createState() => _BlurredState(
+  State<StatefulWidget> createState() => _BlurredState(
         sigmaX: sigmaX,
         sigmaY: sigmaY,
         enableFlow: enableFlow,

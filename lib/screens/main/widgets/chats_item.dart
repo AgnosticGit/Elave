@@ -6,7 +6,7 @@ class ChatsItem extends StatefulWidget {
 
   final ChatItemModel chatItemModel;
 
-  final chatsItemState = _ChatsItemState();
+  final chatsItemState = ChatsItemState();
 
   void openMenu() => chatsItemState.openMenu();
   void closeMenu() => chatsItemState.closeMenu();
@@ -17,7 +17,7 @@ class ChatsItem extends StatefulWidget {
   State<StatefulWidget> createState() => chatsItemState;
 }
 
-class _ChatsItemState extends State<ChatsItem> {
+class ChatsItemState extends State<ChatsItem> {
   Function openBasket;
   Function openMute;
   Function closeBasket;
@@ -58,7 +58,7 @@ class _ChatsItemState extends State<ChatsItem> {
                                   Row(
                                     children: [
                                       Text(
-                                        widget.chatItemModel.name,
+                                        widget.chatItemModel.name ?? '',
                                         style: TextStyle(
                                           color: CustomColors.blue91,
                                         ),
@@ -67,7 +67,7 @@ class _ChatsItemState extends State<ChatsItem> {
                                   ),
                                   const SizedBox(height: 5.0),
                                   Text(
-                                    widget.chatItemModel.lastMessage,
+                                    widget.chatItemModel.lastMessage ?? '',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
@@ -101,7 +101,8 @@ class _ChatsItemState extends State<ChatsItem> {
                                         const SizedBox(height: 5.0),
                                         _buildMessagesCount(
                                           widget.chatItemModel
-                                              .unreadMessagesCount,
+                                                  .unreadMessagesCount ??
+                                              0,
                                         ),
                                       ],
                                     ),
@@ -150,6 +151,13 @@ class _ChatsItemState extends State<ChatsItem> {
   }
 
   Widget _buildMessagesCount(int messagesCount) {
+    if (messagesCount == 0) {
+      return SizedBox(
+        width: 21.0,
+        height: 21.0,
+      );
+    }
+
     double fontSize = messagesCount < 10 ? 12 : 10;
     String count = messagesCount < 100 ? messagesCount.toString() : "99+";
 

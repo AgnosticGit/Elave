@@ -32,10 +32,7 @@ class MainScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.only(top: 100.0, bottom: 90.0),
-          child: _buildChats(),
-        ),
+        child: _buildChats(),
       ),
     );
   }
@@ -44,7 +41,12 @@ class MainScreen extends StatelessWidget {
     return GetBuilder<ChatsState>(
       init: ChatsState(),
       builder: (chatsState) {
-        return Column(children: Get.put(ChatsState()).chatsList);
+        return ListView.builder(
+          itemCount: Get.put(ChatsState()).chatsList.length,
+          itemBuilder: (context, index) {
+            return Get.put(ChatsState()).chatsList[index];
+          },
+        );
       },
     );
   }
