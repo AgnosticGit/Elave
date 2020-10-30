@@ -2,15 +2,15 @@ import 'package:elave/index.dart';
 import 'package:elave/utilities/enums.dart';
 
 class BottomBarController extends GetxController {
-  BottomBarItems bottomBarItems = BottomBarItems.chats;
+  BottomBarState bottomBarState = BottomBarState.chats;
 
   void selectChats() {
-    bottomBarItems = BottomBarItems.chats;
+    bottomBarState = BottomBarState.chats;
     update();
   }
 
   void selectFindPeople() {
-    bottomBarItems = BottomBarItems.findPeople;
+    bottomBarState = BottomBarState.findPeople;
     update();
   }
 }

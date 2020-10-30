@@ -333,10 +333,4 @@ class _ChatsItemState extends State<ChatsItem> {
       });
     }
   }
-
-  // void didUpdateWidget(covariant ChatsItem oldWidget) {
-  //   disableBlur();
-  //   closeMenu();
-  //   super.didUpdateWidget(oldWidget);
-  // }
 }

@@ -56,7 +56,7 @@ class AppBarWithSearch extends StatelessWidget with PreferredSizeWidget {
 
     return Text(
       title ?? '',
-      style: TextStyle(color: Colors.white, fontSize: 20.0),
+      style: TextStyle(color: Colors.white, fontSize: 18.0),
     );
   }
 

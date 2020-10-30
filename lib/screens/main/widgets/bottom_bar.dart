@@ -74,9 +74,9 @@ class BottomBar extends StatelessWidget {
   }
 
   SvgPicture _buildFindPeopleImage() {
-    final bottomBarItems = Get.put(BottomBarController()).bottomBarItems;
+    final bottomBarItems = Get.put(BottomBarController()).bottomBarState;
 
-    if (bottomBarItems == BottomBarItems.findPeople) {
+    if (bottomBarItems == BottomBarState.findPeople) {
       return Images.humansWhite;
     } else {
       return Images.humans;
@@ -84,9 +84,9 @@ class BottomBar extends StatelessWidget {
   }
 
   Text _buildFindPeopleText() {
-    final bottomBarItems = Get.put(BottomBarController()).bottomBarItems;
+    final bottomBarItems = Get.put(BottomBarController()).bottomBarState;
 
-    if (bottomBarItems == BottomBarItems.findPeople) {
+    if (bottomBarItems == BottomBarState.findPeople) {
       return Text(
         'Find People',
         style: TextStyle(color: CustomColors.blue91),
@@ -100,9 +100,9 @@ class BottomBar extends StatelessWidget {
   }
 
   Text _buildChatsText() {
-    final bottomBarItems = Get.put(BottomBarController()).bottomBarItems;
+    final bottomBarItems = Get.put(BottomBarController()).bottomBarState;
 
-    if (bottomBarItems == BottomBarItems.chats) {
+    if (bottomBarItems == BottomBarState.chats) {
       return Text(
         'Chats',
         style: TextStyle(color: CustomColors.blue91),
@@ -116,9 +116,9 @@ class BottomBar extends StatelessWidget {
   }
 
   SvgPicture _buildChatsImage() {
-    final bottomBarItems = Get.put(BottomBarController()).bottomBarItems;
+    final bottomBarItems = Get.put(BottomBarController()).bottomBarState;
 
-    if (bottomBarItems == BottomBarItems.chats) {
+    if (bottomBarItems == BottomBarState.chats) {
       return Images.cloudWhite;
     } else {
       return Images.cloud;

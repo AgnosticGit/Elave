@@ -12,6 +12,7 @@ export 'controllers/appbar_with_search_controller.dart';
 export 'controllers/bottom_bar_controller.dart';
 export 'controllers/chats_controller.dart';
 export 'controllers/profile_controller.dart';
+export 'controllers/find_people_controller.dart';
 
 export 'models/logo_element_model.dart';
 export 'models/chat_item_model.dart';
@@ -23,6 +24,7 @@ export 'screens/main/main_screen.dart';
 export 'screens/main/find_people_screen.dart';
 export 'screens/main/chats_screen.dart';
 export 'screens/main/widgets/chats_item.dart';
+export 'screens/main/widgets/bottom_bar.dart';
 export 'screens/auth/sign_up_screen.dart';
 export 'screens/auth/recover_screen.dart';
 export 'screens/profile/profile_screen.dart';
@@ -38,11 +40,13 @@ export 'utilities/custom_colors.dart';
 export 'utilities/images.dart';
 export 'utilities/constants.dart';
 export 'utilities/custom_colors.dart';
+export 'utilities/enums.dart';
 
 export 'widgets/animated_logo.dart';
 export 'widgets/appbar_with_search.dart';
 export 'widgets/search.dart';
-export 'screens/main/widgets/bottom_bar.dart';
+export 'package:elave/widgets/custom_appbar.dart';
+
 export 'widgets/rolling_tile.dart';
 export 'widgets/blurred.dart';
 export 'widgets/animated_logo.dart';
