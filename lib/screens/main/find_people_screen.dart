@@ -39,37 +39,10 @@ class FindPeopleScreen extends StatelessWidget {
               onPageChanged: findPeopleController.onPageChange,
               controller: findPeopleController.pageController,
               children: [
-                Align(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20.0),
-                    height: Get.height * 0.75,
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                  ),
-                ),
-                Align(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20.0),
-                    height: Get.height * 0.7,
-                    color: Colors.orange,
-                  ),
-                ),
-                Align(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20.0),
-                    height: Get.height * 0.7,
-                    color: Colors.green,
-                  ),
-                ),
-                Align(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20.0),
-                    height: Get.height * 0.7,
-                    color: Colors.blue,
-                  ),
-                ),
+                FindPeopleItem(),
+                FindPeopleItem(),
+                FindPeopleItem(),
+                FindPeopleItem(),
               ],
             );
           },

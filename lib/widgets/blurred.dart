@@ -8,6 +8,7 @@ class Blurred extends StatefulWidget {
     this.sigmaY = 4.0,
     this.enableFlow = false,
     this.flowSpeed = const Duration(milliseconds: 1),
+    this.borderRadius,
   });
 
   final Widget child;
@@ -15,12 +16,14 @@ class Blurred extends StatefulWidget {
   final double sigmaY;
   final bool enableFlow;
   final Duration flowSpeed;
+  final BorderRadius borderRadius;
 
   State<StatefulWidget> createState() => _BlurredState(
         sigmaX: sigmaX,
         sigmaY: sigmaY,
         enableFlow: enableFlow,
         flowSpeed: flowSpeed,
+        borderRadius: borderRadius,
       );
 }
 
@@ -30,6 +33,7 @@ class _BlurredState extends State<Blurred> {
     this.sigmaY,
     this.enableFlow,
     this.flowSpeed,
+    this.borderRadius,
   });
 
   double sigmaX;
@@ -38,6 +42,7 @@ class _BlurredState extends State<Blurred> {
   double flowSigmaX = 0;
   double flowSigmaY = 0;
   Duration flowSpeed;
+  BorderRadius borderRadius;
 
   void initState() {
     if (enableFlow) flow();
@@ -47,6 +52,7 @@ class _BlurredState extends State<Blurred> {
 
   Widget build(BuildContext context) {
     return ClipRRect(
+      borderRadius: borderRadius ?? BorderRadius.circular(0.0),
       child: BackdropFilter(
         filter: ImageFilter.blur(
           sigmaX: enableFlow ? flowSigmaX : sigmaX,

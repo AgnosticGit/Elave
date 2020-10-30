@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:elave/index.dart';
-import 'package:elave/utilities/enums.dart';
 
 class BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
