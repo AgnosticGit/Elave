@@ -20,14 +20,16 @@ export 'models/chat_item_model.dart';
 export 'screens/auth/sign_in_screen.dart';
 export 'screens/auth/widgets/auth_sign_in_form.dart';
 export 'screens/auth/widgets/auth_swiper.dart';
+export 'screens/auth/sign_up_screen.dart';
+export 'screens/auth/recover_screen.dart';
+
 export 'screens/main/main_screen.dart';
 export 'screens/main/find_people_screen.dart';
 export 'screens/main/chats_screen.dart';
 export 'screens/main/widgets/chats_item.dart';
-export 'widgets/bottom_bar.dart';
 export 'screens/main/widgets/find_people_item.dart';
-export 'screens/auth/sign_up_screen.dart';
-export 'screens/auth/recover_screen.dart';
+export 'screens/main/widgets/find_people_languages_levels.dart';
+
 export 'screens/profile/profile_screen.dart';
 export 'screens/profile/profile_screen.dart';
 export 'screens/profile/widgets/profile_media_list.dart';
@@ -46,7 +48,8 @@ export 'utilities/enums.dart';
 export 'widgets/animated_logo.dart';
 export 'widgets/appbar_with_search.dart';
 export 'widgets/search.dart';
-export 'package:elave/widgets/custom_appbar.dart';
+export 'widgets/custom_appbar.dart';
+export 'widgets/bottom_bar.dart';
 
 export 'widgets/rolling_tile.dart';
 export 'widgets/blurred.dart';
