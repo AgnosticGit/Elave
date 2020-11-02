@@ -50,4 +50,8 @@ class Images {
     'assets/images/search.svg',
     color: Colors.white,
   );
+  static final Widget filter = SvgPicture.asset(
+    'assets/images/filter.svg',
+    width: 18,
+  );
 }

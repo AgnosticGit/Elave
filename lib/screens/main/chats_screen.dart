@@ -5,7 +5,7 @@ class ChatsScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
-      backgroundColor: CustomColors.blue1A,
+      backgroundColor: CustomColors.blue10,
       appBar: AppBarWithSearch(
         title: 'Chats',
         actions: [
@@ -28,7 +28,7 @@ class ChatsScreen extends StatelessWidget {
             colors: [
               CustomColors.blue4E,
               CustomColors.blue29,
-              CustomColors.blue1A,
+              CustomColors.blue10,
             ],
           ),
         ),

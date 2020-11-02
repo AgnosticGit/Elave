@@ -20,24 +20,37 @@ class AppBarWithSearch extends StatelessWidget with PreferredSizeWidget {
           ),
           child: Blurred(
             child: Padding(
-              padding: const EdgeInsets.only(top: 35.0),
+              padding: const EdgeInsets.only(top: 0.0),
               child: Stack(
                 children: [
                   Align(
-                    alignment: Alignment.centerLeft,
-                    child: Search(),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: _buildTitle(
-                      appbarWithSearchController.isSearchEnabled,
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: kToolbarHeight,
+                      height: kToolbarHeight,
+                      child: _buildTitle(
+                        appbarWithSearchController.isSearchEnabled,
+                      ),
                     ),
                   ),
                   Align(
-                    alignment: Alignment.centerRight,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: actions,
+                    alignment: Alignment.bottomLeft,
+                    child: Container(
+                      height: kToolbarHeight,
+                      child: Search(),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: kToolbarHeight,
+                      height: kToolbarHeight,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: actions,
+                      ),
                     ),
                   ),
                 ],

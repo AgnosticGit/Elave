@@ -30,6 +30,9 @@ export 'screens/main/widgets/chats_item.dart';
 export 'screens/main/widgets/find_people_item.dart';
 export 'screens/main/widgets/find_people_languages_levels.dart';
 
+export 'screens/messages/widgets/messages_appbar.dart';
+export 'screens/messages/messages_screen.dart';
+
 export 'screens/profile/profile_screen.dart';
 export 'screens/profile/profile_screen.dart';
 export 'screens/profile/widgets/profile_media_list.dart';

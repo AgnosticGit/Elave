@@ -20,11 +20,8 @@ class BottomBar extends StatelessWidget {
                 builder: (bottomBarController) {
                   return Row(
                     children: [
-                      const SizedBox(width: 30.0),
                       _buildFindPeople(),
-                      SizedBox(width: Get.width * 0.1),
                       _buildChats(),
-                      const SizedBox(width: 15.0),
                     ],
                   );
                 },
@@ -39,9 +36,10 @@ class BottomBar extends StatelessWidget {
   Widget _buildFindPeople() {
     return GestureDetector(
       onTap: Get.put(BottomBarController()).selectFindPeople,
+      behavior: HitTestBehavior.opaque,
       child: Container(
         height: 60.0,
-        width: 80.0,
+        width: 130.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,9 +55,10 @@ class BottomBar extends StatelessWidget {
   Widget _buildChats() {
     return GestureDetector(
       onTap: Get.put(BottomBarController()).selectChats,
+      behavior: HitTestBehavior.opaque,
       child: Container(
         height: 60.0,
-        width: 80.0,
+        width: 110.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

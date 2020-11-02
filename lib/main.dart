@@ -9,7 +9,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: Fonts.BAIJAMJUREE),
-      home: MainScreen(),
+      home: MessagesScreen(),
     );
   }
 }

@@ -6,7 +6,7 @@ class FindPeopleItem extends StatelessWidget {
       child: Container(
         height: double.infinity,
         alignment: Alignment.bottomCenter,
-        margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 90.0),
+        margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.0),
           image: DecorationImage(

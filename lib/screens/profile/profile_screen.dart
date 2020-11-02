@@ -3,7 +3,7 @@ import 'package:elave/index.dart';
 class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.blue1A,
+      backgroundColor: CustomColors.blue10,
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -15,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
             colors: [
               CustomColors.blue4E,
               CustomColors.blue29,
-              CustomColors.blue1A,
+              CustomColors.blue10,
             ],
           ),
         ),
