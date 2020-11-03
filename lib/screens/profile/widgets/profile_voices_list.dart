@@ -5,25 +5,95 @@ class ProfileVoicesList extends StatelessWidget {
     return GetBuilder<ProfileController>(
       init: ProfileController(),
       builder: (profileController) {
-        return GridView.count(
-          padding: EdgeInsets.fromLTRB(5.0, 7.0, 0.0, 0.0),
-          crossAxisCount: 3,
-          children: [
-            Container(
-              margin: const EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    spreadRadius: 0,
-                    blurRadius: 30,
-                    offset: Offset(0, 0),
+        return Container(
+          margin: const EdgeInsets.only(top: 15),
+          width: 300,
+          child: Column(
+            children: [
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          color: CustomColors.blue12,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                      ),
+                      Row(
+                        children: profileController.getVoicesLines(),
+                      ),
+                    ],
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'John Snow at 10:01',
+                        style: TextStyle(
+                          color: CustomColors.blue91,
+                          fontSize: 12.0,
+                          fontFamily: Fonts.ANDADASC,
+                        ),
+                      ),
+                      Text(
+                        '00:43',
+                        style: TextStyle(
+                          color: CustomColors.blue91,
+                          fontSize: 12.0,
+                          fontFamily: Fonts.ANDADASC,
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
-            )
-          ],
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          color: CustomColors.blue12,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                      ),
+                      Row(
+                        children: profileController.getVoicesLines(),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'John Snow at 10:01',
+                        style: TextStyle(
+                          color: CustomColors.blue91,
+                          fontSize: 12.0,
+                          fontFamily: Fonts.ANDADASC,
+                        ),
+                      ),
+                      Text(
+                        '00:43',
+                        style: TextStyle(
+                          color: CustomColors.blue91,
+                          fontSize: 12.0,
+                          fontFamily: Fonts.ANDADASC,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ],
+          ),
         );
       },
     );

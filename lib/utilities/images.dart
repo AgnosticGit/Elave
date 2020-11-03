@@ -54,4 +54,20 @@ class Images {
     'assets/images/filter.svg',
     width: 18,
   );
+  static final Widget arrow = SvgPicture.asset(
+    'assets/images/arrow.svg',
+    color: Colors.white,
+  );
+  static final Widget level1 = SvgPicture.asset(
+    'assets/images/level1.svg',
+    color: Colors.white,
+  );
+  static final Widget level2 = SvgPicture.asset(
+    'assets/images/level2.svg',
+    color: Colors.white,
+  );
+  static final Widget level4 = SvgPicture.asset(
+    'assets/images/level4.svg',
+    color: Colors.white,
+  );
 }

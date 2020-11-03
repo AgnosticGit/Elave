@@ -13,6 +13,7 @@ export 'controllers/bottom_bar_controller.dart';
 export 'controllers/chats_controller.dart';
 export 'controllers/profile_controller.dart';
 export 'controllers/find_people_controller.dart';
+export 'controllers/advanced_profile_controller.dart';
 
 export 'models/logo_element_model.dart';
 export 'models/chat_item_model.dart';
@@ -37,6 +38,8 @@ export 'screens/profile/profile_screen.dart';
 export 'screens/profile/profile_screen.dart';
 export 'screens/profile/widgets/profile_media_list.dart';
 export 'screens/profile/widgets/profile_voices_list.dart';
+export 'screens/advanced_profile/advanced_profile.dart';
+export 'screens/advanced_profile/widgets/advanced_profile_selector.dart';
 export 'screens/profile/widgets/profile_menu.dart';
 export 'screens/profile/widgets/profile_selector.dart';
 export 'screens/profile/widgets/profile_media_item.dart';

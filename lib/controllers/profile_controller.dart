@@ -36,4 +36,23 @@ class ProfileController extends GetxController {
     selectorState = false;
     update();
   }
+
+  getVoicesLines() {
+    List<Widget> items = [];
+
+    for (int i = 0; i < 85; i++) {
+      items.add(
+        Container(
+          margin: const EdgeInsets.only(right: 2),
+          width: 1,
+          height: 30,
+          decoration: BoxDecoration(
+            color: Colors.white,
+          ),
+        ),
+      );
+    }
+
+    return items;
+  }
 }
