@@ -6,15 +6,15 @@ class ChatsItem extends StatefulWidget {
 
   final ChatItemModel chatItemModel;
 
-  final chatsItemState = _ChatsItemState();
+  _ChatsItemState chatsItemState = _ChatsItemState();
 
-  get openMenu => chatsItemState.openMenu;
-  get closeMenu => chatsItemState.closeMenu;
+  Function get openMenu => chatsItemState.openMenu;
+  Function get closeMenu => chatsItemState.closeMenu;
+  Function get enableBlur => chatsItemState.enableBlur;
+  Function get disableBlur => chatsItemState.disableBlur;
+  bool get isMenuOpened => chatsItemState.isMenuOpened;
 
-  get enableBlur => chatsItemState.enableBlur;
-  get disableBlur => chatsItemState.disableBlur;
-
-  State<StatefulWidget> createState() => chatsItemState;
+  State<ChatsItem> createState() => chatsItemState = _ChatsItemState();
 }
 
 class _ChatsItemState extends State<ChatsItem> {
@@ -23,6 +23,7 @@ class _ChatsItemState extends State<ChatsItem> {
   Function closeBasket;
   Function closeMute;
   bool isBlurred = false;
+  bool isMenuOpened = false;
 
   Widget build(BuildContext context) {
     return Stack(
@@ -31,7 +32,9 @@ class _ChatsItemState extends State<ChatsItem> {
           padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 5.0),
           child: GestureDetector(
             onLongPress: openMenu,
-            onTap: closeMenu,
+            onTap: () {
+              Get.put(ChatsController()).onTapChatsItem(widget.chatItemModel);
+            },
             child: Container(
               child: Row(
                 children: [
@@ -308,14 +311,18 @@ class _ChatsItemState extends State<ChatsItem> {
   }
 
   void openMenu() {
+    isMenuOpened = true;
     Get.put(ChatsController()).closeEveryChatMenu();
     openBasket();
     openMute();
   }
 
   void closeMenu() {
-    closeBasket();
-    closeMute();
+    if (this.mounted) {
+      isMenuOpened = false;
+      closeBasket();
+      closeMute();
+    }
   }
 
   void enableBlur() {

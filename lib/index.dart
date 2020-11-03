@@ -13,6 +13,7 @@ export 'controllers/chats_controller.dart';
 export 'controllers/profile_controller.dart';
 export 'controllers/find_people_controller.dart';
 export 'controllers/advanced_profile_controller.dart';
+export 'controllers/messages_controller.dart';
 
 export 'models/logo_element_model.dart';
 export 'models/chat_item_model.dart';
@@ -50,10 +51,10 @@ export 'utilities/custom_colors.dart';
 export 'utilities/enums.dart';
 
 export 'widgets/animated_logo.dart';
-export 'widgets/appbar_with_search.dart';
+export 'screens/main/widgets/appbar_with_search.dart';
 export 'widgets/search.dart';
 export 'widgets/custom_appbar.dart';
-export 'widgets/bottom_bar.dart';
+export 'screens/main/widgets/bottom_bar.dart';
 
 export 'widgets/rolling_tile.dart';
 export 'widgets/blurred.dart';
