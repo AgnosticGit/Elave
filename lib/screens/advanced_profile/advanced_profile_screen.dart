@@ -1,6 +1,6 @@
 import 'package:elave/index.dart';
 
-class AdvancedProfile extends StatelessWidget {
+class AdvancedProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColors.blue10,

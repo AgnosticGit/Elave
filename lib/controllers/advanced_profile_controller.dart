@@ -1,12 +1,5 @@
 import 'package:elave/index.dart';
 
-enum AdvanceProfileSelectorState {
-  music,
-  movies,
-  books,
-  quotes,
-}
-
 class AdvancedProfileController extends GetxController {
   AdvanceProfileSelectorState selectorState = AdvanceProfileSelectorState.music;
 

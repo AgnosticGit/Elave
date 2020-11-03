@@ -7,7 +7,6 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:get/get.dart';
 
 export 'controllers/animated_logo_controller.dart';
-export 'controllers/auth_swiper_controller.dart';
 export 'controllers/appbar_with_search_controller.dart';
 export 'controllers/bottom_bar_controller.dart';
 export 'controllers/chats_controller.dart';
@@ -20,7 +19,6 @@ export 'models/chat_item_model.dart';
 
 export 'screens/auth/sign_in_screen.dart';
 export 'screens/auth/widgets/auth_sign_in_form.dart';
-export 'screens/auth/widgets/auth_swiper.dart';
 export 'screens/auth/sign_up_screen.dart';
 export 'screens/auth/recover_screen.dart';
 
@@ -38,7 +36,7 @@ export 'screens/profile/profile_screen.dart';
 export 'screens/profile/profile_screen.dart';
 export 'screens/profile/widgets/profile_media_list.dart';
 export 'screens/profile/widgets/profile_voices_list.dart';
-export 'screens/advanced_profile/advanced_profile.dart';
+export 'screens/advanced_profile/advanced_profile_screen.dart';
 export 'screens/advanced_profile/widgets/advanced_profile_selector.dart';
 export 'screens/profile/widgets/profile_menu.dart';
 export 'screens/profile/widgets/profile_selector.dart';
