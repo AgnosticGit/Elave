@@ -18,6 +18,17 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         child: Stack(
           children: [
             Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: kToolbarHeight,
+                alignment: Alignment.center,
+                child: Text(
+                  title ?? '',
+                  style: TextStyle(color: Colors.white, fontSize: 18.0),
+                ),
+              ),
+            ),
+            Align(
               alignment: Alignment.bottomLeft,
               child: Container(
                   width: kToolbarHeight,
@@ -29,17 +40,6 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                     highlightColor: Colors.transparent,
                     onPressed: () {},
                   )),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: kToolbarHeight,
-                alignment: Alignment.center,
-                child: Text(
-                  title ?? '',
-                  style: TextStyle(color: Colors.white, fontSize: 18.0),
-                ),
-              ),
             ),
             Align(
               alignment: Alignment.bottomRight,

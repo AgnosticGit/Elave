@@ -14,6 +14,17 @@ class MessagesAppbar extends StatelessWidget with PreferredSizeWidget {
         child: Stack(
           children: [
             Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: kToolbarHeight,
+                alignment: Alignment.center,
+                child: Text(
+                  chatName ?? '',
+                  style: TextStyle(color: Colors.white, fontSize: 18.0),
+                ),
+              ),
+            ),
+            Align(
               alignment: Alignment.bottomLeft,
               child: Container(
                 height: kToolbarHeight,
@@ -26,13 +37,6 @@ class MessagesAppbar extends StatelessWidget with PreferredSizeWidget {
                   color: CustomColors.blue91,
                   onPressed: () {},
                 ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Text(
-                chatName ?? '',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
               ),
             ),
             Align(
