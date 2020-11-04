@@ -1,7 +1,7 @@
 import 'package:elave/index.dart';
 
-class RollingTile extends StatefulWidget {
-  RollingTile({
+class RotatingTile extends StatefulWidget {
+  RotatingTile({
     this.firstSide,
     this.secondSide,
     this.openTile,
@@ -15,10 +15,10 @@ class RollingTile extends StatefulWidget {
   final Function(Function) closeTile;
   final Duration duration;
 
-  State<RollingTile> createState() => _RollingTileState();
+  State<RotatingTile> createState() => _RotatingTileState();
 }
 
-class _RollingTileState extends State<RollingTile> {
+class _RotatingTileState extends State<RotatingTile> {
   double degree = 0;
 
   void initState() {
@@ -44,13 +44,17 @@ class _RollingTileState extends State<RollingTile> {
   }
 
   void openTile() {
-    Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
-      if (degree < pi) {
-        if (this.mounted) setState(() => degree += pi / 100);
-      } else {
-        timer.cancel();
-      }
-    });
+    if (degree == 0) {
+      Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
+        if (degree < pi) {
+          if (this.mounted) setState(() => degree += pi / 100);
+        } else {
+          timer.cancel();
+        }
+      });
+    } else {
+      closeTile();
+    }
   }
 
   void closeTile() {

@@ -31,6 +31,7 @@ export 'screens/main/widgets/find_people_item.dart';
 export 'screens/main/widgets/find_people_languages_levels.dart';
 
 export 'screens/messages/widgets/messages_appbar.dart';
+export 'screens/messages/widgets/messages_rolling_chats_mini.dart';
 export 'screens/messages/messages_screen.dart';
 
 export 'screens/profile/profile_screen.dart';
@@ -56,7 +57,7 @@ export 'widgets/search.dart';
 export 'widgets/custom_appbar.dart';
 export 'screens/main/widgets/bottom_bar.dart';
 
-export 'widgets/rolling_tile.dart';
+export 'widgets/rotatating_tile.dart';
 export 'widgets/blurred.dart';
 export 'widgets/animated_logo.dart';
 

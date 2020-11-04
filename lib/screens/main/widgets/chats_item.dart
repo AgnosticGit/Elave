@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:elave/index.dart';
 
+// ignore: must_be_immutable
 class ChatsItem extends StatefulWidget {
   ChatsItem(this.chatItemModel);
 
@@ -12,7 +13,6 @@ class ChatsItem extends StatefulWidget {
   Function get closeMenu => chatsItemState.closeMenu;
   Function get enableBlur => chatsItemState.enableBlur;
   Function get disableBlur => chatsItemState.disableBlur;
-  bool get isMenuOpened => chatsItemState.isMenuOpened;
 
   State<ChatsItem> createState() => chatsItemState = _ChatsItemState();
 }
@@ -23,7 +23,6 @@ class _ChatsItemState extends State<ChatsItem> {
   Function closeBasket;
   Function closeMute;
   bool isBlurred = false;
-  bool isMenuOpened = false;
 
   Widget build(BuildContext context) {
     return Stack(
@@ -80,14 +79,14 @@ class _ChatsItemState extends State<ChatsItem> {
                               ),
                               Row(
                                 children: [
-                                  RollingTile(
+                                  RotatingTile(
                                     openTile: (func) => openBasket = func,
                                     closeTile: (func) => closeBasket = func,
                                     duration: Duration(milliseconds: 1),
                                     secondSide: _buildMute(),
                                   ),
                                   const SizedBox(width: 5.0),
-                                  RollingTile(
+                                  RotatingTile(
                                     openTile: (func) => openMute = func,
                                     closeTile: (func) => closeMute = func,
                                     duration: Duration(milliseconds: 1),
@@ -145,7 +144,7 @@ class _ChatsItemState extends State<ChatsItem> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100.0),
         child: Image.network(
-          'https://sun9-55.userapi.com/ZAe4B1Pkk3-AZp6Y-QnQkYCIyA4E32jbL_xbIQ/5gV5s9wwONs.jpg',
+          widget.chatItemModel.imageLink,
           height: 60.0,
           width: 60.0,
         ),
@@ -311,7 +310,6 @@ class _ChatsItemState extends State<ChatsItem> {
   }
 
   void openMenu() {
-    isMenuOpened = true;
     Get.put(ChatsController()).closeEveryChatMenu();
     openBasket();
     openMute();
@@ -319,7 +317,6 @@ class _ChatsItemState extends State<ChatsItem> {
 
   void closeMenu() {
     if (this.mounted) {
-      isMenuOpened = false;
       closeBasket();
       closeMute();
     }

@@ -7,12 +7,9 @@ class ChatsController extends GetxController {
   }
 
   void onTapChatsItem(ChatItemModel chatItem) {
-    print(checkAllMenuClosed());
-    if (checkAllMenuClosed()) {
-      Get.put(MessagesController()).setChatName(chatItem.name);
-      Get.to(MessagesScreen());
-    }
-    // closeEveryChatMenu();
+    closeEveryChatMenu();
+    Get.put(MessagesController()).setChatName(chatItem.name);
+    Get.to(MessagesScreen());
   }
 
   void closeEveryChatMenu() {
@@ -25,19 +22,5 @@ class ChatsController extends GetxController {
       chatsItem.closeMenu();
     });
     update();
-  }
-
-  bool checkAllMenuClosed() {
-    for (final chatsItem in Get.put(ChatsState()).chatsList) {
-      if (chatsItem.isMenuOpened) {
-        return false;
-      }
-    }
-    for (final chatsItem in Get.put(ChatsState()).deletedChats) {
-      if (chatsItem.isMenuOpened) {
-        return false;
-      }
-    }
-    return true;
   }
 }
