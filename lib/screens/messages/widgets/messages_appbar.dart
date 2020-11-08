@@ -18,7 +18,7 @@ class MessagesAppbar extends StatelessWidget with PreferredSizeWidget {
                     height: kToolbarHeight,
                     alignment: Alignment.center,
                     child: Text(
-                      messagesController.chatName ?? 'Vyacheslav Elizariev',
+                      messagesController.chat.name ?? 'Vyacheslav Elizariev',
                       style: TextStyle(color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
@@ -39,10 +39,10 @@ class MessagesAppbar extends StatelessWidget with PreferredSizeWidget {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: MessagesRollingChatsMini(),
-                )
+                // Align(
+                //   alignment: Alignment.bottomRight,
+                //   child: MessagesRollingChatsMini(),
+                // )
               ],
             ),
           ),

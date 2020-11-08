@@ -8,7 +8,7 @@ class ChatsController extends GetxController {
 
   void onTapChatsItem(ChatItemModel chatItem) {
     closeEveryChatMenu();
-    Get.put(MessagesController()).setChatName(chatItem.name);
+    Get.put(MessagesController()).setChat(chatItem);
     Get.to(MessagesScreen());
   }
 

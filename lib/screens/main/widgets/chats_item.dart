@@ -147,6 +147,7 @@ class _ChatsItemState extends State<ChatsItem> {
           widget.chatItemModel.imageLink,
           height: 60.0,
           width: 60.0,
+          fit: BoxFit.cover,
         ),
       ),
     );

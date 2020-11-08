@@ -13,7 +13,7 @@ class MessagesRollingChatsMini extends StatelessWidget {
             width: rollingChatsController.widgetWidth,
             height: kToolbarHeight,
             child: Stack(
-              alignment: Alignment.center,
+              alignment: Alignment.centerLeft,
               children: rollingChatsController.getChatsList()
             ),
           ),

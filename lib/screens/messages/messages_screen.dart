@@ -10,7 +10,9 @@ class MessagesScreen extends StatelessWidget {
       body: Container(
         height: double.infinity,
         width: double.infinity,
+        child: MessagesRollingChatsMini(),
       ),
+
     );
   }
 }

@@ -1,10 +1,10 @@
 import 'package:elave/index.dart';
 
 class MessagesController extends GetxController {
-  String chatName;
+  ChatItemModel chat;
 
-  void setChatName(String name) {
-    chatName = name;
+  void setChat(ChatItemModel chatItemModel) {
+    chat = chatItemModel;
     update();
   }
 }
