@@ -7,14 +7,14 @@ class MessagesRollingChatsMini extends StatelessWidget {
       init: MessagesRollingChatsController(),
       builder: (rollingChatsController) {
         return GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onHorizontalDragUpdate: rollingChatsController.onHorizontalDragUpdate,
           child: Container(
-            color: Colors.green,
             width: rollingChatsController.widgetWidth,
             height: kToolbarHeight,
             child: Stack(
               alignment: Alignment.centerLeft,
-              children: rollingChatsController.getChatsList()
+              children: rollingChatsController.getRollingChatsList(),
             ),
           ),
         );

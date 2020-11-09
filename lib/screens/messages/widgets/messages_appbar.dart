@@ -39,10 +39,10 @@ class MessagesAppbar extends StatelessWidget with PreferredSizeWidget {
                     ),
                   ),
                 ),
-                // Align(
-                //   alignment: Alignment.bottomRight,
-                //   child: MessagesRollingChatsMini(),
-                // )
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: MessagesRollingChatsMini(),
+                )
               ],
             ),
           ),

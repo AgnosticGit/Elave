@@ -7,12 +7,6 @@ class MessagesScreen extends StatelessWidget {
       extendBody: true,
       backgroundColor: CustomColors.blue10,
       appBar: MessagesAppbar(),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        child: MessagesRollingChatsMini(),
-      ),
-
     );
   }
 }

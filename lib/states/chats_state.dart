@@ -10,7 +10,7 @@ class ChatsState extends GetxController {
   }
 
   void setChatsList() {
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 10; i++) {
       chatsList.add(
         ChatsItem(
           ChatItemModel(
@@ -54,6 +54,9 @@ class ChatsState extends GetxController {
       return 'https://pbs.twimg.com/profile_images/965976708817006594/gNDL6bRU.jpg';
     }
     if (index == 8) {
+      return 'https://pbs.twimg.com/profile_images/1213118446831050755/CKrJIR1Z_400x400.jpg';
+    }
+    if (index == 9) {
       return 'https://pbs.twimg.com/profile_images/1213118446831050755/CKrJIR1Z_400x400.jpg';
     }
   }
