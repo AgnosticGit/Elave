@@ -1,10 +1,17 @@
 import 'package:elave/index.dart';
 
 class MessagesRollingChatsController extends GetxController {
+  List<double> positions = [];
   double widgetWidth = Get.width * 0.3;
   double maxItemSize = 40.0;
   double get widgetWidthCenter => widgetWidth / 2;
-  List<double> positions = [];
+  int get selectedItemIndex => positions.indexWhere((pos) {
+        if (pos < widgetWidthCenter + maxItemSize &&
+            pos > widgetWidthCenter - maxItemSize) {
+          return true;
+        }
+        return false;
+      });
 
   //Формирование списка элементов
   void onInit() {
@@ -15,23 +22,33 @@ class MessagesRollingChatsController extends GetxController {
   }
 
   void onHorizontalDragUpdate(DragUpdateDetails dragUpdateDetails) {
+    scrollLenta(dragUpdateDetails);
+  }
+
+  void scrollLenta(DragUpdateDetails dragUpdateDetails) {
     positions = positions.map((pos) {
-      pos += dragUpdateDetails.delta.dx;
+      double shiftByX = dragUpdateDetails.delta.dx;
+
+      if (shiftByX.isNegative && selectedItemIndex != positions.length - 1) {
+        pos -= shiftByX.abs();
+      }
+
+      if (!shiftByX.isNegative && selectedItemIndex != 0) {
+        pos += shiftByX ;
+      }
+
       return pos;
     }).toList();
     update();
   }
 
-  //Привязка ближайшего к центру элемента
   void onHorizontalDragEnd(DragEndDetails dragEndDetails) {
-    int index = positions.indexWhere((pos) {
-      if (pos < widgetWidthCenter + maxItemSize &&
-          pos > widgetWidthCenter - maxItemSize) {
-        return true;
-      }
-      return false;
-    });
-    shiftWidgetToCenter(index);
+    snapElementToCenter();
+  }
+
+  //Привязка ближайшего к центру элемента
+  void snapElementToCenter() {
+    shiftWidgetToCenter(selectedItemIndex);
   }
 
   void shiftWidgetToCenter(int index) {
@@ -61,7 +78,7 @@ class MessagesRollingChatsController extends GetxController {
     for (int i = 0; i < chatsList.length; i++) {
       Border border;
 
-      if (positions[i] >= widgetWidthCenter - maxItemSize / 2 &&
+      if (positions[i] >= widgetWidthCenter &&
           positions[i] <= widgetWidthCenter) {
         border = Border.all(color: Colors.white, width: 1.5);
       }
@@ -101,7 +118,7 @@ class MessagesRollingChatsController extends GetxController {
     double powing = 0.2;
     double coef = pow(widgetWidthCenter, powing) / maxItemSize;
 
-    if (position <= 0 || position >= widgetWidth) {
+    if (position < 0 || position >= widgetWidth ) {
       return maxItemSize / 2;
     }
 
@@ -109,6 +126,6 @@ class MessagesRollingChatsController extends GetxController {
       return pow(position, powing) / coef;
     }
 
-    return pow(widgetWidth - position, powing) / coef;
+    return pow(widgetWidth - position, powing) / coef - maxItemSize / 4;
   }
 }
