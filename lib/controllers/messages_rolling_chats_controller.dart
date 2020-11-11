@@ -6,14 +6,7 @@ class MessagesRollingChatsController extends GetxController {
   double get widgetWidthCenter => widgetWidth / 2;
   List<double> positions = [];
 
-  void onHorizontalDragUpdate(DragUpdateDetails dragUpdateDetails) {
-    positions = positions.map((element) {
-      element += dragUpdateDetails.delta.dx;
-      return element;
-    }).toList();
-    update();
-  }
-
+  //Формирование списка элементов
   void onInit() {
     final chatsList = Get.put(ChatsState()).chatsList;
     for (double i = 0; i < chatsList.length; i++) {
@@ -21,6 +14,46 @@ class MessagesRollingChatsController extends GetxController {
     }
   }
 
+  void onHorizontalDragUpdate(DragUpdateDetails dragUpdateDetails) {
+    positions = positions.map((pos) {
+      pos += dragUpdateDetails.delta.dx;
+      return pos;
+    }).toList();
+    update();
+  }
+
+  //Привязка ближайшего к центру элемента
+  void onHorizontalDragEnd(DragEndDetails dragEndDetails) {
+    int index = positions.indexWhere((pos) {
+      if (pos < widgetWidthCenter + maxItemSize &&
+          pos > widgetWidthCenter - maxItemSize) {
+        return true;
+      }
+      return false;
+    });
+    shiftWidgetToCenter(index);
+  }
+
+  void shiftWidgetToCenter(int index) {
+    double diffPositionAndCenter = (positions[index] - widgetWidthCenter).abs();
+
+    if (positions[index] > widgetWidthCenter) {
+      positions = positions.map((pos) {
+        pos -= diffPositionAndCenter;
+        return pos;
+      }).toList();
+    }
+
+    if (positions[index] < widgetWidthCenter) {
+      positions = positions.map((pos) {
+        pos += diffPositionAndCenter;
+        return pos;
+      }).toList();
+    }
+    update();
+  }
+
+  //Формирует массив виджетов
   List<Widget> getRollingChatsList() {
     final chatsList = Get.put(ChatsState()).chatsList;
     List<Widget> list = [];
@@ -28,8 +61,8 @@ class MessagesRollingChatsController extends GetxController {
     for (int i = 0; i < chatsList.length; i++) {
       Border border;
 
-      if (positions[i] >= widgetWidthCenter - 20 &&
-          positions[i] <= widgetWidthCenter + 20) {
+      if (positions[i] >= widgetWidthCenter - maxItemSize / 2 &&
+          positions[i] <= widgetWidthCenter) {
         border = Border.all(color: Colors.white, width: 1.5);
       }
 
@@ -37,16 +70,23 @@ class MessagesRollingChatsController extends GetxController {
         AnimatedPositioned(
           left: positions[i].abs(),
           duration: Duration(milliseconds: 200),
-          child: AnimatedContainer(
-            duration: Duration(milliseconds: 200),
-            width: getItemSize(positions[i]),
-            height: getItemSize(positions[i]),
-            decoration: BoxDecoration(
-              border: border,
-              borderRadius: BorderRadius.circular(100.0),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(chatsList[i].chatItemModel.imageLink),
+          child: GestureDetector(
+            onTap: () => shiftWidgetToCenter(chatsList[i].chatItemModel.index),
+            child: AnimatedOpacity(
+              duration: Duration(milliseconds: 200),
+              opacity: positions[i].isNegative ? 0.5 : 1,
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 200),
+                width: getItemSize(positions[i]),
+                height: getItemSize(positions[i]),
+                decoration: BoxDecoration(
+                  border: border,
+                  borderRadius: BorderRadius.circular(100.0),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(chatsList[i].chatItemModel.imageLink),
+                  ),
+                ),
               ),
             ),
           ),
@@ -56,16 +96,19 @@ class MessagesRollingChatsController extends GetxController {
     return list;
   }
 
+  //Регулирует отображение размера элемента по отношению к центру
   double getItemSize(double position) {
+    double powing = 0.2;
+    double coef = pow(widgetWidthCenter, powing) / maxItemSize;
+
     if (position <= 0 || position >= widgetWidth) {
       return maxItemSize / 2;
     }
-    double powing = 0.2;
-    double coof = pow(widgetWidthCenter, powing) / maxItemSize;
 
     if (position <= widgetWidthCenter) {
-      return pow(position, powing) / coof;
+      return pow(position, powing) / coef;
     }
-    return pow(widgetWidth - position, powing) / coof;
+
+    return pow(widgetWidth - position, powing) / coef;
   }
 }
