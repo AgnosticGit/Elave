@@ -16,7 +16,7 @@ class ProfileSelector extends StatelessWidget {
                 width: 100,
                 decoration: BoxDecoration(
                   color: profileController.selectorState
-                      ? CustomColors.blue12
+                      ? Colors.white
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(17.0),
                   boxShadow: [
@@ -50,7 +50,7 @@ class ProfileSelector extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: profileController.selectorState
                       ? Colors.transparent
-                      : CustomColors.blue12,
+                      : Colors.white,
                   borderRadius: BorderRadius.circular(17.0),
                   boxShadow: [
                     BoxShadow(

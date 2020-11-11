@@ -43,143 +43,170 @@ class AdvancedProfileScreen extends StatelessWidget {
             ),
             Expanded(
               flex: 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'John Snow',
-                        style: TextStyle(
-                          color: CustomColors.blue91,
-                          fontSize: 20.0,
-                          fontFamily: Fonts.ANDADASC,
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 10.0, top: 10.0, right: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'John Snow',
+                          style: TextStyle(
+                            color: CustomColors.blue91,
+                            fontSize: 20.0,
+                            fontFamily: Fonts.ANDADASC,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'London, Great Britain',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                          fontFamily: Fonts.ANDADASC,
+                        Text(
+                          'London, Great Britain',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontFamily: Fonts.ANDADASC,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'London, 33',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                          fontFamily: Fonts.ANDADASC,
-                        ),
-                      ),
-                      Text(
-                        'Relationship',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                          fontFamily: Fonts.ANDADASC,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Images.level1,
-                      Text(
-                        'English',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.0,
-                          fontFamily: Fonts.ANDADASC,
-                        ),
-                      ),
-                      Images.level2,
-                      Text(
-                        'German',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.0,
-                          fontFamily: Fonts.ANDADASC,
-                        ),
-                      ),
-                      Images.arrow,
-                      Images.level2,
-                      Text(
-                        'Russian',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.0,
-                          fontFamily: Fonts.ANDADASC,
-                        ),
-                      ),
-                      Images.level4,
-                      Text(
-                        'Spanish',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.0,
-                          fontFamily: Fonts.ANDADASC,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    'About me',
-                    style: TextStyle(
-                      color: CustomColors.blue91,
-                      fontSize: 18.0,
-                      fontFamily: Fonts.ANDADASC,
+                      ],
                     ),
-                  ),
-                  Text(
-                    'Theater, film and television actor. best known for his role as Jon Snow on the HBO television series Game of Thrones; the role earned me a Primetime Emmy nomination. In 2017, I became one of the highest paid TV actors. I also starred in Pompeii (2014), Memories of the Future (2014) and Haunting: A Better Fate (2015); minor - in the films "Silent Hill 2" (2012), "The Seventh Son" (2014), "How to Train Your Dragon 2" (2014) [9] and "How to Train Your Dragon 3" (2019).',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.0,
-                      fontFamily: Fonts.ANDADASC,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'London, 33',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontFamily: Fonts.ANDADASC,
+                          ),
+                        ),
+                        Text(
+                          'Relationship',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontFamily: Fonts.ANDADASC,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Text(
-                    'Looking for',
-                    style: TextStyle(
-                      color: CustomColors.blue91,
-                      fontSize: 18.0,
-                      fontFamily: Fonts.ANDADASC,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Images.level1,
+                        Text(
+                          'English',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontFamily: Fonts.ANDADASC,
+                          ),
+                        ),
+                        Images.level2,
+                        Text(
+                          'German',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontFamily: Fonts.ANDADASC,
+                          ),
+                        ),
+                        Images.arrow,
+                        Images.level2,
+                        Text(
+                          'Russian',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontFamily: Fonts.ANDADASC,
+                          ),
+                        ),
+                        Images.level4,
+                        Text(
+                          'Spanish',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontFamily: Fonts.ANDADASC,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Text(
-                    'I am searching my drum',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.0,
-                      fontFamily: Fonts.ANDADASC,
+                    Text(
+                      'About me',
+                      style: TextStyle(
+                        color: CustomColors.blue91,
+                        fontSize: 18.0,
+                        fontFamily: Fonts.ANDADASC,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Preferences',
-                    style: TextStyle(
-                      color: CustomColors.blue91,
-                      fontSize: 18.0,
-                      fontFamily: Fonts.ANDADASC,
+                    Text(
+                      'Theater, film and television actor. best known for his role as Jon Snow on the HBO television series Game of Thrones; the role earned me a Primetime Emmy nomination. In 2017, I became one of the highest paid TV actors. I also starred in Pompeii (2014), Memories of the Future (2014) and Haunting: A Better Fate (2015); minor - in the films "Silent Hill 2" (2012), "The Seventh Son" (2014), "How to Train Your Dragon 2" (2014) [9] and "How to Train Your Dragon 3" (2019).',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.0,
+                        fontFamily: Fonts.ANDADASC,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'I am searching my drum',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.0,
-                      fontFamily: Fonts.ANDADASC,
+                    Text(
+                      'Looking for',
+                      style: TextStyle(
+                        color: CustomColors.blue91,
+                        fontSize: 18.0,
+                        fontFamily: Fonts.ANDADASC,
+                      ),
                     ),
-                  ),
-                  AdvancedProfileSelector(),
-                ],
+                    Text(
+                      'I am searching my drum',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.0,
+                        fontFamily: Fonts.ANDADASC,
+                      ),
+                    ),
+                    Text(
+                      'Preferences',
+                      style: TextStyle(
+                        color: CustomColors.blue91,
+                        fontSize: 18.0,
+                        fontFamily: Fonts.ANDADASC,
+                      ),
+                    ),
+                    Text(
+                      'I am searching my drum',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.0,
+                        fontFamily: Fonts.ANDADASC,
+                      ),
+                    ),
+                    AdvancedProfileSelector(),
+                    Expanded(
+                      child: GetBuilder<AdvancedProfileController>(
+                        init: AdvancedProfileController(),
+                        builder: (advancedProfileController) {
+                          if (advancedProfileController.selectorState ==
+                              AdvanceProfileSelectorState.music) {
+                            return AdvancedProfileMusicList();
+                          }
+                          if (advancedProfileController.selectorState ==
+                              AdvanceProfileSelectorState.movies) {
+                            return AdvancedProfileMoviesList();
+                          }
+                          if (advancedProfileController.selectorState ==
+                              AdvanceProfileSelectorState.books) {
+                            return AdvancedProfileBooksList();
+                          }
+                          if (advancedProfileController.selectorState ==
+                              AdvanceProfileSelectorState.quotes) {
+                            return AdvancedProfileQuotesList();
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

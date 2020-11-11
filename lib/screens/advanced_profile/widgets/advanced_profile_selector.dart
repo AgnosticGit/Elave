@@ -7,17 +7,18 @@ class AdvancedProfileSelector extends StatelessWidget {
       init: AdvancedProfileController(),
       builder: (advancedProfileController) {
         return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             GestureDetector(
               onTap: advancedProfileController.selectorToMusic,
               child: Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(0, 3, 0, 3),
-                width: 80,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2.0),
                 decoration: BoxDecoration(
                   color: advancedProfileController.selectorState ==
                           AdvanceProfileSelectorState.music
-                      ? CustomColors.blue12
+                      ? Colors.white
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(17.0),
                   boxShadow: [
@@ -39,19 +40,17 @@ class AdvancedProfileSelector extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: 10,
-            ),
+            const SizedBox(width: 10),
             GestureDetector(
               onTap: advancedProfileController.selectorToMovies,
               child: Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(0, 3, 0, 3),
-                width: 80,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2.0),
                 decoration: BoxDecoration(
                   color: advancedProfileController.selectorState ==
                           AdvanceProfileSelectorState.movies
-                      ? CustomColors.blue12
+                      ? Colors.white
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(17.0),
                   boxShadow: [
@@ -77,12 +76,12 @@ class AdvancedProfileSelector extends StatelessWidget {
               onTap: advancedProfileController.selectorToBooks,
               child: Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(0, 3, 0, 3),
-                width: 80,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2.0),
                 decoration: BoxDecoration(
                   color: advancedProfileController.selectorState ==
                           AdvanceProfileSelectorState.books
-                      ? CustomColors.blue12
+                      ? Colors.white
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(17.0),
                   boxShadow: [
@@ -111,12 +110,12 @@ class AdvancedProfileSelector extends StatelessWidget {
               onTap: advancedProfileController.selectorToQuotes,
               child: Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(0, 3, 0, 3),
-                width: 80,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2.0),
                 decoration: BoxDecoration(
                   color: advancedProfileController.selectorState ==
                           AdvanceProfileSelectorState.quotes
-                      ? CustomColors.blue12
+                      ? Colors.white
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(17.0),
                   boxShadow: [

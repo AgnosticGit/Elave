@@ -21,6 +21,7 @@ export 'screens/auth/sign_in_screen.dart';
 export 'screens/auth/widgets/auth_sign_in_form.dart';
 export 'screens/auth/sign_up_screen.dart';
 export 'screens/auth/recover_screen.dart';
+export 'screens/auth/profile_form.dart';
 
 export 'screens/main/main_screen.dart';
 export 'screens/main/find_people_screen.dart';
@@ -38,6 +39,10 @@ export 'screens/profile/widgets/profile_media_list.dart';
 export 'screens/profile/widgets/profile_voices_list.dart';
 export 'screens/advanced_profile/advanced_profile_screen.dart';
 export 'screens/advanced_profile/widgets/advanced_profile_selector.dart';
+export 'screens/advanced_profile/widgets/advanced_profile_music_list.dart';
+export 'screens/advanced_profile/widgets/advanced_profile_movies_list.dart';
+export 'screens/advanced_profile/widgets/advanced_profile_books_list.dart';
+export 'screens/advanced_profile/widgets/advanced_profile_quotes_list.dart';
 export 'screens/profile/widgets/profile_menu.dart';
 export 'screens/profile/widgets/profile_selector.dart';
 export 'screens/profile/widgets/profile_media_item.dart';
