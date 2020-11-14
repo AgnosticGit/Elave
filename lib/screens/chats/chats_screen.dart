@@ -46,19 +46,4 @@ class ChatsScreen extends StatelessWidget {
       ),
     );
   }
-
-  // Widget _buildSelector() {
-  //   final bottomBarState = Get.put(BottomBarController()).bottomBarState;
-
-  //   if (bottomBarState == BottomBarState.findPeople) {
-  //     return FindPeopleScreen();
-  //   }
-
-  //   if (bottomBarState == BottomBarState.chats) {
-  //     return ChatsScreen();
-  //   }
-
-  //   return SizedBox();
-  // }
-
 }

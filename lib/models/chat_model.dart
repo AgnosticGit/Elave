@@ -1,5 +1,5 @@
-class ChatItemModel {
-  ChatItemModel({
+class ChatModel {
+  ChatModel({
     this.name,
     this.lastMessage,
     this.unreadMessagesCount,

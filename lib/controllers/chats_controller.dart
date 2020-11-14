@@ -6,7 +6,7 @@ class ChatsController extends GetxController {
     Get.put(ChatsState()).deleteChatListItem(index);
   }
 
-  void onTapChatsItem(ChatItemModel chatItem) {
+  void onTapChatsItem(ChatModel chatItem) {
     closeEveryChatMenu();
     Get.put(MessagesController()).setChat(chatItem);
     Get.to(MessagesScreen());

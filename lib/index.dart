@@ -17,7 +17,8 @@ export 'controllers/messages_controller.dart';
 export 'controllers/messages_item_controller.dart';
 
 export 'models/logo_element_model.dart';
-export 'models/chat_item_model.dart';
+export 'models/chat_model.dart';
+export 'models/message_model.dart';
 
 export 'screens/auth/sign_in_screen.dart';
 export 'screens/auth/widgets/auth_sign_in_form.dart';
@@ -25,11 +26,11 @@ export 'screens/auth/sign_up_screen.dart';
 export 'screens/auth/recover_screen.dart';
 
 export 'screens/main/main_screen.dart';
-export 'screens/main/find_people_screen.dart';
-export 'screens/main/chats_screen.dart';
-export 'screens/main/widgets/chats_item.dart';
-export 'screens/main/widgets/find_people_item.dart';
-export 'screens/main/widgets/find_people_languages_levels.dart';
+export 'screens/find_people/find_people_screen.dart';
+export 'screens/chats/chats_screen.dart';
+export 'screens/chats/widgets/chats_item.dart';
+export 'screens/find_people/widgets/find_people_item.dart';
+export 'screens/find_people/widgets/find_people_languages_levels.dart';
 
 export 'screens/messages/widgets/messages_appbar.dart';
 export 'screens/messages/widgets/messages_item.dart';
@@ -54,10 +55,10 @@ export 'utilities/custom_colors.dart';
 export 'utilities/enums.dart';
 
 export 'widgets/animated_logo.dart';
-export 'screens/main/widgets/appbar_with_search.dart';
+export 'screens/chats/widgets/appbar_with_search.dart';
 export 'widgets/search.dart';
 export 'widgets/custom_appbar.dart';
-export 'screens/main/widgets/bottom_bar.dart';
+export 'widgets/bottom_bar.dart';
 
 export 'widgets/rotatating_tile.dart';
 export 'widgets/blurred.dart';

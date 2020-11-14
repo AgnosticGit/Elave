@@ -1,9 +1,9 @@
 import 'package:elave/index.dart';
 
 class MessagesController extends GetxController {
-  ChatItemModel chat;
+  ChatModel chat;
 
-  void setChat(ChatItemModel chatItemModel) {
+  void setChat(ChatModel chatItemModel) {
     chat = chatItemModel;
     update();
   }

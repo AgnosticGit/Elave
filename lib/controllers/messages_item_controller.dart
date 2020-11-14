@@ -2,30 +2,41 @@ import 'package:elave/index.dart';
 
 class MessagesItemController extends GetxController {
   double gradientDx = 1;
-  bool touchDisabled = false;
+  bool touchEnabled = true;
 
   void onHorizontalDragUpdate(DragUpdateDetails dragUpdateDetails) {
-    if (!touchDisabled) {
-      touchDisabled = true;
-      if (dragUpdateDetails.delta.direction > 0) {
-        Timer.periodic(Duration(milliseconds: 1), (timer) {
-          if (gradientDx <= 0) {
-            timer.cancel();
-            touchDisabled = false;
-          }
-          gradientDx -= 0.005;
-          update();
-        });
-      } else {
-        Timer.periodic(Duration(milliseconds: 1), (timer) {
-          if (gradientDx >= 1) {
-            timer.cancel();
-            touchDisabled = false;
-          }
-          gradientDx += 0.005;
-          update();
-        });
-      }
+    if (dragUpdateDetails.delta.direction > 0) {
+      fillIn();
+    } else {
+      fillOut();
+    }
+  }
+
+  void fillIn() {
+    if (touchEnabled) {
+      touchEnabled = false;
+      Timer.periodic(Duration(milliseconds: 1), (timer) {
+        if (gradientDx <= 0) {
+          timer.cancel();
+          touchEnabled = true;
+        }
+        gradientDx -= 0.005;
+        update();
+      });
+    }
+  }
+
+  void fillOut() {
+    if (touchEnabled) {
+      touchEnabled = false;
+      Timer.periodic(Duration(milliseconds: 1), (timer) {
+        if (gradientDx >= 1) {
+          timer.cancel();
+          touchEnabled = true;
+        }
+        gradientDx += 0.005;
+        update();
+      });
     }
   }
 }

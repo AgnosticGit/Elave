@@ -1,18 +1,12 @@
 import 'package:elave/index.dart';
 
 class MessagesItem extends StatelessWidget {
-  MessagesItem({
-    this.text,
-    this.senderType,
-    this.time,
-  });
+  MessagesItem(this.messageModel);
 
-  final String text;
-  final SenderType senderType;
-  final DateTime time;
+  final MessageModel messageModel;
 
   Widget build(BuildContext context) {
-    Alignment alignment = senderType == SenderType.enemy
+    Alignment alignment = messageModel.senderType == SenderType.enemy
         ? Alignment.centerLeft
         : Alignment.centerRight;
 
@@ -25,7 +19,6 @@ class MessagesItem extends StatelessWidget {
             onHorizontalDragUpdate:
                 messagesItemController.onHorizontalDragUpdate,
             child: Container(
-              
               padding: const EdgeInsets.all(2.0),
               decoration: BoxDecoration(
                 color: CustomColors.gray2B,
@@ -48,7 +41,7 @@ class MessagesItem extends StatelessWidget {
                     constraints: BoxConstraints(maxWidth: Get.width * 0.7),
                     padding: const EdgeInsets.all(5.0),
                     child: Text(
-                      text + 'sdsdasdkaskdaksldkaskdkjasjkdaksj',
+                      messageModel.text + 'sdsdasdkaskdaksldkaskdkjasjkdaksj',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -56,9 +49,9 @@ class MessagesItem extends StatelessWidget {
                     child: Text(
                       '22:00',
                       style: TextStyle(
-                        color: messagesItemController.gradientDx <= 0
-                            ? Colors.white
-                            : CustomColors.gray85,
+                        color: messagesItemController.gradientDx >= 1
+                            ? CustomColors.gray85
+                            : Colors.white,
                         fontSize: 10,
                       ),
                     ),

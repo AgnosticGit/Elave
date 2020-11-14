@@ -37,6 +37,7 @@ class AnimatedLogoController extends GetxController {
       started = true;
       update();
     });
+    super.onInit();
   }
 
   void setInitialPositions() {

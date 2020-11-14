@@ -11,11 +11,14 @@ class MessagesScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: ListView.separated(
           separatorBuilder: (_, index) => const SizedBox(height: 10),
-          itemCount: 1,
+          itemCount: 2,
           itemBuilder: (context, index) {
             return MessagesItem(
-              text: 'Привет',
-              senderType: SenderType.enemy,
+              MessageModel(
+                text: 'Привет',
+                senderType: SenderType.enemy,
+                id: index.toString(),
+              ),
             );
           },
         ),

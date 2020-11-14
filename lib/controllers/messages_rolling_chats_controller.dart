@@ -16,11 +16,13 @@ class MessagesRollingChatsController extends GetxController {
   //Формирование списка элементов
   void onInit() {
     final chatsList = Get.put(ChatsState()).chatsList;
+    
     for (double i = 0; i < chatsList.length; i++) {
       positions.add(widgetWidth / 2.8 * i);
     }
     
     shiftElementToCenter(Get.put(MessagesController()).chat.index);
+    super.onInit();
   }
 
   void onHorizontalDragUpdate(DragUpdateDetails dragUpdateDetails) {
@@ -90,7 +92,7 @@ class MessagesRollingChatsController extends GetxController {
           left: positions[i].abs(),
           duration: Duration(milliseconds: 200),
           child: GestureDetector(
-            onTap: () => shiftElementToCenter(chatsList[i].chatItemModel.index),
+            onTap: () => shiftElementToCenter(chatsList[i].chatModel.index),
             child: AnimatedOpacity(
               duration: Duration(milliseconds: 200),
               opacity: positions[i].isNegative ? 0.5 : 1,
@@ -103,7 +105,7 @@ class MessagesRollingChatsController extends GetxController {
                   borderRadius: BorderRadius.circular(100.0),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(chatsList[i].chatItemModel.imageLink),
+                    image: NetworkImage(chatsList[i].chatModel.imageLink),
                   ),
                 ),
               ),

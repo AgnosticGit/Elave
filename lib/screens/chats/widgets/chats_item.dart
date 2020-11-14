@@ -3,9 +3,9 @@ import 'package:elave/index.dart';
 
 // ignore: must_be_immutable
 class ChatsItem extends StatefulWidget {
-  ChatsItem(this.chatItemModel);
+  ChatsItem(this.chatModel);
 
-  final ChatItemModel chatItemModel;
+  final ChatModel chatModel;
 
   _ChatsItemState chatsItemState = _ChatsItemState();
 
@@ -32,7 +32,7 @@ class _ChatsItemState extends State<ChatsItem> {
           child: GestureDetector(
             onLongPress: openMenu,
             onTap: () {
-              Get.put(ChatsController()).onTapChatsItem(widget.chatItemModel);
+              Get.put(ChatsController()).onTapChatsItem(widget.chatModel);
             },
             child: Container(
               child: Row(
@@ -60,7 +60,7 @@ class _ChatsItemState extends State<ChatsItem> {
                                   Row(
                                     children: [
                                       Text(
-                                        widget.chatItemModel.name ?? '',
+                                        widget.chatModel.name ?? '',
                                         style: TextStyle(
                                           color: CustomColors.blue91,
                                         ),
@@ -69,7 +69,7 @@ class _ChatsItemState extends State<ChatsItem> {
                                   ),
                                   const SizedBox(height: 5.0),
                                   Text(
-                                    widget.chatItemModel.lastMessage ?? '',
+                                    widget.chatModel.lastMessage ?? '',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
@@ -102,9 +102,7 @@ class _ChatsItemState extends State<ChatsItem> {
                                         ),
                                         const SizedBox(height: 5.0),
                                         _buildMessagesCount(
-                                          widget.chatItemModel
-                                                  .unreadMessagesCount ??
-                                              0,
+                                          widget.chatModel.unreadMessagesCount,
                                         ),
                                       ],
                                     ),
@@ -144,7 +142,7 @@ class _ChatsItemState extends State<ChatsItem> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100.0),
         child: Image.network(
-          widget.chatItemModel.imageLink,
+          widget.chatModel.imageLink,
           height: 60.0,
           width: 60.0,
           fit: BoxFit.cover,
@@ -154,7 +152,7 @@ class _ChatsItemState extends State<ChatsItem> {
   }
 
   Widget _buildMessagesCount(int messagesCount) {
-    if (messagesCount == 0) {
+    if (messagesCount == 0 || messagesCount == null) {
       return SizedBox(
         width: 21.0,
         height: 21.0,
@@ -270,7 +268,7 @@ class _ChatsItemState extends State<ChatsItem> {
                     child: RaisedButton(
                       onPressed: () {
                         Get.put(ChatsController()).onDeleteChatItem(
-                          widget.chatItemModel.index,
+                          widget.chatModel.index,
                         );
                       },
                       color: Colors.red,

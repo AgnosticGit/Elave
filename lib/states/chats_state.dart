@@ -7,13 +7,14 @@ class ChatsState extends GetxController {
 
   void onReady() {
     setChatsList();
+    super.onReady();
   }
 
   void setChatsList() {
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 11; i++) {
       chatsList.add(
         ChatsItem(
-          ChatItemModel(
+          ChatModel(
             name: "Вячеслав Елизарьев",
             lastMessage: 'Where my money',
             unreadMessagesCount: i,
@@ -28,6 +29,7 @@ class ChatsState extends GetxController {
   }
 
   getImageLink(int index) {
+    return 'https://sun9-55.userapi.com/ZAe4B1Pkk3-AZp6Y-QnQkYCIyA4E32jbL_xbIQ/5gV5s9wwONs.jpg';
     //Удалить
     if (index == 0) {
       return 'https://sun9-55.userapi.com/ZAe4B1Pkk3-AZp6Y-QnQkYCIyA4E32jbL_xbIQ/5gV5s9wwONs.jpg';
@@ -63,7 +65,7 @@ class ChatsState extends GetxController {
 
   void deleteChatListItem(int index) {
     chatsList.removeWhere((chatsItem) {
-      if (chatsItem.chatItemModel.index == index) {
+      if (chatsItem.chatModel.index == index) {
         deletedChats.add(chatsItem);
         return true;
       }
