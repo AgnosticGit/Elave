@@ -14,6 +14,7 @@ export 'controllers/profile_controller.dart';
 export 'controllers/find_people_controller.dart';
 export 'controllers/advanced_profile_controller.dart';
 export 'controllers/messages_controller.dart';
+export 'controllers/messages_item_controller.dart';
 
 export 'models/logo_element_model.dart';
 export 'models/chat_item_model.dart';
@@ -31,6 +32,7 @@ export 'screens/main/widgets/find_people_item.dart';
 export 'screens/main/widgets/find_people_languages_levels.dart';
 
 export 'screens/messages/widgets/messages_appbar.dart';
+export 'screens/messages/widgets/messages_item.dart';
 export 'screens/messages/widgets/messages_rolling_chats_mini.dart';
 export 'screens/messages/messages_screen.dart';
 

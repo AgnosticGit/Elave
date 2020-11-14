@@ -19,6 +19,8 @@ class MessagesRollingChatsController extends GetxController {
     for (double i = 0; i < chatsList.length; i++) {
       positions.add(widgetWidth / 2.8 * i);
     }
+    
+    shiftElementToCenter(Get.put(MessagesController()).chat.index);
   }
 
   void onHorizontalDragUpdate(DragUpdateDetails dragUpdateDetails) {
@@ -34,7 +36,7 @@ class MessagesRollingChatsController extends GetxController {
       }
 
       if (!shiftByX.isNegative && selectedItemIndex != 0) {
-        pos += shiftByX ;
+        pos += shiftByX;
       }
 
       return pos;
@@ -48,10 +50,10 @@ class MessagesRollingChatsController extends GetxController {
 
   //Привязка ближайшего к центру элемента
   void snapElementToCenter() {
-    shiftWidgetToCenter(selectedItemIndex);
+    shiftElementToCenter(selectedItemIndex);
   }
 
-  void shiftWidgetToCenter(int index) {
+  void shiftElementToCenter(int index) {
     double diffPositionAndCenter = (positions[index] - widgetWidthCenter).abs();
 
     if (positions[index] > widgetWidthCenter) {
@@ -78,8 +80,8 @@ class MessagesRollingChatsController extends GetxController {
     for (int i = 0; i < chatsList.length; i++) {
       Border border;
 
-      if (positions[i] >= widgetWidthCenter &&
-          positions[i] <= widgetWidthCenter) {
+      if (positions[i] >= widgetWidthCenter - maxItemSize / 2 &&
+          positions[i] <= widgetWidthCenter + maxItemSize / 2) {
         border = Border.all(color: Colors.white, width: 1.5);
       }
 
@@ -88,7 +90,7 @@ class MessagesRollingChatsController extends GetxController {
           left: positions[i].abs(),
           duration: Duration(milliseconds: 200),
           child: GestureDetector(
-            onTap: () => shiftWidgetToCenter(chatsList[i].chatItemModel.index),
+            onTap: () => shiftElementToCenter(chatsList[i].chatItemModel.index),
             child: AnimatedOpacity(
               duration: Duration(milliseconds: 200),
               opacity: positions[i].isNegative ? 0.5 : 1,
@@ -118,7 +120,7 @@ class MessagesRollingChatsController extends GetxController {
     double powing = 0.2;
     double coef = pow(widgetWidthCenter, powing) / maxItemSize;
 
-    if (position < 0 || position >= widgetWidth ) {
+    if (position < 0 || position >= widgetWidth) {
       return maxItemSize / 2;
     }
 

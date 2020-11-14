@@ -7,8 +7,18 @@ class MessagesScreen extends StatelessWidget {
       extendBody: true,
       backgroundColor: CustomColors.blue10,
       appBar: MessagesAppbar(),
-      body: Center(
-        child: MessagesRollingChatsMini(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: ListView.separated(
+          separatorBuilder: (_, index) => const SizedBox(height: 10),
+          itemCount: 1,
+          itemBuilder: (context, index) {
+            return MessagesItem(
+              text: 'Привет',
+              senderType: SenderType.enemy,
+            );
+          },
+        ),
       ),
     );
   }
