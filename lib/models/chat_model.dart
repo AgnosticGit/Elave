@@ -1,9 +1,13 @@
+import 'package:elave/index.dart';
+
 class ChatModel {
   ChatModel({
-    this.name,
-    this.lastMessage,
-    this.unreadMessagesCount,
-    this.index,
+    @required this.name,
+    @required this.lastMessage,
+    @required this.unreadMessagesCount,
+    @required this.index,
+    @required this.id,
+    @required this.messages,
     this.imageLink,
   });
 
@@ -12,5 +16,7 @@ class ChatModel {
   int unreadMessagesCount;
   int index;
   String imageLink;
-    // TODO Date
+  int id;
+  List<MessageModel> messages;
+  // TODO Date
 }

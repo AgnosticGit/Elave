@@ -32,6 +32,7 @@ class _ChatsItemState extends State<ChatsItem> {
           child: GestureDetector(
             onLongPress: openMenu,
             onTap: () {
+              print(widget.chatModel.messages);
               Get.put(ChatsController()).onTapChatsItem(widget.chatModel);
             },
             child: Container(

@@ -11,7 +11,7 @@ class ChatsState extends GetxController {
   }
 
   void setChatsList() {
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < 9; i++) {
       chatsList.add(
         ChatsItem(
           ChatModel(
@@ -19,13 +19,31 @@ class ChatsState extends GetxController {
             lastMessage: 'Where my money',
             unreadMessagesCount: i,
             index: i,
+            id: i,
             imageLink: getImageLink(i),
+            messages: getMessages(),
           ),
         ),
       );
     }
 
     update();
+  }
+
+  List<MessageModel> getMessages() {
+    List<MessageModel> list = [];
+
+    for (int i = 0; i < 20; i++) {
+      list.add(
+        MessageModel(
+          id: i,
+          time: DateTime(0),
+          text: 'Привет мир',
+          senderType: SenderType.enemy,
+        ),
+      );
+    }
+    return list;
   }
 
   getImageLink(int index) {

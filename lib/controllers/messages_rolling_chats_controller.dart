@@ -15,14 +15,14 @@ class MessagesRollingChatsController extends GetxController {
 
   //Формирование списка элементов
   void onInit() {
+    super.onInit();
     final chatsList = Get.put(ChatsState()).chatsList;
-    
+
     for (double i = 0; i < chatsList.length; i++) {
       positions.add(widgetWidth / 2.8 * i);
     }
-    
+
     shiftElementToCenter(Get.put(MessagesController()).chat.index);
-    super.onInit();
   }
 
   void onHorizontalDragUpdate(DragUpdateDetails dragUpdateDetails) {
@@ -63,9 +63,7 @@ class MessagesRollingChatsController extends GetxController {
         pos -= diffPositionAndCenter;
         return pos;
       }).toList();
-    }
-
-    if (positions[index] < widgetWidthCenter) {
+    } else {
       positions = positions.map((pos) {
         pos += diffPositionAndCenter;
         return pos;
