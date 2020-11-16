@@ -13,8 +13,9 @@ class MessagesScreen extends StatelessWidget {
           separatorBuilder: (_, index) => const SizedBox(height: 10),
           itemCount: Get.put(MessagesController()).chat.messages.length,
           itemBuilder: (context, index) {
-            final message = Get.put(MessagesController()).chat.messages[index];
-            return MessagesItem(message);
+            return MessagesItem(
+              Get.put(MessagesController()).chat.messages[index],
+            );
           },
         ),
       ),

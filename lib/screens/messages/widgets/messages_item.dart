@@ -12,6 +12,7 @@ class MessagesItem extends StatelessWidget {
 
     return GetBuilder<MessagesItemController>(
       init: MessagesItemController(),
+      tag: messageModel.id.toString(),
       builder: (messagesItemController) {
         return Align(
           alignment: alignment,
@@ -41,7 +42,7 @@ class MessagesItem extends StatelessWidget {
                     constraints: BoxConstraints(maxWidth: Get.width * 0.7),
                     padding: const EdgeInsets.all(5.0),
                     child: Text(
-                      messageModel.text + 'sdsdasdkaskdaksldkaskdkjasjkdaksj',
+                      messageModel.text,
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

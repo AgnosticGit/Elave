@@ -90,7 +90,7 @@ class MessagesRollingChatsController extends GetxController {
           left: positions[i].abs(),
           duration: Duration(milliseconds: 200),
           child: GestureDetector(
-            onTap: () => shiftElementToCenter(chatsList[i].chatModel.index),
+            onTap: () => shiftElementToCenter(chatsList[i].index),
             child: AnimatedOpacity(
               duration: Duration(milliseconds: 200),
               opacity: positions[i].isNegative ? 0.5 : 1,
@@ -103,7 +103,7 @@ class MessagesRollingChatsController extends GetxController {
                   borderRadius: BorderRadius.circular(100.0),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(chatsList[i].chatModel.imageLink),
+                    image: NetworkImage(chatsList[i].imageLink),
                   ),
                 ),
               ),

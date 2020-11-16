@@ -38,7 +38,7 @@ class ChatsScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: Get.put(ChatsState()).chatsList.length,
               itemBuilder: (context, index) {
-                return Get.put(ChatsState()).chatsList[index];
+                return ChatsItem(Get.put(ChatsState()).chatsList[index]);
               },
             );
           },
