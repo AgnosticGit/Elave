@@ -1,6 +1,8 @@
 import 'package:elave/index.dart';
 
 class ChatsItemController extends GetxController {
+  ChatModel chat;
+  
   Function openBasket;
   Function openMute;
   Function closeBasket;
@@ -8,7 +10,7 @@ class ChatsItemController extends GetxController {
   bool isBlurred = false;
 
   void openMenu() {
-    closeEveryChatMenu();
+    Get.put(ChatsController()).closeEveryChatMenu();
     openBasket();
     openMute();
   }
@@ -26,13 +28,5 @@ class ChatsItemController extends GetxController {
   void disableBlur() {
     isBlurred = false;
     update();
-  }
-
-  void closeEveryChatMenu() {
-    int length = Get.put(ChatsState()).chatsList.length;
-    for (int i = 0; i < length; i++) {
-      Get.find<ChatsItemController>(tag: i.toString()).closeMenu();
-      Get.find<ChatsItemController>(tag: i.toString()).disableBlur();
-    }
   }
 }

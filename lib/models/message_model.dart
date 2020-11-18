@@ -6,10 +6,13 @@ class MessageModel {
     @required this.senderType,
     @required this.time,
     @required this.id,
+    this.imageLinks,
   });
 
   final String text;
+  String translatedText;
   final SenderType senderType;
   final DateTime time;
   final int id;
+  final List<String> imageLinks;
 }

@@ -1,28 +1,38 @@
 import 'package:elave/index.dart';
 
 class MessagesItem extends StatelessWidget {
-  MessagesItem(this.messageModel);
+  MessagesItem(this.message);
 
-  final MessageModel messageModel;
+  final MessageModel message;
 
   Widget build(BuildContext context) {
-    Alignment alignment = messageModel.senderType == SenderType.enemy
-        ? Alignment.centerLeft
-        : Alignment.centerRight;
+    final messagesItemController = Get.put(
+      MessagesItemController(),
+      tag: message.id.toString(),
+    );
+    messagesItemController.message = message;
 
     return GetBuilder<MessagesItemController>(
+      key: UniqueKey(),
       init: MessagesItemController(),
-      tag: messageModel.id.toString(),
-      builder: (messagesItemController) {
+      tag: message.id.toString(),
+      builder: (_) {
+        if (message.imageLinks != null) {
+          return Align(
+            alignment: _buildAlignment(),
+            child: GestureDetector(
+              child: Container(),
+            ),
+          );
+        }
+
         return Align(
-          alignment: alignment,
+          alignment: _buildAlignment(),
           child: GestureDetector(
-            onHorizontalDragUpdate:
-                messagesItemController.onHorizontalDragUpdate,
+            onHorizontalDragUpdate: messagesItemController.onHorizontalDragUpdate,
             child: Container(
               padding: const EdgeInsets.all(2.0),
               decoration: BoxDecoration(
-                color: CustomColors.gray2B,
                 borderRadius: BorderRadius.circular(5.0),
                 gradient: LinearGradient(
                   begin: Alignment.centerLeft,
@@ -31,7 +41,7 @@ class MessagesItem extends StatelessWidget {
                     messagesItemController.gradientDx,
                     messagesItemController.gradientDx,
                   ],
-                  colors: [CustomColors.gray2B, Colors.blue],
+                  colors: [_buildMainColor(), Colors.blue],
                 ),
               ),
               child: Row(
@@ -42,7 +52,9 @@ class MessagesItem extends StatelessWidget {
                     constraints: BoxConstraints(maxWidth: Get.width * 0.7),
                     padding: const EdgeInsets.all(5.0),
                     child: Text(
-                      messageModel.text,
+                      messagesItemController.translatedTextIsVisible
+                          ? message.translatedText
+                          : message.text,
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -64,5 +76,21 @@ class MessagesItem extends StatelessWidget {
         );
       },
     );
+  }
+
+  Alignment _buildAlignment() {
+    if (message.senderType == SenderType.enemy) {
+      return Alignment.centerLeft;
+    } else {
+      return Alignment.centerRight;
+    }
+  }
+
+  Color _buildMainColor() {
+    if (message.senderType == SenderType.enemy) {
+      return CustomColors.gray2B;
+    } else {
+      return CustomColors.blue36;
+    }
   }
 }

@@ -2,15 +2,21 @@ import 'dart:ui';
 import 'package:elave/index.dart';
 
 class ChatsItem extends StatelessWidget {
-  ChatsItem(this.chatModel);
+  ChatsItem(this.chat);
 
-  final ChatModel chatModel;
+  final ChatModel chat;
 
   Widget build(BuildContext context) {
+    final chatsItemController = Get.put(
+      ChatsItemController(),
+      tag: chat.id.toString(),
+    );
+    chatsItemController.chat = chat;
+
     return GetBuilder<ChatsItemController>(
-      init: ChatsItemController(),
-      tag: chatModel.index.toString(),
-      builder: (chatsItemController) {
+      key: UniqueKey(),
+      tag: chat.id.toString(),
+      builder: (_) {
         return Stack(
           children: [
             Padding(
@@ -18,7 +24,7 @@ class ChatsItem extends StatelessWidget {
               child: GestureDetector(
                 onLongPress: chatsItemController.openMenu,
                 onTap: () {
-                  Get.put(ChatsController()).onTapChatsItem(chatModel);
+                  Get.put(ChatsController()).onTapChatsItem(chat);
                 },
                 child: Container(
                   child: Row(
@@ -48,7 +54,7 @@ class ChatsItem extends StatelessWidget {
                                       Row(
                                         children: [
                                           Text(
-                                            chatModel.name ?? '',
+                                            chat.name ?? '',
                                             style: TextStyle(
                                               color: CustomColors.blue91,
                                             ),
@@ -57,7 +63,7 @@ class ChatsItem extends StatelessWidget {
                                       ),
                                       const SizedBox(height: 5.0),
                                       Text(
-                                        chatModel.lastMessage ?? '',
+                                        chat.lastMessage ?? '',
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 16.0,
@@ -94,7 +100,7 @@ class ChatsItem extends StatelessWidget {
                                             ),
                                             const SizedBox(height: 5.0),
                                             _buildMessagesCount(
-                                              chatModel.unreadMessagesCount,
+                                              chat.unreadMessagesCount,
                                             ),
                                           ],
                                         ),
@@ -138,7 +144,7 @@ class ChatsItem extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100.0),
         child: Image.network(
-          chatModel.imageLink,
+          chat.imageLink,
           height: 60.0,
           width: 60.0,
           fit: BoxFit.cover,
@@ -264,7 +270,7 @@ class ChatsItem extends StatelessWidget {
                     child: RaisedButton(
                       onPressed: () {
                         Get.put(ChatsController()).onDeleteChatItem(
-                          chatModel.index,
+                          chat.index,
                         );
                       },
                       color: Colors.red,

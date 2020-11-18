@@ -29,17 +29,19 @@ class ChatsState extends GetxController {
   List<MessageModel> getMessages() {
     List<MessageModel> list = [];
 
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 5; i++) {
       list.add(
         MessageModel(
           id: i,
           time: DateTime(0),
-          text: 'Привет',
-          senderType: SenderType.enemy,
+          text:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' +
+                  i.toString(),
+          senderType: i % 2 == 0 ? SenderType.enemy : SenderType.self,
         ),
       );
     }
-    return list;
+    return list.reversed.toList();
   }
 
   getImageLink(int index) {

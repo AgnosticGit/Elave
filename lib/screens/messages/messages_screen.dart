@@ -10,6 +10,7 @@ class MessagesScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: ListView.separated(
+          reverse: true,
           separatorBuilder: (_, index) => const SizedBox(height: 10),
           itemCount: Get.put(MessagesController()).chat.messages.length,
           itemBuilder: (context, index) {
