@@ -2,17 +2,15 @@ import 'package:elave/index.dart';
 
 class RotatingTile extends StatefulWidget {
   RotatingTile({
+    @required this.controller,
     this.firstSide,
     this.secondSide,
-    this.openTile,
-    this.closeTile,
     this.duration,
-  });
+  }) : assert(controller != null);
 
+  final RotatingTileController controller;
   final Widget firstSide;
   final Widget secondSide;
-  final Function(Function) openTile;
-  final Function(Function) closeTile;
   final Duration duration;
 
   State<RotatingTile> createState() => _RotatingTileState();
@@ -20,11 +18,12 @@ class RotatingTile extends StatefulWidget {
 
 class _RotatingTileState extends State<RotatingTile> {
   double degree = 0;
+  bool isOpened = false;
 
   void initState() {
+    widget.controller.openTile = openTile;
+    widget.controller.closeTile = closeTile;
     super.initState();
-    if (widget.openTile != null) widget.openTile(openTile);
-    if (widget.closeTile != null) widget.closeTile(closeTile);
   }
 
   Widget build(BuildContext context) {
@@ -44,27 +43,36 @@ class _RotatingTileState extends State<RotatingTile> {
   }
 
   void openTile() {
-    if (degree == 0) {
+    if (!isOpened) {
       Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
         if (degree < pi) {
           if (this.mounted) setState(() => degree += pi / 100);
         } else {
+          setState(() => isOpened = true);
+          widget.controller.isOpened = true;
           timer.cancel();
         }
       });
-    } else {
-      closeTile();
     }
   }
 
   void closeTile() {
-    Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
-      if (degree > 0) {
-        if (this.mounted) setState(() => degree -= pi / 100);
-      } else {
-        if (this.mounted) setState(() => degree = 0);
-        timer.cancel();
-      }
-    });
+    if (isOpened) {
+      Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
+        if (degree > 0) {
+          if (this.mounted) setState(() => degree -= pi / 100);
+        } else {
+          if (this.mounted) {
+            setState(() {
+              degree = 0;
+              isOpened = false;
+            });
+          }
+
+          widget.controller.isOpened = false;
+          timer.cancel();
+        }
+      });
+    }
   }
 }

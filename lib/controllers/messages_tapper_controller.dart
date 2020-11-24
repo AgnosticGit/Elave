@@ -2,6 +2,8 @@ import 'package:elave/index.dart';
 
 class MessagesTapperController extends GetxController {
   final textEditingController = TextEditingController();
+  final translateTileController = RotatingTileController();
+  final sendTileController = RotatingTileController();
   TextFieldState textFieldState = TextFieldState.empty;
   int maxLines = 1;
 
@@ -22,8 +24,12 @@ class MessagesTapperController extends GetxController {
   void buttonsVisibleHandler() {
     if (textEditingController.text.length > 0) {
       textFieldState = TextFieldState.full;
+      translateTileController.openTile();
+      sendTileController.openTile();
     } else {
       textFieldState = TextFieldState.empty;
+      translateTileController.closeTile();
+      sendTileController.closeTile();
     }
   }
 }

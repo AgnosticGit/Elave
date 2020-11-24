@@ -48,6 +48,8 @@ class MessagesTapper extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     RotatingTile(
+                      controller: tapperController.translateTileController,
+                      duration: Duration(milliseconds: 1),
                       firstSide: Container(
                         width: 35.0,
                         height: 35.0,
@@ -63,7 +65,28 @@ class MessagesTapper extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 10.0),
-                    _buildSendButton(tapperController),
+                    RotatingTile(
+                      controller: tapperController.sendTileController,
+                      duration: Duration(milliseconds: 1),
+                      firstSide: Container(
+                        width: 35.0,
+                        height: 35.0,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(100.0),
+                        ),
+                        child: Align(child: Images.mic),
+                      ),
+                      secondSide: Container(
+                        width: 35.0,
+                        height: 35.0,
+                        child: Icon(
+                          Icons.send,
+                          size: 30.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )
@@ -72,29 +95,5 @@ class MessagesTapper extends StatelessWidget {
         );
       },
     );
-  }
-
-  Widget _buildSendButton(MessagesTapperController tapperController) {
-    if (tapperController.textFieldState == TextFieldState.full) {
-      return Container(
-        width: 35.0,
-        height: 35.0,
-        child: Icon(
-          Icons.send,
-          size: 30.0,
-          color: Colors.white,
-        ),
-      );
-    } else {
-      return Container(
-        width: 35.0,
-        height: 35.0,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(100.0),
-        ),
-        child: Align(child: Images.mic),
-      );
-    }
   }
 }

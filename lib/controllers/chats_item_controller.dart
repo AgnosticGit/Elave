@@ -2,22 +2,20 @@ import 'package:elave/index.dart';
 
 class ChatsItemController extends GetxController {
   ChatModel chat;
-  
-  Function openBasket;
-  Function openMute;
-  Function closeBasket;
-  Function closeMute;
+
+  RotatingTileController basketTileController = RotatingTileController();
+  RotatingTileController muteTileController = RotatingTileController();
   bool isBlurred = false;
 
   void openMenu() {
     Get.put(ChatsController()).closeEveryChatMenu();
-    openBasket();
-    openMute();
+    basketTileController.openTile();
+    muteTileController.openTile();
   }
 
   void closeMenu() {
-    closeBasket();
-    closeMute();
+    basketTileController.closeTile();
+    muteTileController.closeTile();
   }
 
   void enableBlur() {

@@ -88,14 +88,14 @@ class MessagesRollingChatsController extends GetxController {
       list.add(
         AnimatedPositioned(
           left: positions[i].abs(),
-          duration: Duration(milliseconds: 200),
+          duration: Duration(milliseconds: 100),
           child: GestureDetector(
             onTap: () => shiftElementToCenter(chatsList[i].index),
             child: AnimatedOpacity(
-              duration: Duration(milliseconds: 200),
+              duration: Duration(milliseconds: 100),
               opacity: positions[i].isNegative ? 0.5 : 1,
               child: AnimatedContainer(
-                duration: Duration(milliseconds: 200),
+                duration: Duration(milliseconds: 100),
                 width: getItemSize(positions[i]),
                 height: getItemSize(positions[i]),
                 decoration: BoxDecoration(

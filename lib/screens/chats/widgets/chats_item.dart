@@ -74,19 +74,15 @@ class ChatsItem extends StatelessWidget {
                                   Row(
                                     children: [
                                       RotatingTile(
-                                        openTile: (func) => chatsItemController
-                                            .openBasket = func,
-                                        closeTile: (func) => chatsItemController
-                                            .closeBasket = func,
+                                        controller: chatsItemController
+                                            .muteTileController,
                                         duration: Duration(milliseconds: 1),
                                         secondSide: _buildMute(),
                                       ),
                                       const SizedBox(width: 5.0),
                                       RotatingTile(
-                                        openTile: (func) =>
-                                            chatsItemController.openMute = func,
-                                        closeTile: (func) => chatsItemController
-                                            .closeMute = func,
+                                        controller: chatsItemController
+                                            .basketTileController,
                                         duration: Duration(milliseconds: 1),
                                         firstSide: Column(
                                           crossAxisAlignment:
@@ -269,9 +265,7 @@ class ChatsItem extends StatelessWidget {
                     width: 80.0,
                     child: RaisedButton(
                       onPressed: () {
-                        Get.put(ChatsController()).onDeleteChatItem(
-                          chat.index,
-                        );
+                        Get.put(ChatsController()).onDeleteChatItem(chat.id);
                       },
                       color: Colors.red,
                       shape: RoundedRectangleBorder(

@@ -75,8 +75,9 @@ class ChatsState extends GetxController {
     }
   }
 
-  void deleteChatListItem(int index) {
-    chatsList.removeWhere((chatsItem) => chatsItem.index == index);
+  void deleteChatListItem(int id) {
+    chatsList.removeWhere((chatsItem) => chatsItem.id == id);
+    chatsList.asMap().forEach((index, chatsItem) => chatsItem.index = index);
     update();
   }
 }

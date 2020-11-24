@@ -17,6 +17,7 @@ export 'controllers/messages_controller.dart';
 export 'controllers/messages_item_controller.dart';
 export 'controllers/chats_item_controller.dart';
 export 'controllers/messages_tapper_controller.dart';
+export 'controllers/rotating_tile_controller.dart';
 
 export 'models/logo_element_model.dart';
 export 'models/chat_model.dart';

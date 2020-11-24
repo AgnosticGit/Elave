@@ -1,8 +1,8 @@
 import 'package:elave/index.dart';
 
 class ChatsController extends GetxController {
-  void onDeleteChatItem(int index) {
-    Get.put(ChatsState()).deleteChatListItem(index);
+  void onDeleteChatItem(int id) {
+    Get.put(ChatsState()).deleteChatListItem(id);
   }
 
   void onTapChatsItem(ChatModel chatItem) {
@@ -11,10 +11,12 @@ class ChatsController extends GetxController {
   }
 
   void closeEveryChatMenu() {
-    int length = Get.put(ChatsState()).chatsList.length;
-    for (int i = 0; i < length; i++) {
-      Get.find<ChatsItemController>(tag: i.toString()).closeMenu();
-      Get.find<ChatsItemController>(tag: i.toString()).disableBlur();
+    final chatsList = Get.put(ChatsState()).chatsList;
+
+    for (int i = 0; i < chatsList.length; i++) {
+      int id = chatsList[i].id;
+      Get.find<ChatsItemController>(tag: id.toString()).closeMenu();
+      Get.find<ChatsItemController>(tag: id.toString()).disableBlur();
     }
   }
 }
