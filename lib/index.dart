@@ -41,6 +41,7 @@ export 'screens/messages/widgets/messages_appbar.dart';
 export 'screens/messages/widgets/messages_item.dart';
 export 'screens/messages/widgets/messages_rolling_chats_mini.dart';
 export 'screens/messages/widgets/messages_tapper.dart';
+export 'screens/messages/widgets/messages_attach.dart';
 export 'screens/messages/messages_screen.dart';
 
 export 'screens/profile/profile_screen.dart';

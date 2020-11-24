@@ -43,6 +43,16 @@ class MessagesScreen extends StatelessWidget {
               },
             ),
           ),
+          GetBuilder<MessagesTapperController>(
+              init: MessagesTapperController(),
+              builder: (tapperController) {
+                return AnimatedPositioned(
+                  duration: Duration(milliseconds: 100),
+                  bottom: 60.0,
+                  right: tapperController.isAttachVisible ? -1 : -70,
+                  child: MessagesAttach(),
+                );
+              }),
           Align(
             alignment: Alignment.bottomCenter,
             child: MessagesTapper(),

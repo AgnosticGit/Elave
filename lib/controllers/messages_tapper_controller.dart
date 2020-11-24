@@ -5,6 +5,7 @@ class MessagesTapperController extends GetxController {
   final translateTileController = RotatingTileController();
   final sendTileController = RotatingTileController();
   TextFieldState textFieldState = TextFieldState.empty;
+  bool isAttachVisible = false;
   int maxLines = 1;
 
   void onTappingText() {
@@ -31,5 +32,10 @@ class MessagesTapperController extends GetxController {
       translateTileController.closeTile();
       sendTileController.closeTile();
     }
+  }
+
+  void attachVisibility() {
+    isAttachVisible = !isAttachVisible;
+    update();
   }
 }

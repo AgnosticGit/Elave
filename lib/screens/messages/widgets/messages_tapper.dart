@@ -14,16 +14,19 @@ class MessagesTapper extends StatelessWidget {
             children: [
               Expanded(
                 flex: 2,
-                child: Container(
-                  height: 40.0,
-                  decoration: BoxDecoration(
-                    border: Border(
-                      right: BorderSide(
-                        color: CustomColors.blue29,
+                child: GestureDetector(
+                  onTap: tapperController.attachVisibility,
+                  child: Container(
+                    height: 40.0,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        right: BorderSide(
+                          color: CustomColors.blue29,
+                        ),
                       ),
                     ),
+                    child: Align(child: Images.clip),
                   ),
-                  child: Align(child: Images.clip),
                 ),
               ),
               const SizedBox(width: 15.0),
