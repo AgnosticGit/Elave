@@ -70,4 +70,20 @@ class Images {
     'assets/images/level4.svg',
     color: Colors.white,
   );
+  static final Widget camera = SvgPicture.asset(
+    'assets/images/camera.svg',
+    color: Colors.white,
+  );
+  static final Widget arrowbottom = SvgPicture.asset(
+    'assets/images/arrowbottom.svg',
+    color: Colors.white,
+  );
+  static final Widget add_a_photo_gallery = SvgPicture.asset(
+    'assets/images/add_a_photo_gallery.svg',
+    color: Colors.white,
+  );
+  static final Widget add_a_photo_camera = SvgPicture.asset(
+    'assets/images/add_a_photo_camera.svg',
+    color: Colors.white,
+  );
 }

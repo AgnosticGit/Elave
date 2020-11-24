@@ -5,6 +5,7 @@ export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:get/get.dart';
+export 'package:image_picker/image_picker.dart';
 
 export 'controllers/animated_logo_controller.dart';
 export 'controllers/appbar_with_search_controller.dart';
@@ -13,6 +14,7 @@ export 'controllers/chats_controller.dart';
 export 'controllers/profile_controller.dart';
 export 'controllers/find_people_controller.dart';
 export 'controllers/advanced_profile_controller.dart';
+export 'controllers/sign_up_user_info_controller.dart';
 
 export 'models/logo_element_model.dart';
 export 'models/chat_item_model.dart';
@@ -21,7 +23,8 @@ export 'screens/auth/sign_in_screen.dart';
 export 'screens/auth/widgets/auth_sign_in_form.dart';
 export 'screens/auth/sign_up_screen.dart';
 export 'screens/auth/recover_screen.dart';
-export 'screens/auth/profile_form.dart';
+export 'screens/auth/sign_up_user_info.dart';
+export 'screens/auth/image_picker_window.dart';
 
 export 'screens/main/main_screen.dart';
 export 'screens/main/find_people_screen.dart';
