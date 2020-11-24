@@ -87,6 +87,7 @@ class Images {
     'assets/images/camera.svg',
     color: Colors.white,
   );
+  
   static final Widget gallery = SvgPicture.asset(
     'assets/images/gallery.svg',
     color: Colors.white,
