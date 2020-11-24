@@ -47,7 +47,21 @@ class MessagesTapper extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildTranslateButton(tapperController),
+                    RotatingTile(
+                      firstSide: Container(
+                        width: 35.0,
+                        height: 35.0,
+                      ),
+                      secondSide: Container(
+                        width: 35.0,
+                        height: 35.0,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(100.0),
+                        ),
+                        child: Align(child: Images.translate),
+                      ),
+                    ),
                     const SizedBox(width: 10.0),
                     _buildSendButton(tapperController),
                   ],
@@ -58,25 +72,6 @@ class MessagesTapper extends StatelessWidget {
         );
       },
     );
-  }
-
-  Container _buildTranslateButton(MessagesTapperController tapperController) {
-    if (tapperController.textFieldState == TextFieldState.full) {
-      return Container(
-        width: 35.0,
-        height: 35.0,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(100.0),
-        ),
-        child: Align(child: Images.translate),
-      );
-    } else {
-      return Container(
-        width: 35.0,
-        height: 35.0,
-      );
-    }
   }
 
   Widget _buildSendButton(MessagesTapperController tapperController) {
