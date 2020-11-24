@@ -38,7 +38,6 @@ class SignInScreen extends StatelessWidget {
               ),
               const SizedBox(height: 50.0),
               AuthSignInForm(),
-              // AuthSwiper(),
             ],
           ),
         ),

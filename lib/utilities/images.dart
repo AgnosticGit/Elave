@@ -83,4 +83,16 @@ class Images {
     'assets/images/mic.svg',
     width: 20.0,
   );
+  static final Widget camera = SvgPicture.asset(
+    'assets/images/camera.svg',
+    color: Colors.white,
+  );
+  static final Widget gallery = SvgPicture.asset(
+    'assets/images/gallery.svg',
+    color: Colors.white,
+  );
+  static final Widget arrowbottom = SvgPicture.asset(
+    'assets/images/arrowbottom.svg',
+    color: Colors.white,
+  );
 }
