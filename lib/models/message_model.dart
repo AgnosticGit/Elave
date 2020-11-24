@@ -9,7 +9,7 @@ class MessageModel {
     this.imageLinks,
   });
 
-  final String text;
+  String text;
   String translatedText;
   final SenderType senderType;
   final DateTime time;

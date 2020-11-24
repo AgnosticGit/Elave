@@ -6,6 +6,7 @@ class MessagesItemController extends GetxController {
   double gradientDx = 1;
   bool dragEnabled = true;
   bool translatedTextIsVisible = false;
+  bool isLoading = false;
 
   void onHorizontalDragUpdate(DragUpdateDetails dragUpdateDetails) {
     if (message.senderType == SenderType.enemy && dragEnabled) {
@@ -18,15 +19,34 @@ class MessagesItemController extends GetxController {
   }
 
   void onTranslate() {
+    // translateLoader();
+    if (message.translatedText == null) {
+      Future.delayed(Duration(seconds: 1), () {
+        message.translatedText =
+            'Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.';
+        update();
+      });
+    }
+    
     fillIn();
-
-    Future.delayed(Duration(seconds: 2), () {
-      message.translatedText =
-          'Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.';
-      showTranslatedText();
-      update();
-    });
+    showTranslatedText();
   }
+
+  // void translateLoader() {
+  //   int i = 0;
+  //   Timer.periodic(Duration(milliseconds: 10), (timer) {
+  //     if (i == message.text.length - 1) timer.cancel();
+
+  //     List<String> splited = message.text.split('');
+  //     if (splited[i] != " ") {
+  //       splited[i] = '. ';
+  //     }
+
+  //     message.text = splited.join('');
+  //     i++;
+  //     update();
+  //   });
+  // }
 
   void onUntranslate() {
     fillOut();

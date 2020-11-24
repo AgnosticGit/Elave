@@ -12,70 +12,90 @@ class MessagesItem extends StatelessWidget {
     );
     messagesItemController.message = message;
 
-    return GetBuilder<MessagesItemController>(
-      key: UniqueKey(),
-      init: MessagesItemController(),
-      tag: message.id.toString(),
-      builder: (_) {
-        if (message.imageLinks != null) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: GetBuilder<MessagesItemController>(
+        key: UniqueKey(),
+        init: MessagesItemController(),
+        tag: message.id.toString(),
+        builder: (_) {
+          if (message.imageLinks != null) {
+            return Align(
+              alignment: _buildAlignment(),
+              child: GestureDetector(
+                child: Container(),
+              ),
+            );
+          }
+
           return Align(
             alignment: _buildAlignment(),
             child: GestureDetector(
-              child: Container(),
-            ),
-          );
-        }
-
-        return Align(
-          alignment: _buildAlignment(),
-          child: GestureDetector(
-            onHorizontalDragUpdate: messagesItemController.onHorizontalDragUpdate,
-            child: Container(
-              padding: const EdgeInsets.all(2.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  stops: [
-                    messagesItemController.gradientDx,
-                    messagesItemController.gradientDx,
-                  ],
-                  colors: [_buildMainColor(), Colors.blue],
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(
-                    constraints: BoxConstraints(maxWidth: Get.width * 0.7),
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text(
-                      messagesItemController.translatedTextIsVisible
-                          ? message.translatedText
-                          : message.text,
-                      style: TextStyle(color: Colors.white),
-                    ),
+              onHorizontalDragUpdate:
+                  messagesItemController.onHorizontalDragUpdate,
+              child: Container(
+                padding: const EdgeInsets.all(2.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    stops: [
+                      messagesItemController.gradientDx,
+                      messagesItemController.gradientDx,
+                    ],
+                    colors: [_buildMainColor(), Colors.blue],
                   ),
-                  Container(
-                    child: Text(
-                      '22:00',
-                      style: TextStyle(
-                        color: messagesItemController.gradientDx >= 1
-                            ? CustomColors.gray85
-                            : Colors.white,
-                        fontSize: 10,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Container(
+                      constraints: BoxConstraints(maxWidth: Get.width * 0.7),
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text(
+                        messagesItemController.translatedTextIsVisible
+                            ? message.translatedText ?? message.text
+                            : message.text,
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
-                  )
-                ],
+                    _buildTime(messagesItemController)
+                  ],
+                ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
+  }
+
+  Container _buildTime(MessagesItemController messagesItemController) {
+    if (message.senderType == SenderType.enemy) {
+      return Container(
+        child: Text(
+          '22:00',
+          style: TextStyle(
+            color: messagesItemController.gradientDx >= 1
+                ? CustomColors.gray85
+                : Colors.white,
+            fontSize: 10,
+          ),
+        ),
+      );
+    } else {
+      return Container(
+        child: Text(
+          '22:00',
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.5),
+            fontSize: 10,
+          ),
+        ),
+      );
+    }
   }
 
   Alignment _buildAlignment() {
@@ -90,7 +110,7 @@ class MessagesItem extends StatelessWidget {
     if (message.senderType == SenderType.enemy) {
       return CustomColors.gray2B;
     } else {
-      return CustomColors.blue36;
+      return CustomColors.blue37;
     }
   }
 }

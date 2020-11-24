@@ -10,7 +10,9 @@ enum AdvanceProfileSelectorState {
   quotes,
 }
 
-enum SenderType{
-  self,
-  enemy
+enum SenderType { self, enemy }
+
+enum TextFieldState {
+  empty,
+  full,
 }

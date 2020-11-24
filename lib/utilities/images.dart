@@ -70,4 +70,17 @@ class Images {
     'assets/images/level4.svg',
     color: Colors.white,
   );
+  static final Widget clip = SvgPicture.asset(
+    'assets/images/clip.svg',
+    color: Colors.white,
+    width: 22.0,
+  );
+  static final Widget translate = SvgPicture.asset(
+    'assets/images/translate.svg',
+    width: 20.0,
+  );
+  static final Widget mic = SvgPicture.asset(
+    'assets/images/mic.svg',
+    width: 20.0,
+  );
 }
