@@ -1,6 +1,7 @@
 import 'package:elave/index.dart';
 
 class CustomColors {
+  static const Color blue2F = Color(0xFF2F4C80);
   static const Color blue4E = Color(0xFF38405c);
   static const Color blue29 = Color(0xFF212945);
   static const Color blue10 = Color(0xFF111A31);

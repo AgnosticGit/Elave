@@ -21,15 +21,14 @@ export 'controllers/messages/messages_tapper_controller.dart';
 export 'controllers/animations/rotating_tile_controller.dart';
 export 'controllers/auth/sign_up_user_info_controller.dart';
 export 'controllers/auth/auth_controller.dart';
+export 'controllers/auth/auth_form_controller.dart';
 
 export 'models/logo_element_model.dart';
 export 'models/chat_model.dart';
 export 'models/message_model.dart';
 
 export 'screens/auth/auth_screen.dart';
-export 'screens/auth/sign_in_screen.dart';
-export 'screens/auth/widgets/auth_sign_in_form.dart';
-export 'screens/auth/widgets/auth_sign_up_form.dart';
+export 'screens/auth/widgets/auth_form.dart';
 export 'screens/auth/recover_screen.dart';
 export 'screens/auth/sign_up_user_info.dart';
 export 'screens/auth/image_picker_window.dart';

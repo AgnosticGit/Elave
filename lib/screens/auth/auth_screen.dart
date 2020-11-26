@@ -19,55 +19,27 @@ class AuthScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: CustomScrollView(
-          slivers: [
-            SliverFillRemaining(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: const SizedBox(),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                AnimatedLogo(),
+                const SizedBox(height: 20.0),
+                Text(
+                  'Elave',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 36.0,
+                    fontFamily: Fonts.ANDADASC,
                   ),
-                  AnimatedLogo(),
-                  const SizedBox(height: 20.0),
-                  Text(
-                    'Elave',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36.0,
-                      fontFamily: Fonts.ANDADASC,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Expanded(
-                    flex: 7,
-                    child: _buildFormSelector(),
-                  ),
-                ],
-              ),
-            )
-          ],
+                ),
+                const SizedBox(height: 50),
+                AuthForm(),
+              ],
+            ),
+          ),
         ),
       ),
-    );
-  }
-
-  Widget _buildFormSelector() {
-    return GetBuilder<AuthController>(
-      init: AuthController(),
-      builder: (authController) {
-        if (authController.authForm == AuthForm.signIn) {
-          return Align(child: AuthSignInForm());
-        }
-
-        if (authController.authForm == AuthForm.signUp) {
-          return Align(child: AuthSignUpForm());
-        }
-        
-      },
     );
   }
 }
