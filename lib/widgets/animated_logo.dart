@@ -6,63 +6,63 @@ class AnimatedLogo extends StatelessWidget {
   final double logoSize;
 
   Widget build(BuildContext context) {
-    return GetBuilder<AnimatedLogoController>(
-      init: AnimatedLogoController(logoSize: logoSize),
-      builder: (animatedLogoController) {
+    return GetBuilder<LogoController>(
+      init: LogoController(logoSize: logoSize),
+      builder: (logoController) {
         return Container(
-          width: animatedLogoController.logoSize,
-          height: animatedLogoController.logoSize,
+          width: logoController.logoSize,
+          height: logoController.logoSize,
           child: Stack(
             children: [
               Transform.rotate(
-                angle: -animatedLogoController.rotate,
+                angle: -logoController.rotate,
                 child: Stack(
                   children: [
                     _buildLogoElement(
-                      animatedLogoController,
-                      animatedLogoController.logoElement5,
+                      logoController,
+                      logoController.logoElement5,
                     ),
                     _buildLogoElement(
-                      animatedLogoController,
-                      animatedLogoController.logoElement6,
+                      logoController,
+                      logoController.logoElement6,
                     ),
                     _buildLogoElement(
-                      animatedLogoController,
-                      animatedLogoController.logoElement7,
+                      logoController,
+                      logoController.logoElement7,
                     ),
                     _buildLogoElement(
-                      animatedLogoController,
-                      animatedLogoController.logoElement8,
+                      logoController,
+                      logoController.logoElement8,
                     ),
                   ],
                 ),
               ),
               Transform.rotate(
-                angle: animatedLogoController.rotate,
+                angle: logoController.rotate,
                 child: Stack(
                   children: [
                     _buildLogoElement(
-                      animatedLogoController,
-                      animatedLogoController.logoElement1,
+                      logoController,
+                      logoController.logoElement1,
                     ),
                     _buildLogoElement(
-                      animatedLogoController,
-                      animatedLogoController.logoElement2,
+                      logoController,
+                      logoController.logoElement2,
                     ),
                     _buildLogoElement(
-                      animatedLogoController,
-                      animatedLogoController.logoElement3,
+                      logoController,
+                      logoController.logoElement3,
                     ),
                     _buildLogoElement(
-                      animatedLogoController,
-                      animatedLogoController.logoElement4,
+                      logoController,
+                      logoController.logoElement4,
                     ),
                   ],
                 ),
               ),
               _buildLogoElement(
-                animatedLogoController,
-                animatedLogoController.logoElement0,
+                logoController,
+                logoController.logoElement0,
               ),
             ],
           ),
@@ -72,25 +72,21 @@ class AnimatedLogo extends StatelessWidget {
   }
 
   AnimatedPositioned _buildLogoElement(
-    AnimatedLogoController animatedLogoController,
+    LogoController logoController,
     LogoElementModel logoElement,
   ) {
     return AnimatedPositioned(
-      left: animatedLogoController.started
-          ? logoElement.x
-          : animatedLogoController.centerX,
-      top: animatedLogoController.started
-          ? logoElement.y
-          : animatedLogoController.centerY,
-      duration: Duration(milliseconds: animatedLogoController.duration),
-      curve: animatedLogoController.curve,
+      left: logoController.started ? logoElement.x : logoController.centerX,
+      top: logoController.started ? logoElement.y : logoController.centerY,
+      duration: Duration(milliseconds: logoController.duration),
+      curve: logoController.curve,
       child: Container(
-        width: animatedLogoController.rectangleSize,
-        height: animatedLogoController.rectangleSize,
+        width: logoController.rectangleSize,
+        height: logoController.rectangleSize,
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(logoElement.opacity),
           borderRadius: BorderRadius.circular(
-            animatedLogoController.borderRadius,
+            logoController.borderRadius,
           ),
         ),
       ),

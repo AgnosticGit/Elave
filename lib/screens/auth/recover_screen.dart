@@ -73,7 +73,7 @@ class RecoverScreen extends StatelessWidget {
                               ),
                             ),
                             onChanged: (_) =>
-                                Get.put(AnimatedLogoController()).shuffle(),
+                                Get.put(LogoController()).shuffle(),
                           ),
                         ],
                       ),
@@ -86,7 +86,7 @@ class RecoverScreen extends StatelessWidget {
                         height: 35.0,
                         child: RaisedButton(
                           onPressed:
-                              Get.put(AnimatedLogoController()).onLoading,
+                              Get.put(LogoController()).onLoading,
                           color: Color(0xFF2F4C80),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -109,7 +109,7 @@ class RecoverScreen extends StatelessWidget {
                       left: -1.0,
                       child: GestureDetector(
                         onTap: () {
-                          Get.put(AnimatedLogoController()).stopRotate();
+                          Get.put(LogoController()).stopRotate();
                         },
                         child: Container(
                           alignment: Alignment.center,

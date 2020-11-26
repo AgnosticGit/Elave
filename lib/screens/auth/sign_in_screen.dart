@@ -37,11 +37,27 @@ class SignInScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 50.0),
-              AuthSignInForm(),
+              _buildFormSelector(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildFormSelector() {
+    return GetBuilder<AuthController>(
+      init: AuthController(),
+      builder: (authController) {
+        return Container(
+          child: PageView(
+            controller: authController.pageController,
+            children: [
+              AuthSignInForm(),
+            ],
+          ),
+        );
+      },
     );
   }
 }

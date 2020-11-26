@@ -5,7 +5,7 @@ class MessageModel {
     @required this.text,
     @required this.senderType,
     @required this.time,
-    @required this.id,
+    this.id,
     this.imageLinks,
   });
 

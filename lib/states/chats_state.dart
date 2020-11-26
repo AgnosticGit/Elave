@@ -26,6 +26,15 @@ class ChatsState extends GetxController {
     update();
   }
 
+  void addMessage(ChatModel chat, MessageModel message) {
+    chatsList.forEach((chatItem) {
+      if (chat.id == chatItem.id) {
+        chatItem.messages.add(message);
+      }
+    });
+    update();
+  }
+
   List<MessageModel> getMessages() {
     List<MessageModel> list = [];
 

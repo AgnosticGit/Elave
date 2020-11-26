@@ -16,3 +16,9 @@ enum TextFieldState {
   empty,
   full,
 }
+
+enum AuthForm {
+  signIn,
+  signUp,
+  recovery,
+}

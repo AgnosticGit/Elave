@@ -80,13 +80,15 @@ class MessagesTapper extends StatelessWidget {
                         ),
                         child: Align(child: Images.mic),
                       ),
-                      secondSide: Container(
-                        width: 35.0,
-                        height: 35.0,
-                        child: Icon(
-                          Icons.send,
-                          size: 30.0,
-                          color: Colors.white,
+                      secondSide: GestureDetector(
+                        child: Container(
+                          width: 35.0,
+                          height: 35.0,
+                          child: Icon(
+                            Icons.send,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),

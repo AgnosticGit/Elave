@@ -7,7 +7,8 @@ class MessagesController extends GetxController {
     chat = chatItemModel;
     update();
   }
-  void onReady(){
-    super.onReady();
+
+  void sendMessage(MessageModel message) {
+    Get.put(ChatsState()).addMessage(chat, message);
   }
 }
