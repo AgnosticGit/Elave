@@ -21,6 +21,7 @@ class AuthScreen extends StatelessWidget {
         ),
         child: Center(
           child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(vertical: 15.0),
             child: Column(
               children: [
                 AnimatedLogo(),

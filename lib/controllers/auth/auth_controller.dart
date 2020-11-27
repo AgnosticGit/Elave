@@ -1,16 +1,43 @@
 import 'package:elave/index.dart';
+import 'package:elave/models/auth_model.dart';
 
 class AuthController extends GetxController {
-  void signIn() {
-    Get.put(LogoController()).onLoading();
+  AuthModel authModel = AuthModel();
+
+  void onTapping(AuthTextField textField, String text) {
+    Get.put(LogoController()).shuffle();
+    if (textField == AuthTextField.email) authModel.email = text;
+    if (textField == AuthTextField.password) authModel.password = text;
+    if (textField == AuthTextField.confirmPassword) {
+      authModel.confirmPassword = text;
+    }
   }
 
-  void signUp() {
-    Get.put(LogoController()).onLoading();
+  void signIn() {
+    Get.put(LogoController()).onLoadingStarted();
+  }
+
+  void signUp() async {
+    final logoController = Get.put(LogoController());
+
+    logoController.onLoadingStarted();
+
+    try {
+      final response = await Api(route: "auth/registration").post(
+        body: {
+          "email": authModel.email,
+          "password": authModel.password,
+        },
+      );
+    } catch (errors) {
+      print(errors);
+    }
+
+    logoController.onLoadingFinished();
   }
 
   void recoveryAccount() {
-    Get.put(LogoController()).onLoading();
+    Get.put(LogoController()).onLoadingStarted();
   }
 
   void onTapSignIn() {

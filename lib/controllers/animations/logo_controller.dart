@@ -147,7 +147,7 @@ class LogoController extends GetxController {
     update();
   }
 
-  void onLoading() {
+  void onLoadingStarted() {
     rotate = 0;
     duration = 0;
     setInitialPositions();
@@ -161,7 +161,7 @@ class LogoController extends GetxController {
     });
   }
 
-  void stopRotate() {
+  void onLoadingFinished() {
     if (timer != null) {
       timer.cancel();
     }

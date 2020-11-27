@@ -6,6 +6,7 @@ export 'package:flutter/services.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:get/get.dart';
 export 'package:image_picker/image_picker.dart';
+export 'package:elave/network/api.dart';
 
 export 'controllers/animations/logo_controller.dart';
 export 'controllers/chats/appbar_with_search_controller.dart';
@@ -29,7 +30,6 @@ export 'models/message_model.dart';
 
 export 'screens/auth/auth_screen.dart';
 export 'screens/auth/widgets/auth_form.dart';
-export 'screens/auth/recover_screen.dart';
 export 'screens/auth/sign_up_user_info.dart';
 export 'screens/auth/image_picker_window.dart';
 

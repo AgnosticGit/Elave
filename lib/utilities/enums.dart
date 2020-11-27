@@ -22,3 +22,9 @@ enum AuthFormState {
   signUp,
   recovery,
 }
+
+enum AuthTextField {
+  email,
+  password,
+  confirmPassword,
+}

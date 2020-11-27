@@ -42,7 +42,13 @@ class AuthForm extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onChanged: (_) => Get.put(LogoController()).shuffle(),
+                      initialValue: Get.put(AuthController()).authModel.email,
+                      onChanged: (text) {
+                        Get.put(AuthController()).onTapping(
+                          AuthTextField.email,
+                          text,
+                        );
+                      },
                     ),
                     AnimatedOpacity(
                       opacity: authFormController.passwordState.opacity,
@@ -51,6 +57,9 @@ class AuthForm extends StatelessWidget {
                         duration: Duration(milliseconds: 300),
                         height: authFormController.passwordState.height,
                         child: TextFormField(
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          obscureText: true,
                           style: TextStyle(fontSize: 14.0, color: Colors.white),
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.fromLTRB(
@@ -64,7 +73,14 @@ class AuthForm extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onChanged: (_) => Get.put(LogoController()).shuffle(),
+                          initialValue:
+                              Get.put(AuthController()).authModel.password,
+                          onChanged: (text) {
+                            Get.put(AuthController()).onTapping(
+                              AuthTextField.password,
+                              text,
+                            );
+                          },
                         ),
                       ),
                     ),
@@ -75,6 +91,9 @@ class AuthForm extends StatelessWidget {
                         duration: Duration(milliseconds: 300),
                         height: authFormController.confirmPasswordState.height,
                         child: TextFormField(
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          obscureText: true,
                           style: TextStyle(fontSize: 14.0, color: Colors.white),
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.fromLTRB(
@@ -95,7 +114,15 @@ class AuthForm extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onChanged: (_) => Get.put(LogoController()).shuffle(),
+                          initialValue: Get.put(AuthController())
+                              .authModel
+                              .confirmPassword,
+                          onChanged: (text) {
+                            Get.put(AuthController()).onTapping(
+                              AuthTextField.confirmPassword,
+                              text,
+                            );
+                          },
                         ),
                       ),
                     ),
@@ -138,6 +165,9 @@ class AuthForm extends StatelessWidget {
                   child: FlatButton(
                     onPressed: () =>
                         Get.put(AuthController()).onTapRecoveryAccount(),
+                    color: _buildButtonColor(
+                      authFormController.form == AuthFormState.recovery,
+                    ),
                     shape: RoundedRectangleBorder(
                       side: BorderSide(color: CustomColors.blue2F),
                       borderRadius: BorderRadius.only(
