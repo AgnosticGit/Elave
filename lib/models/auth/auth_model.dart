@@ -1,8 +1,8 @@
 class AuthModel {
   AuthModel({
-    this.email,
-    this.password,
-    this.confirmPassword,
+    this.email = '',
+    this.password = '',
+    this.confirmPassword = '',
   });
 
   String email;

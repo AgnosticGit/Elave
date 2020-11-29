@@ -21,45 +21,26 @@ class AuthController extends GetxController {
     final authState = Get.put(AuthState());
     final authFormController = Get.put(AuthFormController());
 
-    if (!checkPasswordsMatches()) return;
-
     logoController.onLoadingStarted();
     try {
       final response = await Api(route: "auth/registration").post(
         body: {
-          "email": authModel.email ?? "",
-          "password": authModel.password ?? "",
+          "email": authModel.email,
+          "password": authModel.password,
         },
       );
-
+      print(response);
       authState.cleanErrors();
       authFormController.setSignUpForm();
     } catch (errors) {
+      print(errors);
       authState.setErrors(AuthErrorsModel.fromJson(errors));
-      authFormController.increaseHeightWhenErrors(authState.getErrorsCount());
     }
     logoController.onLoadingFinished();
   }
 
   void recoveryAccount() {
     Get.put(LogoController()).onLoadingStarted();
-  }
-
-  bool checkPasswordsMatches() {
-    final authFormController = Get.put(AuthFormController());
-    final authState = Get.put(AuthState());
-
-    if (authModel.password != authModel.confirmPassword ||
-        authModel.password == null ||
-        authModel.confirmPassword == null) {
-      authState.setErrors(
-        AuthErrorsModel(confirmPassword: ['Passwords do not match']),
-      );
-      authFormController.increaseHeightWhenErrors(1);
-      return false;
-    }
-
-    return true;
   }
 
   void onTapSignIn() {

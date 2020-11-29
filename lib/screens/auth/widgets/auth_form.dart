@@ -21,127 +21,31 @@ class AuthForm extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 25.0),
-                    GetBuilder<AuthState>(
-                      init: AuthState(),
-                      builder: (authState) {
-                        return TextFormField(
-                          style: TextStyle(fontSize: 14.0, color: Colors.white),
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.fromLTRB(
-                              10.0,
-                              0.0,
-                              0.0,
-                              -10.0,
-                            ),
-                            hintText: "E-mail",
-                            hintStyle: TextStyle(color: Colors.white),
-                            errorText: authState.getEmailErrors(),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: CustomColors.blue2F,
-                                width: 1.0,
-                              ),
-                            ),
-                          ),
-                          initialValue:
-                              Get.put(AuthController()).authModel.email,
-                          onChanged: (text) {
-                            Get.put(AuthController()).onTapping(
-                              AuthTextField.email,
-                              text,
-                            );
-                          },
-                        );
-                      },
+                    AuthTextFormField(
+                      hintText: 'Email',
+                      textField: AuthTextField.email,
                     ),
-                    GetBuilder<AuthState>(
-                      init: AuthState(),
-                      builder: (authState) {
-                        return AnimatedOpacity(
-                          opacity: authFormController.passwordState.opacity,
-                          duration: Duration(milliseconds: 300),
-                          child: AnimatedContainer(
-                            duration: Duration(milliseconds: 300),
-                            height: authFormController.passwordState.height,
-                            child: TextFormField(
-                              enableSuggestions: false,
-                              autocorrect: false,
-                              obscureText: true,
-                              style: TextStyle(
-                                  fontSize: 14.0, color: Colors.white),
-                              decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.fromLTRB(
-                                    10.0, 0.0, 0.0, -10.0),
-                                hintText: 'Password',
-                                hintStyle: TextStyle(color: Colors.white),
-                                errorText: authState.getPasswordErrors(),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: CustomColors.blue2F,
-                                    width: 1.0,
-                                  ),
-                                ),
-                              ),
-                              initialValue:
-                                  Get.put(AuthController()).authModel.password,
-                              onChanged: (text) {
-                                Get.put(AuthController()).onTapping(
-                                  AuthTextField.password,
-                                  text,
-                                );
-                              },
-                            ),
-                          ),
-                        );
-                      },
+                    AuthTextFormField(
+                      hintText: 'Password',
+                      textField: AuthTextField.password,
+                      height: authFormController.passwordState.height,
+                      opacity: authFormController.passwordState.opacity,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      obscureText: true,
+                      initialValue:
+                          Get.put(AuthController()).authModel.password,
                     ),
-                    GetBuilder<AuthState>(
-                      init: AuthState(),
-                      builder: (authState) {
-                        return AnimatedOpacity(
-                          opacity:
-                              authFormController.confirmPasswordState.opacity,
-                          duration: Duration(milliseconds: 300),
-                          child: AnimatedContainer(
-                            duration: Duration(milliseconds: 300),
-                            height:
-                                authFormController.confirmPasswordState.height,
-                            child: TextFormField(
-                              enableSuggestions: false,
-                              autocorrect: false,
-                              obscureText: true,
-                              style: TextStyle(
-                                  fontSize: 14.0, color: Colors.white),
-                              decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.fromLTRB(
-                                  10.0,
-                                  0.0,
-                                  0.0,
-                                  -10.0,
-                                ),
-                                hintText: "Confirm password",
-                                hintStyle: TextStyle(color: Colors.white),
-                                errorText: authState.getConfirmPasswordErrors(),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0xFF2F4C80),
-                                    width: 1.0,
-                                  ),
-                                ),
-                              ),
-                              initialValue: Get.put(AuthController())
-                                  .authModel
-                                  .confirmPassword,
-                              onChanged: (text) {
-                                Get.put(AuthController()).onTapping(
-                                  AuthTextField.confirmPassword,
-                                  text,
-                                );
-                              },
-                            ),
-                          ),
-                        );
-                      },
+                    AuthTextFormField(
+                      hintText: 'Confirm password',
+                      textField: AuthTextField.confirmPassword,
+                      height: authFormController.confirmPasswordState.height,
+                      opacity: authFormController.confirmPasswordState.opacity,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      obscureText: true,
+                      initialValue:
+                          Get.put(AuthController()).authModel.confirmPassword,
                     ),
                   ],
                 ),

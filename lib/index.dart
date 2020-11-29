@@ -36,6 +36,7 @@ export 'screens/auth/auth_screen.dart';
 export 'screens/auth/widgets/auth_form.dart';
 export 'screens/auth/sign_up_user_info.dart';
 export 'screens/auth/image_picker_window.dart';
+export 'screens/auth/widgets/auth_text_form_field.dart';
 
 export 'screens/main/main_screen.dart';
 export 'screens/chats/chats_screen.dart';

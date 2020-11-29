@@ -36,11 +36,4 @@ class AuthFormController extends GetxController {
     confirmPasswordState = AuthTextFieldModel(opacity: 0.0, height: 0.0);
     update();
   }
-
-  void increaseHeightWhenErrors(double errorsCount) {
-    if (form == AuthFormState.signUp) formHeight = 250 + 20 * errorsCount;
-    if (form == AuthFormState.signIn) formHeight = 230 + 15 * errorsCount;
-    if (form == AuthFormState.recovery) formHeight = 150 + 15 * errorsCount;
-    update();
-  }
 }
