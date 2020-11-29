@@ -31,10 +31,7 @@ class AuthForm extends StatelessWidget {
                           -10.0,
                         ),
                         hintText: "E-mail",
-                        hintStyle: TextStyle(
-                          color: Colors.white,
-                          fontFamily: Fonts.BAIJAMJUREE,
-                        ),
+                        hintStyle: TextStyle(color: Colors.white),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: CustomColors.blue2F,
@@ -103,10 +100,7 @@ class AuthForm extends StatelessWidget {
                               -10.0,
                             ),
                             hintText: "Confirm password",
-                            hintStyle: TextStyle(
-                              color: Colors.white,
-                              fontFamily: Fonts.BAIJAMJUREE,
-                            ),
+                            hintStyle: TextStyle(color: Colors.white),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFF2F4C80),

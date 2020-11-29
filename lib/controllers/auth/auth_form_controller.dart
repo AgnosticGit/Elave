@@ -1,5 +1,5 @@
 import 'package:elave/index.dart';
-import 'package:elave/models/auth_form_model.dart';
+import 'package:elave/models/auth/auth_form_model.dart';
 
 class AuthFormController extends GetxController {
   AuthFormState form = AuthFormState.signIn;

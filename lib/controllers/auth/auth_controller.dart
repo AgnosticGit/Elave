@@ -1,5 +1,5 @@
 import 'package:elave/index.dart';
-import 'package:elave/models/auth_model.dart';
+import 'package:elave/models/auth/auth_model.dart';
 
 class AuthController extends GetxController {
   AuthModel authModel = AuthModel();
@@ -25,12 +25,13 @@ class AuthController extends GetxController {
     try {
       final response = await Api(route: "auth/registration").post(
         body: {
-          "email": authModel.email,
-          "password": authModel.password,
+          "email": authModel.email ?? "",
+          "password": authModel.password ?? "",
         },
       );
+      print(response.body);
     } catch (errors) {
-      print(errors);
+      print(errors.body);
     }
 
     logoController.onLoadingFinished();
