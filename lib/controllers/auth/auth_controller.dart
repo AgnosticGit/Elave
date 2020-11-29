@@ -1,19 +1,12 @@
 import 'package:elave/index.dart';
 
 class AuthController extends GetxController {
-  AuthModel authModel = AuthModel();
-  RotatingTileController emailTileController = RotatingTileController();
-  RotatingTileController passwordTileController = RotatingTileController();
-  RotatingTileController passwordConfirmTileController =
-      RotatingTileController();
-
   void onTapping(AuthTextField textField, String text) {
     Get.put(LogoController()).shuffle();
-    if (textField == AuthTextField.email) authModel.email = text;
-    if (textField == AuthTextField.password) authModel.password = text;
-    if (textField == AuthTextField.confirmPassword) {
-      authModel.confirmPassword = text;
-    }
+    // if (textField == AuthTextField.password) authModel.password = text;
+    // if (textField == AuthTextField.confirmPassword) {
+    //   authModel.confirmPassword = text;
+    // }
   }
 
   void signIn() {
@@ -29,8 +22,8 @@ class AuthController extends GetxController {
     try {
       final response = await Api(route: "auth/registration").post(
         body: {
-          "email": authModel.email,
-          "password": authModel.password,
+          "email": authState.authModel.email,
+          "password": authState.authModel.password,
         },
       );
       print(response);
@@ -38,7 +31,7 @@ class AuthController extends GetxController {
       authFormController.setSignUpForm();
     } catch (errors) {
       print(errors);
-      authState.setErrors(AuthErrorsModel.fromJson(errors));
+      authState.mutateErrors(AuthErrorsModel.fromJson(errors));
     }
     logoController.onLoadingFinished();
   }
@@ -48,9 +41,10 @@ class AuthController extends GetxController {
   }
 
   void onTapSignIn() {
+    final authState = Get.put(AuthState());
     final authFormController = Get.put(AuthFormController());
 
-    if (authFormController.form == AuthFormState.signIn) {
+    if (authState.formModel.currentForm == AuthFormState.signIn) {
       signIn();
     } else {
       authFormController.setSignInForm();
@@ -58,9 +52,10 @@ class AuthController extends GetxController {
   }
 
   void onTapSignUp() {
+    final authState = Get.put(AuthState());
     final authFormController = Get.put(AuthFormController());
 
-    if (authFormController.form == AuthFormState.signUp) {
+    if (authState.formModel.currentForm == AuthFormState.signUp) {
       signUp();
     } else {
       authFormController.setSignUpForm();
@@ -68,9 +63,10 @@ class AuthController extends GetxController {
   }
 
   void onTapRecoveryAccount() {
+    final authState = Get.put(AuthState());
     final authFormController = Get.put(AuthFormController());
 
-    if (authFormController.form == AuthFormState.recovery) {
+    if (authState.formModel.currentForm == AuthFormState.recovery) {
       recoveryAccount();
     } else {
       authFormController.setRecoveryForm();

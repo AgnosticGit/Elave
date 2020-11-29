@@ -24,6 +24,8 @@ export 'controllers/animations/rotating_tile_controller.dart';
 export 'controllers/auth/sign_up_user_info_controller.dart';
 export 'controllers/auth/auth_controller.dart';
 export 'controllers/auth/auth_form_controller.dart';
+export 'controllers/auth/auth_email_controller.dart';
+export 'controllers/auth/auth_passwords_controller.dart';
 
 export 'models/animation/logo_element_model.dart';
 export 'models/chats/chat_model.dart';
@@ -31,6 +33,7 @@ export 'models/messages/message_model.dart';
 export 'models/auth/auth_errors_model.dart';
 export 'models/auth/auth_form_model.dart';
 export 'models/auth/auth_model.dart';
+export 'models/auth/auth_text_field_model.dart';
 
 export 'screens/auth/auth_screen.dart';
 export 'screens/auth/widgets/auth_form.dart';

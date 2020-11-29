@@ -11,6 +11,7 @@ class AuthTextFormField extends StatelessWidget {
     this.autocorrect = true,
     this.obscureText = false,
     this.icon = const SizedBox(),
+    this.onChanged,
   });
 
   final String hintText;
@@ -22,52 +23,47 @@ class AuthTextFormField extends StatelessWidget {
   final bool autocorrect;
   final bool obscureText;
   final Widget icon;
+  final Function(String) onChanged;
 
   Widget build(BuildContext contet) {
-    return GetBuilder<AuthState>(
-      init: AuthState(),
-      builder: (authState) {
-        return AnimatedOpacity(
-          opacity: opacity,
-          duration: Duration(milliseconds: 300),
-          child: AnimatedContainer(
-            duration: Duration(milliseconds: 300),
-            height: height,
-            child: Stack(
-              children: [
-                TextFormField(
-                  enableSuggestions: enableSuggestions,
-                  autocorrect: autocorrect,
-                  obscureText: obscureText,
-                  style: TextStyle(fontSize: 14.0, color: Colors.white),
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(
-                      left: 10.0,
-                      bottom: -10.0,
-                    ),
-                    hintText: hintText,
-                    hintStyle: TextStyle(color: Colors.white),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: CustomColors.blue2F,
-                        width: 1.0,
-                      ),
-                    ),
+    return AnimatedOpacity(
+      opacity: opacity,
+      duration: Duration(milliseconds: 300),
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 300),
+        height: height,
+        child: Stack(
+          children: [
+            TextFormField(
+              enableSuggestions: enableSuggestions,
+              autocorrect: autocorrect,
+              obscureText: obscureText,
+              style: TextStyle(fontSize: 14.0, color: Colors.white),
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.only(
+                  left: 10.0,
+                  bottom: -10.0,
+                ),
+                hintText: hintText,
+                hintStyle: TextStyle(color: Colors.white),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: CustomColors.blue2F,
+                    width: 1.0,
                   ),
-                  initialValue: initialValue,
-                  onChanged: (text) =>
-                      Get.put(AuthController()).onTapping(textField, text),
                 ),
-                Positioned(
-                  bottom: 8.0,
-                  right: 10.0,
-                  child: icon,
-                ),
-              ],
+              ),
+              initialValue: initialValue,
+              onChanged: (text) => onChanged(text),
             ),
-          ),
-        );
-      },
+            Positioned(
+              bottom: 8.0,
+              right: 10.0,
+              child: icon,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
