@@ -1,5 +1,4 @@
 import 'package:elave/index.dart';
-import 'package:elave/models/auth/auth_model.dart';
 
 class AuthController extends GetxController {
   AuthModel authModel = AuthModel();
@@ -19,9 +18,12 @@ class AuthController extends GetxController {
 
   void signUp() async {
     final logoController = Get.put(LogoController());
+    final authState = Get.put(AuthState());
+    final authFormController = Get.put(AuthFormController());
+
+    if (!checkPasswordsMatches()) return;
 
     logoController.onLoadingStarted();
-
     try {
       final response = await Api(route: "auth/registration").post(
         body: {
@@ -29,16 +31,35 @@ class AuthController extends GetxController {
           "password": authModel.password ?? "",
         },
       );
-      print(response.body);
-    } catch (errors) {
-      print(errors.body);
-    }
 
+      authState.cleanErrors();
+      authFormController.setSignUpForm();
+    } catch (errors) {
+      authState.setErrors(AuthErrorsModel.fromJson(errors));
+      authFormController.increaseHeightWhenErrors(authState.getErrorsCount());
+    }
     logoController.onLoadingFinished();
   }
 
   void recoveryAccount() {
     Get.put(LogoController()).onLoadingStarted();
+  }
+
+  bool checkPasswordsMatches() {
+    final authFormController = Get.put(AuthFormController());
+    final authState = Get.put(AuthState());
+
+    if (authModel.password != authModel.confirmPassword ||
+        authModel.password == null ||
+        authModel.confirmPassword == null) {
+      authState.setErrors(
+        AuthErrorsModel(confirmPassword: ['Passwords do not match']),
+      );
+      authFormController.increaseHeightWhenErrors(1);
+      return false;
+    }
+
+    return true;
   }
 
   void onTapSignIn() {
@@ -47,7 +68,7 @@ class AuthController extends GetxController {
     if (authFormController.form == AuthFormState.signIn) {
       signIn();
     } else {
-      authFormController.selectSignInForm();
+      authFormController.setSignInForm();
     }
   }
 
@@ -57,7 +78,7 @@ class AuthController extends GetxController {
     if (authFormController.form == AuthFormState.signUp) {
       signUp();
     } else {
-      authFormController.selectSignUpForm();
+      authFormController.setSignUpForm();
     }
   }
 
@@ -67,7 +88,7 @@ class AuthController extends GetxController {
     if (authFormController.form == AuthFormState.recovery) {
       recoveryAccount();
     } else {
-      authFormController.selectRecoveryForm();
+      authFormController.setRecoveryForm();
     }
   }
 }

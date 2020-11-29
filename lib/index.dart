@@ -1,5 +1,6 @@
 export 'dart:async';
 export 'dart:math';
+export 'dart:convert';
 
 export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
@@ -27,6 +28,9 @@ export 'controllers/auth/auth_form_controller.dart';
 export 'models/animation/logo_element_model.dart';
 export 'models/chats/chat_model.dart';
 export 'models/messages/message_model.dart';
+export 'models/auth/auth_errors_model.dart';
+export 'models/auth/auth_form_model.dart';
+export 'models/auth/auth_model.dart';
 
 export 'screens/auth/auth_screen.dart';
 export 'screens/auth/widgets/auth_form.dart';
@@ -74,9 +78,9 @@ export 'widgets/animated_logo.dart';
 export 'widgets/search.dart';
 export 'widgets/custom_appbar.dart';
 export 'widgets/bottom_bar.dart';
-
 export 'widgets/rotatating_tile.dart';
 export 'widgets/blurred.dart';
 export 'widgets/animated_logo.dart';
 
+export 'states/auth_state.dart';
 export 'states/chats_state.dart';

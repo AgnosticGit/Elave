@@ -10,7 +10,8 @@ class AuthFormController extends GetxController {
   AuthTextFieldModel confirmPasswordState =
       AuthTextFieldModel(opacity: 0.0, height: 0);
 
-  void selectSignInForm() {
+  void setSignInForm() {
+    Get.put(AuthState()).cleanErrors();
     form = AuthFormState.signIn;
     formHeight = 200.0;
     passwordState = AuthTextFieldModel(opacity: 1.0, height: null);
@@ -18,7 +19,8 @@ class AuthFormController extends GetxController {
     update();
   }
 
-  void selectSignUpForm() {
+  void setSignUpForm() {
+    Get.put(AuthState()).cleanErrors();
     form = AuthFormState.signUp;
     formHeight = 250.0;
     passwordState = AuthTextFieldModel(opacity: 1.0, height: null);
@@ -26,12 +28,19 @@ class AuthFormController extends GetxController {
     update();
   }
 
-  void selectRecoveryForm() {
+  void setRecoveryForm() {
+    Get.put(AuthState()).cleanErrors();
     form = AuthFormState.recovery;
     formHeight = 140.0;
     passwordState = AuthTextFieldModel(opacity: 0.0, height: 0.0);
     confirmPasswordState = AuthTextFieldModel(opacity: 0.0, height: 0.0);
+    update();
+  }
 
+  void increaseHeightWhenErrors(double errorsCount) {
+    if (form == AuthFormState.signUp) formHeight = 250 + 20 * errorsCount;
+    if (form == AuthFormState.signIn) formHeight = 230 + 15 * errorsCount;
+    if (form == AuthFormState.recovery) formHeight = 150 + 15 * errorsCount;
     update();
   }
 }

@@ -1,9 +1,14 @@
 class AuthErrorsModel {
-  AuthErrorsModel({this.email, this.password});
+  AuthErrorsModel({
+    this.email,
+    this.password,
+    this.confirmPassword,
+  });
 
   String message;
-  List<String> email = [];
-  List<String> password = [];
+  List<dynamic> email;
+  List<dynamic> password;
+  List<dynamic> confirmPassword;
 
   AuthErrorsModel.fromJson(Map<String, dynamic> json) {
     message = json['message'];

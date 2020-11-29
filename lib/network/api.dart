@@ -1,3 +1,4 @@
+import 'package:elave/index.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
@@ -19,17 +20,18 @@ class Api {
     Map<String, String> headers,
   }) async {
     if (headers == null) headers = generateHeaders();
-    
+
     try {
       final response = await http.post(
         url + route,
         headers: headers,
         body: body,
       );
+      dynamic json = jsonDecode(response.body);
       
-      if (response.statusCode == 200) return response;
+      if (response.statusCode == 200) return json;
 
-      throw (response);
+      throw (json);
     } catch (errors) {
       throw (errors);
     }
