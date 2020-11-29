@@ -87,7 +87,7 @@ class Images {
     'assets/images/camera.svg',
     color: Colors.white,
   );
-  
+
   static final Widget gallery = SvgPicture.asset(
     'assets/images/gallery.svg',
     color: Colors.white,
@@ -95,5 +95,13 @@ class Images {
   static final Widget arrowbottom = SvgPicture.asset(
     'assets/images/arrowbottom.svg',
     color: Colors.white,
+  );
+  static final Widget success = SvgPicture.asset(
+    'assets/images/success.svg',
+    color: Colors.green,
+  );
+  static final Widget error = SvgPicture.asset(
+    'assets/images/error.svg',
+    color: Colors.red[800],
   );
 }

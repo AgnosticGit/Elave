@@ -10,6 +10,7 @@ class AuthTextFormField extends StatelessWidget {
     this.enableSuggestions = true,
     this.autocorrect = true,
     this.obscureText = false,
+    this.icon = const SizedBox(),
   });
 
   final String hintText;
@@ -20,6 +21,7 @@ class AuthTextFormField extends StatelessWidget {
   final bool enableSuggestions;
   final bool autocorrect;
   final bool obscureText;
+  final Widget icon;
 
   Widget build(BuildContext contet) {
     return GetBuilder<AuthState>(
@@ -59,11 +61,7 @@ class AuthTextFormField extends StatelessWidget {
                 Positioned(
                   bottom: 8.0,
                   right: 10.0,
-                  child: Icon(
-                    Icons.ac_unit,
-                    size: 28.0,
-                    color: Colors.white,
-                  ),
+                  child: icon,
                 ),
               ],
             ),

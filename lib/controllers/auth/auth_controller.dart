@@ -2,6 +2,10 @@ import 'package:elave/index.dart';
 
 class AuthController extends GetxController {
   AuthModel authModel = AuthModel();
+  RotatingTileController emailTileController = RotatingTileController();
+  RotatingTileController passwordTileController = RotatingTileController();
+  RotatingTileController passwordConfirmTileController =
+      RotatingTileController();
 
   void onTapping(AuthTextField textField, String text) {
     Get.put(LogoController()).shuffle();

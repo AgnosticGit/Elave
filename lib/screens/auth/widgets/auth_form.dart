@@ -21,31 +21,62 @@ class AuthForm extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 25.0),
-                    AuthTextFormField(
-                      hintText: 'Email',
-                      textField: AuthTextField.email,
+                    GetBuilder<AuthController>(
+                      init: AuthController(),
+                      builder: (authController) {
+                        return AuthTextFormField(
+                          hintText: 'Email',
+                          textField: AuthTextField.email,
+                          icon: RotatingTile(
+                            controller: authController.emailTileController,
+                            firstSide: Container(
+                              height: 25.0,
+                              width: 25.0,
+                              child: Images.success,
+                            ),
+                            secondSide: Container(
+                              height: 25.0,
+                              width: 25.0,
+                              child: Images.error,
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                    AuthTextFormField(
-                      hintText: 'Password',
-                      textField: AuthTextField.password,
-                      height: authFormController.passwordState.height,
-                      opacity: authFormController.passwordState.opacity,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      obscureText: true,
-                      initialValue:
-                          Get.put(AuthController()).authModel.password,
+                    GetBuilder<AuthController>(
+                      init: AuthController(),
+                      builder: (authController) {
+                        return AuthTextFormField(
+                          hintText: 'Password',
+                          textField: AuthTextField.password,
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          obscureText: true,
+                          height: authFormController.passwordState.height,
+                          opacity: authFormController.passwordState.opacity,
+                          initialValue:
+                              Get.put(AuthController()).authModel.password,
+                        );
+                      },
                     ),
-                    AuthTextFormField(
-                      hintText: 'Confirm password',
-                      textField: AuthTextField.confirmPassword,
-                      height: authFormController.confirmPasswordState.height,
-                      opacity: authFormController.confirmPasswordState.opacity,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      obscureText: true,
-                      initialValue:
-                          Get.put(AuthController()).authModel.confirmPassword,
+                    GetBuilder<AuthController>(
+                      init: AuthController(),
+                      builder: (authController) {
+                        return AuthTextFormField(
+                          hintText: 'Confirm password',
+                          textField: AuthTextField.confirmPassword,
+                          enableSuggestions: false,
+                          autocorrect: false,
+                          obscureText: true,
+                          height:
+                              authFormController.confirmPasswordState.height,
+                          opacity:
+                              authFormController.confirmPasswordState.opacity,
+                          initialValue: Get.put(AuthController())
+                              .authModel
+                              .confirmPassword,
+                        );
+                      },
                     ),
                   ],
                 ),
