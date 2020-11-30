@@ -23,6 +23,7 @@ class _RotatingTileState extends State<RotatingTile> {
   void initState() {
     widget.controller.openTile = openTile;
     widget.controller.closeTile = closeTile;
+    widget.controller.roll = roll;
     super.initState();
   }
 
@@ -73,6 +74,14 @@ class _RotatingTileState extends State<RotatingTile> {
           timer.cancel();
         }
       });
+    }
+  }
+
+  void roll() {
+    if (isOpened) {
+      closeTile();
+    } else {
+      openTile();
     }
   }
 }

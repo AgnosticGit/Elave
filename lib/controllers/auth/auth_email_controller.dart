@@ -6,7 +6,7 @@ class AuthEmailController {
     final authState = Get.put(AuthState());
     final authModel = AuthModel(email: text);
 
-    
+    authState.emailTileController.roll();
     authState.mutateAuthModel(authModel);
     logoController.shuffle();
   }
