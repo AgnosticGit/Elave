@@ -2,41 +2,50 @@ import 'package:elave/index.dart';
 
 class AuthState extends GetxController {
   AuthModel authModel = AuthModel();
-  AuthErrorsModel errors = AuthErrorsModel();
+  AuthErrorsModel errorsModel = AuthErrorsModel();
   AuthFormModel formModel = AuthFormModel();
-  AuthTextFieldModel passwordState =
-      AuthTextFieldModel(opacity: 1.0, height: null);
-  AuthTextFieldModel confirmPasswordState =
-      AuthTextFieldModel(opacity: 0.0, height: 0);
+  AuthTextFieldModel passwordModel = AuthTextFieldModel(
+    opacity: 1.0,
+    height: null,
+  );
+  AuthTextFieldModel confirmPasswordModel = AuthTextFieldModel(
+    opacity: 0.0,
+    height: 0.0,
+  );
 
-  void mutateAuthModel(AuthModel newAuthModel) {
-    authModel.confirmPassword = newAuthModel.confirmPassword;
-    authModel.email = newAuthModel.email;
+  void mutateAuthModel(AuthModel newModel) {
+    if (newModel.email != null) authModel.email = newModel.email;
+    if (newModel.password != null) authModel.password = newModel.password;
+    if (newModel.confirmPassword != null)
+      authModel.confirmPassword = newModel.confirmPassword;
     update();
   }
 
-  void mutateFormModel(AuthFormModel newFormModel) {
-    formModel = newFormModel;
+  void mutateFormModel(AuthFormModel newModel) {
+    if (newModel.opacity != null) formModel.opacity = newModel.opacity;
+    if (newModel.height != null) formModel.height = newModel.height;
+    if (newModel.currentForm != null)
+      formModel.currentForm = newModel.currentForm;
     update();
   }
 
-  void mutatePasswordState(AuthTextFieldModel newPasswordState) {
-    passwordState = newPasswordState;
+  void mutatePasswordModel(AuthTextFieldModel newModel) {
+    passwordModel = newModel;
     update();
   }
 
-  void mutateConfirmPasswordState(newConfirmPasswordState) {
-    confirmPasswordState = newConfirmPasswordState;
+  void mutateConfirmPasswordModel(AuthTextFieldModel newModel) {
+    confirmPasswordModel = newModel;
     update();
   }
 
-  void mutateErrors(AuthErrorsModel newErrors) {
-    errors = newErrors;
+  void mutateErrors(AuthErrorsModel newModel) {
+    errorsModel = newModel;
     update();
   }
 
   void cleanErrors() {
-    errors = AuthErrorsModel();
+    errorsModel = AuthErrorsModel();
     update();
   }
 }

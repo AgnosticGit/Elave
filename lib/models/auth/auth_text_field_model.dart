@@ -1,9 +1,10 @@
-import 'package:elave/index.dart';
 
 class AuthTextFieldModel {
-  AuthTextFieldModel({this.opacity, this.height, this.color});
+  AuthTextFieldModel({
+    this.opacity,
+    this.height,
+  });
 
   double opacity;
   double height;
-  Color color;
 }

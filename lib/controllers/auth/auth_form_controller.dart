@@ -7,8 +7,8 @@ class AuthFormController extends GetxController {
       height: 200,
       currentForm: AuthFormState.signIn,
     );
-    final newPasswordState = AuthTextFieldModel(opacity: 1.0, height: null);
-    final newConfirmPasswordState = AuthTextFieldModel(
+    final newPasswordModel = AuthTextFieldModel(opacity: 1.0, height: null);
+    final newConfirmPasswordModel = AuthTextFieldModel(
       opacity: 0.0,
       height: 0.0,
     );
@@ -16,8 +16,8 @@ class AuthFormController extends GetxController {
 
     authState.cleanErrors();
     authState.mutateFormModel(newAuthModel);
-    authState.mutatePasswordState(newPasswordState);
-    authState.mutateConfirmPasswordState(newConfirmPasswordState);
+    authState.mutatePasswordModel(newPasswordModel);
+    authState.mutateConfirmPasswordModel(newConfirmPasswordModel);
   }
 
   void setSignUpForm() {
@@ -25,8 +25,8 @@ class AuthFormController extends GetxController {
       height: 250,
       currentForm: AuthFormState.signUp,
     );
-    final newPasswordState = AuthTextFieldModel(opacity: 1.0, height: null);
-    final newConfirmPasswordState = AuthTextFieldModel(
+    final newPasswordModel = AuthTextFieldModel(opacity: 1.0, height: null);
+    final newConfirmPasswordModel = AuthTextFieldModel(
       opacity: 1.0,
       height: null,
     );
@@ -34,8 +34,8 @@ class AuthFormController extends GetxController {
 
     authState.cleanErrors();
     authState.mutateFormModel(newAuthModel);
-    authState.mutatePasswordState(newPasswordState);
-    authState.mutateConfirmPasswordState(newConfirmPasswordState);
+    authState.mutatePasswordModel(newPasswordModel);
+    authState.mutateConfirmPasswordModel(newConfirmPasswordModel);
   }
 
   void setRecoveryForm() {
@@ -43,14 +43,16 @@ class AuthFormController extends GetxController {
       height: 140,
       currentForm: AuthFormState.recovery,
     );
-    final newPasswordState = AuthTextFieldModel(opacity: 0.0, height: 0.0);
-    final newConfirmPasswordState =
-        AuthTextFieldModel(opacity: 0.0, height: 0.0);
+    final newPasswordModel = AuthTextFieldModel(opacity: 0.0, height: 0.0);
+    final newConfirmPasswordModel = AuthTextFieldModel(
+      opacity: 0.0,
+      height: 0.0,
+    );
     final authState = Get.put(AuthState());
-    
+
     authState.cleanErrors();
     authState.mutateFormModel(newAuthModel);
-    authState.mutatePasswordState(newPasswordState);
-    authState.mutateConfirmPasswordState(newConfirmPasswordState);
+    authState.mutatePasswordModel(newPasswordModel);
+    authState.mutateConfirmPasswordModel(newConfirmPasswordModel);
   }
 }
