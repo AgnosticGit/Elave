@@ -21,10 +21,9 @@ class AuthForm extends StatelessWidget {
                 AuthTextFormField(
                   hintText: 'E-mail',
                   textField: AuthTextField.email,
-                  onChanged: Get.put(AuthEmailController()).onTapping,
+                  onChanged: AuthEmailController().onTapping,
                   icon: RotatingTile(
-                    controller:
-                        Get.put(AuthEmailController()).emailTileController,
+                    controller: Get.put(AuthState()).emailTileController,
                     firstSide: Container(
                       height: 25.0,
                       width: 25.0,
@@ -67,9 +66,7 @@ class AuthForm extends StatelessWidget {
               width: 105.0,
               height: 35.0,
               child: FlatButton(
-                onPressed: () {
-                  Get.put(AuthController()).onTapSignIn();
-                },
+                onPressed: AuthController().onTapSignIn,
                 color: _buildButtonColor(
                   Get.put(AuthState()).formModel.currentForm ==
                       AuthFormState.signIn,
@@ -95,8 +92,7 @@ class AuthForm extends StatelessWidget {
               width: 150.0,
               height: 35.0,
               child: FlatButton(
-                onPressed: () =>
-                    Get.put(AuthController()).onTapRecoveryAccount(),
+                onPressed: AuthController().onTapRecoveryAccount,
                 color: _buildButtonColor(
                   Get.put(AuthState()).formModel.currentForm ==
                       AuthFormState.recovery,
@@ -122,7 +118,7 @@ class AuthForm extends StatelessWidget {
               width: 105.0,
               height: 35.0,
               child: FlatButton(
-                onPressed: () => Get.put(AuthController()).onTapSignUp(),
+                onPressed: AuthController().onTapSignUp,
                 color: _buildButtonColor(
                   Get.put(AuthState()).formModel.currentForm ==
                       AuthFormState.signUp,

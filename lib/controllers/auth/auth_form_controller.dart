@@ -1,7 +1,7 @@
 import 'package:elave/index.dart';
 import 'package:elave/models/auth/auth_form_model.dart';
 
-class AuthFormController extends GetxController {
+class AuthFormController {
   void setSignInForm() {
     final newAuthModel = AuthFormModel(
       height: 200,

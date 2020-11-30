@@ -1,9 +1,13 @@
 import 'package:elave/index.dart';
 
-class AuthEmailController extends GetxController {
-  RotatingTileController emailTileController = RotatingTileController();
-
+class AuthEmailController {
   void onTapping(String text) {
-    // Get.put(AuthState()).mutateAuthModel();
+    final logoController = Get.put(LogoController());
+    final authState = Get.put(AuthState());
+    final authModel = AuthModel(email: text);
+
+    
+    authState.mutateAuthModel(authModel);
+    logoController.shuffle();
   }
 }

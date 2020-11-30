@@ -85,9 +85,7 @@ class AnimatedLogo extends StatelessWidget {
         height: logoController.rectangleSize,
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(logoElement.opacity),
-          borderRadius: BorderRadius.circular(
-            logoController.borderRadius,
-          ),
+          borderRadius: BorderRadius.circular(logoController.borderRadius),
         ),
       ),
     );

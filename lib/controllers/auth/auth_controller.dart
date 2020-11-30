@@ -1,14 +1,6 @@
 import 'package:elave/index.dart';
 
-class AuthController extends GetxController {
-  void onTapping(AuthTextField textField, String text) {
-    Get.put(LogoController()).shuffle();
-    // if (textField == AuthTextField.password) authModel.password = text;
-    // if (textField == AuthTextField.confirmPassword) {
-    //   authModel.confirmPassword = text;
-    // }
-  }
-
+class AuthController {
   void signIn() {
     Get.put(LogoController()).onLoadingStarted();
   }
@@ -42,7 +34,7 @@ class AuthController extends GetxController {
 
   void onTapSignIn() {
     final authState = Get.put(AuthState());
-    final authFormController = Get.put(AuthFormController());
+    final authFormController = AuthFormController();
 
     if (authState.formModel.currentForm == AuthFormState.signIn) {
       signIn();
@@ -53,7 +45,7 @@ class AuthController extends GetxController {
 
   void onTapSignUp() {
     final authState = Get.put(AuthState());
-    final authFormController = Get.put(AuthFormController());
+    final authFormController = AuthFormController();
 
     if (authState.formModel.currentForm == AuthFormState.signUp) {
       signUp();
@@ -64,7 +56,7 @@ class AuthController extends GetxController {
 
   void onTapRecoveryAccount() {
     final authState = Get.put(AuthState());
-    final authFormController = Get.put(AuthFormController());
+    final authFormController = AuthFormController();
 
     if (authState.formModel.currentForm == AuthFormState.recovery) {
       recoveryAccount();

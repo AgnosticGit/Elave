@@ -13,6 +13,8 @@ class AuthState extends GetxController {
     height: 0.0,
   );
 
+  RotatingTileController emailTileController = RotatingTileController();
+
   void mutateAuthModel(AuthModel newModel) {
     if (newModel.email != null) authModel.email = newModel.email;
     if (newModel.password != null) authModel.password = newModel.password;
