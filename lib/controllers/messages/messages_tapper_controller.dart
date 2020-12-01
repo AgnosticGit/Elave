@@ -25,12 +25,12 @@ class MessagesTapperController extends GetxController {
   void buttonsVisibleHandler() {
     if (textEditingController.text.length > 0) {
       textFieldState = TextFieldState.full;
-      translateTileController.openTile();
-      sendTileController.openTile();
+      translateTileController.showFirstSide();
+      sendTileController.showFirstSide();
     } else {
       textFieldState = TextFieldState.empty;
-      translateTileController.closeTile();
-      sendTileController.closeTile();
+      translateTileController.showSecondSide();
+      sendTileController.showSecondSide();
     }
   }
 

@@ -12,6 +12,8 @@ class AuthTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.icon = const SizedBox(),
     this.onChanged,
+    this.focusNode,
+    this.onTap,
   });
 
   final String hintText;
@@ -24,6 +26,8 @@ class AuthTextFormField extends StatelessWidget {
   final bool obscureText;
   final Widget icon;
   final Function(String) onChanged;
+  final FocusNode focusNode;
+  final Function onTap;
 
   Widget build(BuildContext contet) {
     return AnimatedOpacity(
@@ -55,6 +59,8 @@ class AuthTextFormField extends StatelessWidget {
               ),
               initialValue: initialValue,
               onChanged: (text) => onChanged(text),
+              focusNode: focusNode,
+              onTap: onTap,
             ),
             Positioned(
               bottom: 8.0,

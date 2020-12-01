@@ -9,13 +9,13 @@ class ChatsItemController extends GetxController {
 
   void openMenu() {
     Get.put(ChatsController()).closeEveryChatMenu();
-    basketTileController.openTile();
-    muteTileController.openTile();
+    basketTileController.showFirstSide();
+    muteTileController.showFirstSide();
   }
 
   void closeMenu() {
-    basketTileController.closeTile();
-    muteTileController.closeTile();
+    basketTileController.showSecondSide();
+    muteTileController.showSecondSide();
   }
 
   void enableBlur() {

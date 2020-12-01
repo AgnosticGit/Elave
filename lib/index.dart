@@ -32,8 +32,7 @@ export 'models/chats/chat_model.dart';
 export 'models/messages/message_model.dart';
 export 'models/auth/auth_errors_model.dart';
 export 'models/auth/auth_form_model.dart';
-export 'models/auth/auth_model.dart';
-export 'models/auth/auth_text_field_model.dart';
+export 'models/auth/auth_credentials_model.dart';
 
 export 'screens/auth/auth_screen.dart';
 export 'screens/auth/widgets/auth_form.dart';

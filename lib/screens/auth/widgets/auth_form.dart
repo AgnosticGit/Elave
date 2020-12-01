@@ -21,18 +21,19 @@ class AuthForm extends StatelessWidget {
                 AuthTextFormField(
                   hintText: 'E-mail',
                   textField: AuthTextField.email,
+                  focusNode: Get.put(AuthState()).emailFocus,
                   onChanged: AuthEmailController().onTapping,
                   icon: RotatingTile(
                     controller: Get.put(AuthState()).emailTileController,
                     firstSide: Container(
                       height: 25.0,
                       width: 25.0,
-                      child: Images.success,
+                      child: Images.error,
                     ),
                     secondSide: Container(
                       height: 25.0,
                       width: 25.0,
-                      child: Images.error,
+                      child: Images.success,
                     ),
                   ),
                 ),
@@ -42,9 +43,12 @@ class AuthForm extends StatelessWidget {
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  height: Get.put(AuthState()).passwordModel.height,
-                  opacity: Get.put(AuthState()).passwordModel.opacity,
-                  initialValue: Get.put(AuthState()).authModel.password,
+                  height:
+                      Get.put(AuthState()).authCredentialsModel.passwordHeight,
+                  opacity:
+                      Get.put(AuthState()).authCredentialsModel.passwordOpacity,
+                  initialValue:
+                      Get.put(AuthState()).authCredentialsModel.password,
                 ),
                 AuthTextFormField(
                   hintText: 'Confirm Password',
@@ -52,9 +56,14 @@ class AuthForm extends StatelessWidget {
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  height: Get.put(AuthState()).confirmPasswordModel.height,
-                  opacity: Get.put(AuthState()).confirmPasswordModel.opacity,
-                  initialValue: Get.put(AuthState()).authModel.confirmPassword,
+                  height: Get.put(AuthState())
+                      .authCredentialsModel
+                      .confirmPasswordHeight,
+                  opacity: Get.put(AuthState())
+                      .authCredentialsModel
+                      .confirmPasswordOpacity,
+                  initialValue:
+                      Get.put(AuthState()).authCredentialsModel.confirmPassword,
                 ),
               ],
             ),

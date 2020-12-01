@@ -21,8 +21,8 @@ class _RotatingTileState extends State<RotatingTile> {
   bool isOpened = false;
 
   void initState() {
-    widget.controller.openTile = openTile;
-    widget.controller.closeTile = closeTile;
+    widget.controller.showFirstSide = showFirstSide;
+    widget.controller.showSecondSide = showSecondSide;
     widget.controller.roll = roll;
     super.initState();
   }
@@ -43,7 +43,7 @@ class _RotatingTileState extends State<RotatingTile> {
     );
   }
 
-  void openTile() {
+  void showFirstSide() {
     if (!isOpened) {
       Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
         if (degree < pi) {
@@ -57,7 +57,7 @@ class _RotatingTileState extends State<RotatingTile> {
     }
   }
 
-  void closeTile() {
+  void showSecondSide() {
     if (isOpened) {
       Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
         if (degree > 0) {
@@ -79,9 +79,9 @@ class _RotatingTileState extends State<RotatingTile> {
 
   void roll() {
     if (isOpened) {
-      closeTile();
+      showSecondSide();
     } else {
-      openTile();
+      showFirstSide();
     }
   }
 }

@@ -14,8 +14,8 @@ class AuthController {
     try {
       final response = await Api(route: "auth/registration").post(
         body: {
-          "email": authState.authModel.email,
-          "password": authState.authModel.password,
+          "email": authState.authCredentialsModel.email,
+          "password": authState.authCredentialsModel.password,
         },
       );
       print(response);

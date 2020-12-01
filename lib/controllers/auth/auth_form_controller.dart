@@ -7,17 +7,11 @@ class AuthFormController {
       height: 200,
       currentForm: AuthFormState.signIn,
     );
-    final newPasswordModel = AuthTextFieldModel(opacity: 1.0, height: null);
-    final newConfirmPasswordModel = AuthTextFieldModel(
-      opacity: 0.0,
-      height: 0.0,
-    );
     final authState = Get.put(AuthState());
 
     authState.cleanErrors();
+    authState.mutateAuthCredentialsView(1.0, null, 0.0, 0.0);
     authState.mutateFormModel(newAuthModel);
-    authState.mutatePasswordModel(newPasswordModel);
-    authState.mutateConfirmPasswordModel(newConfirmPasswordModel);
   }
 
   void setSignUpForm() {
@@ -25,17 +19,11 @@ class AuthFormController {
       height: 250,
       currentForm: AuthFormState.signUp,
     );
-    final newPasswordModel = AuthTextFieldModel(opacity: 1.0, height: null);
-    final newConfirmPasswordModel = AuthTextFieldModel(
-      opacity: 1.0,
-      height: null,
-    );
     final authState = Get.put(AuthState());
 
     authState.cleanErrors();
+    authState.mutateAuthCredentialsView(1.0, null, 1.0, null);
     authState.mutateFormModel(newAuthModel);
-    authState.mutatePasswordModel(newPasswordModel);
-    authState.mutateConfirmPasswordModel(newConfirmPasswordModel);
   }
 
   void setRecoveryForm() {
@@ -43,16 +31,11 @@ class AuthFormController {
       height: 140,
       currentForm: AuthFormState.recovery,
     );
-    final newPasswordModel = AuthTextFieldModel(opacity: 0.0, height: 0.0);
-    final newConfirmPasswordModel = AuthTextFieldModel(
-      opacity: 0.0,
-      height: 0.0,
-    );
+
     final authState = Get.put(AuthState());
 
     authState.cleanErrors();
     authState.mutateFormModel(newAuthModel);
-    authState.mutatePasswordModel(newPasswordModel);
-    authState.mutateConfirmPasswordModel(newConfirmPasswordModel);
+    authState.mutateAuthCredentialsView(0.0, 0.0, 0.0, 0.0);
   }
 }

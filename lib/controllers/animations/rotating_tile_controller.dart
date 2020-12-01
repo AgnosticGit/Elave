@@ -1,6 +1,6 @@
 class RotatingTileController {
-  Function openTile;
-  Function closeTile;
+  Function showFirstSide;
+  Function showSecondSide;
   Function roll;
   bool isOpened;
 }

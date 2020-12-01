@@ -1,43 +1,52 @@
 import 'package:elave/index.dart';
 
 class AuthState extends GetxController {
-  AuthModel authModel = AuthModel();
+  AuthCredentialsModel authCredentialsModel = AuthCredentialsModel();
   AuthErrorsModel errorsModel = AuthErrorsModel();
   AuthFormModel formModel = AuthFormModel();
-  AuthTextFieldModel passwordModel = AuthTextFieldModel(
-    opacity: 1.0,
-    height: null,
-  );
-  AuthTextFieldModel confirmPasswordModel = AuthTextFieldModel(
-    opacity: 0.0,
-    height: 0.0,
-  );
+  final emailTileController = RotatingTileController();
+  final emailFocus = FocusNode();
 
-  RotatingTileController emailTileController = RotatingTileController();
 
-  void mutateAuthModel(AuthModel newModel) {
-    if (newModel.email != null) authModel.email = newModel.email;
-    if (newModel.password != null) authModel.password = newModel.password;
+  void mutateAuthCredentialsModel(AuthCredentialsModel newModel) {
+    if (newModel.email != null) authCredentialsModel.email = newModel.email;
+    if (newModel.password != null)
+      authCredentialsModel.password = newModel.password;
     if (newModel.confirmPassword != null)
-      authModel.confirmPassword = newModel.confirmPassword;
+      authCredentialsModel.confirmPassword = newModel.confirmPassword;
+
+    if (newModel.passwordOpacity != null)
+      authCredentialsModel.passwordOpacity = newModel.passwordOpacity;
+    if (newModel.passwordHeight != null)
+      authCredentialsModel.passwordHeight = newModel.passwordHeight;
+    if (authCredentialsModel.confirmPasswordOpacity != null)
+      authCredentialsModel.confirmPasswordOpacity =
+          newModel.confirmPasswordOpacity;
+    if (authCredentialsModel.confirmPasswordHeight != null)
+      authCredentialsModel.confirmPasswordHeight =
+          newModel.confirmPasswordHeight;
+    if (authCredentialsModel.emailHadText != null)
+      authCredentialsModel.emailHadText = newModel.emailHadText;
+    update();
+  }
+
+  void mutateAuthCredentialsView(
+    double passwordOpacity,
+    double passwordHeight,
+    double confirmPasswordOpacity,
+    double confirmPasswordHeight,
+  ) {
+    authCredentialsModel.passwordOpacity = passwordOpacity;
+    authCredentialsModel.passwordHeight = passwordHeight;
+    authCredentialsModel.confirmPasswordOpacity = confirmPasswordOpacity;
+    authCredentialsModel.confirmPasswordHeight = confirmPasswordHeight;
     update();
   }
 
   void mutateFormModel(AuthFormModel newModel) {
-    if (newModel.opacity != null) formModel.opacity = newModel.opacity;
     if (newModel.height != null) formModel.height = newModel.height;
     if (newModel.currentForm != null)
       formModel.currentForm = newModel.currentForm;
-    update();
-  }
-
-  void mutatePasswordModel(AuthTextFieldModel newModel) {
-    passwordModel = newModel;
-    update();
-  }
-
-  void mutateConfirmPasswordModel(AuthTextFieldModel newModel) {
-    confirmPasswordModel = newModel;
     update();
   }
 
