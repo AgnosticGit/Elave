@@ -9,7 +9,7 @@ export 'package:get/get.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:elave/network/api.dart';
 
-export 'modules/animations/controllers/logo_controller.dart';
+export 'modules/common/controllers/logo_controller.dart';
 export 'modules/chats/controllers/appbar_with_search_controller.dart';
 export 'modules/main/controllers/bottom_bar_controller.dart';
 export 'modules/chats/controllers/chats_controller.dart';
@@ -20,14 +20,14 @@ export 'modules/messages/controllers/messages_controller.dart';
 export 'modules/messages/controllers/messages_item_controller.dart';
 export 'modules/chats/controllers/chats_item_controller.dart';
 export 'modules/messages/controllers/messages_tapper_controller.dart';
-export 'modules/animations/controllers/rotating_tile_controller.dart';
+export 'modules/common/controllers/rotating_tile_controller.dart';
 export 'modules/auth/controllers/sign_up_user_info_controller.dart';
 export 'modules/auth/controllers/auth_controller.dart';
 export 'modules/auth/controllers/auth_form_controller.dart';
 export 'modules/auth/controllers/auth_email_controller.dart';
 export 'modules/auth/controllers/auth_passwords_controller.dart';
 
-export 'modules/animations/models/logo_element_model.dart';
+export 'modules/common/models/logo_element_model.dart';
 export 'modules/chats/models/chat_model.dart';
 export 'modules/messages/models/message_model.dart';
 export 'modules/auth/models/auth_errors_model.dart';
@@ -79,13 +79,13 @@ export 'utilities/constants.dart';
 export 'utilities/custom_colors.dart';
 export 'utilities/enums.dart';
 
-export 'widgets/animated_logo.dart';
-export 'widgets/search.dart';
-export 'widgets/custom_appbar.dart';
-export 'widgets/bottom_bar.dart';
-export 'widgets/rotatating_tile.dart';
-export 'widgets/blurred.dart';
-export 'widgets/animated_logo.dart';
+export 'modules/common/views/animated_logo.dart';
+export 'modules/common/views/search.dart';
+export 'modules/common/views/custom_appbar.dart';
+export 'modules/common/views/bottom_bar.dart';
+export 'modules/common/views/rotatating_tile.dart';
+export 'modules/common/views/blurred.dart';
+export 'modules/common/views/animated_logo.dart';
 
 export 'states/auth_state.dart';
 export 'states/chats_state.dart';
