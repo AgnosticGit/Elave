@@ -1,5 +1,5 @@
 import 'package:elave/index.dart';
-import 'package:elave/models/auth/auth_form_model.dart';
+import 'package:elave/modules/auth/models/auth_form_model.dart';
 
 class AuthFormController {
   void setSignInForm() {

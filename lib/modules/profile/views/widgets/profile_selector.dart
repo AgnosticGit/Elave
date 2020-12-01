@@ -1,4 +1,4 @@
-import 'package:elave/controllers/profile/profile_controller.dart';
+import 'package:elave/modules/profile/controllers/profile_controller.dart';
 import 'package:elave/index.dart';
 
 class ProfileSelector extends StatelessWidget {

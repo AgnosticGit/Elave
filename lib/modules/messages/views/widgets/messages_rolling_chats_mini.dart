@@ -1,4 +1,4 @@
-import 'package:elave/controllers/messages/messages_rolling_chats_controller.dart';
+import 'package:elave/modules/messages/controllers/messages_rolling_chats_controller.dart';
 import 'package:elave/index.dart';
 
 class MessagesRollingChatsMini extends StatelessWidget {
