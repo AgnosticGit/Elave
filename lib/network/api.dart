@@ -2,11 +2,11 @@ import 'package:elave/index.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
-  Api({this.url = "http://localhost:8090/api/v1/", this.route});
+  Api({this.url = "http://localhost:8090/api/v1", this.route});
 
   final String url;
 
-  //example: "auth/registration"
+  //example: "/auth/registration"
   final String route;
 
   static String token;

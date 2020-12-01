@@ -6,8 +6,8 @@ enum AuthFormState {
 
 class AuthFormModel {
   AuthFormModel({
-    this.height = 200,
-    this.currentForm = AuthFormState.signIn,
+    this.height,
+    this.currentForm,
   });
 
   double height;

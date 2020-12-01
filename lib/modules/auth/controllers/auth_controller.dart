@@ -12,7 +12,7 @@ class AuthController {
 
     logoController.onLoadingStarted();
     try {
-      final response = await Api(route: "auth/registration").post(
+      final response = await Api(route: "/auth/registration").post(
         body: {
           "email": authState.authCredentialsModel.email,
           "password": authState.authCredentialsModel.password,
@@ -23,7 +23,7 @@ class AuthController {
       authFormController.setSignUpForm();
     } catch (errors) {
       print(errors);
-      authState.mutateErrors(AuthErrorsModel.fromJson(errors));
+      // authState.mutateErrors(AuthErrorsModel.fromJson(errors));
     }
     logoController.onLoadingFinished();
   }

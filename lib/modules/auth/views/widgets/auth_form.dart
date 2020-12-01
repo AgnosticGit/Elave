@@ -19,25 +19,33 @@ class AuthForm extends StatelessWidget {
               children: [
                 const SizedBox(height: 25.0),
                 AuthTextFormField(
+                  autocorrect: false,
                   hintText: 'E-mail',
                   textField: AuthTextField.email,
-                  focusNode: Get.put(AuthState()).emailFocus,
                   onChanged: AuthEmailController().onTapping,
-                  icon: RotatingTile(
-                    controller: Get.put(AuthState()).emailTileController,
-                    firstSide: Container(
-                      height: 25.0,
-                      width: 25.0,
-                      child: Images.error,
-                    ),
-                    secondSide: Container(
-                      height: 25.0,
-                      width: 25.0,
-                      child: Images.success,
+                  icon: Opacity(
+                    opacity: Get.put(AuthState())
+                            .authCredentialsModel
+                            .successMarkVisibility
+                        ? 1.0
+                        : 0.0,
+                    child: RotatingTile(
+                      controller: Get.put(AuthState()).emailTileController,
+                      firstSide: Container(
+                        height: 25.0,
+                        width: 25.0,
+                        child: Images.error,
+                      ),
+                      secondSide: Container(
+                        height: 25.0,
+                        width: 25.0,
+                        child: Images.success,
+                      ),
                     ),
                   ),
                 ),
                 AuthTextFormField(
+                  onTap: AuthPasswordController().onFocus,
                   hintText: 'Password',
                   textField: AuthTextField.password,
                   enableSuggestions: false,
@@ -49,6 +57,7 @@ class AuthForm extends StatelessWidget {
                       Get.put(AuthState()).authCredentialsModel.passwordOpacity,
                   initialValue:
                       Get.put(AuthState()).authCredentialsModel.password,
+                  onChanged: AuthPasswordController().onTappingPassword,
                 ),
                 AuthTextFormField(
                   hintText: 'Confirm Password',
@@ -64,6 +73,7 @@ class AuthForm extends StatelessWidget {
                       .confirmPasswordOpacity,
                   initialValue:
                       Get.put(AuthState()).authCredentialsModel.confirmPassword,
+                  onChanged: AuthPasswordController().onTappingConfirmPassword,
                 ),
               ],
             ),

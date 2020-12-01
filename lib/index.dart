@@ -25,7 +25,7 @@ export 'modules/auth/controllers/sign_up_user_info_controller.dart';
 export 'modules/auth/controllers/auth_controller.dart';
 export 'modules/auth/controllers/auth_form_controller.dart';
 export 'modules/auth/controllers/auth_email_controller.dart';
-export 'modules/auth/controllers/auth_passwords_controller.dart';
+export 'modules/auth/controllers/auth_password_controller.dart';
 
 export 'modules/common/models/logo_element_model.dart';
 export 'modules/chats/models/chat_model.dart';
@@ -78,6 +78,7 @@ export 'utilities/images.dart';
 export 'utilities/constants.dart';
 export 'utilities/custom_colors.dart';
 export 'utilities/enums.dart';
+export 'utilities/debouncer.dart';
 
 export 'modules/common/views/animated_logo.dart';
 export 'modules/common/views/search.dart';

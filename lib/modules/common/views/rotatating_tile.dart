@@ -19,6 +19,8 @@ class RotatingTile extends StatefulWidget {
 class _RotatingTileState extends State<RotatingTile> {
   double degree = 0;
   bool isOpened = false;
+  Timer openTimer;
+  Timer closeTimer;
 
   void initState() {
     widget.controller.showFirstSide = showFirstSide;
@@ -44,37 +46,44 @@ class _RotatingTileState extends State<RotatingTile> {
   }
 
   void showFirstSide() {
-    if (!isOpened) {
-      Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
+    if (openTimer != null && closeTimer != null) {
+      closeTimer.cancel();
+      openTimer.cancel();
+    }
+
+    openTimer = Timer.periodic(
+      widget.duration ?? Duration(milliseconds: 3),
+      (timer) {
+        isOpened = true;
+        widget.controller.isOpened = true;
         if (degree < pi) {
           if (this.mounted) setState(() => degree += pi / 100);
         } else {
-          setState(() => isOpened = true);
-          widget.controller.isOpened = true;
           timer.cancel();
         }
-      });
-    }
+      },
+    );
   }
 
   void showSecondSide() {
-    if (isOpened) {
-      Timer.periodic(widget.duration ?? Duration(milliseconds: 3), (timer) {
+    if (openTimer != null && closeTimer != null) {
+      closeTimer.cancel();
+      openTimer.cancel();
+    }
+
+    closeTimer = Timer.periodic(
+      widget.duration ?? Duration(milliseconds: 3),
+      (timer) {
+        isOpened = false;
         if (degree > 0) {
           if (this.mounted) setState(() => degree -= pi / 100);
         } else {
-          if (this.mounted) {
-            setState(() {
-              degree = 0;
-              isOpened = false;
-            });
-          }
-
+          if (this.mounted) degree = 0;
           widget.controller.isOpened = false;
           timer.cancel();
         }
-      });
-    }
+      },
+    );
   }
 
   void roll() {

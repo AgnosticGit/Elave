@@ -1,12 +1,20 @@
 import 'package:elave/index.dart';
 
 class AuthState extends GetxController {
-  AuthCredentialsModel authCredentialsModel = AuthCredentialsModel();
+  AuthCredentialsModel authCredentialsModel = AuthCredentialsModel(
+    passwordOpacity: 1.0,
+    confirmPasswordOpacity: 0.0,
+    confirmPasswordHeight: 0.0,
+    successMarkVisibility: false,
+  );
+  AuthFormModel formModel = AuthFormModel(
+    height: 200,
+    currentForm: AuthFormState.signIn,
+  );
   AuthErrorsModel errorsModel = AuthErrorsModel();
-  AuthFormModel formModel = AuthFormModel();
   final emailTileController = RotatingTileController();
-  final emailFocus = FocusNode();
-
+  final passwordTileController = RotatingTileController();
+  final passwordConfirmTileController = RotatingTileController();
 
   void mutateAuthCredentialsModel(AuthCredentialsModel newModel) {
     if (newModel.email != null) authCredentialsModel.email = newModel.email;
@@ -15,18 +23,10 @@ class AuthState extends GetxController {
     if (newModel.confirmPassword != null)
       authCredentialsModel.confirmPassword = newModel.confirmPassword;
 
-    if (newModel.passwordOpacity != null)
-      authCredentialsModel.passwordOpacity = newModel.passwordOpacity;
-    if (newModel.passwordHeight != null)
-      authCredentialsModel.passwordHeight = newModel.passwordHeight;
-    if (authCredentialsModel.confirmPasswordOpacity != null)
-      authCredentialsModel.confirmPasswordOpacity =
-          newModel.confirmPasswordOpacity;
-    if (authCredentialsModel.confirmPasswordHeight != null)
-      authCredentialsModel.confirmPasswordHeight =
-          newModel.confirmPasswordHeight;
-    if (authCredentialsModel.emailHadText != null)
-      authCredentialsModel.emailHadText = newModel.emailHadText;
+    if (newModel.successMarkVisibility != null)
+      authCredentialsModel.successMarkVisibility =
+          newModel.successMarkVisibility;
+
     update();
   }
 
@@ -60,3 +60,19 @@ class AuthState extends GetxController {
     update();
   }
 }
+
+
+// class BaseModel {
+//   var singletone;
+//   static void get() {
+//     return Get.put(ModelOne());
+//   }
+// }
+
+// class ModelOne extends BaseModel {
+//   var a = 20;
+// }
+
+// var model = ModelOne.get();
+// model.a = 10;
+// model.save();
