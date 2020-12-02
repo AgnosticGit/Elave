@@ -11,8 +11,8 @@ class AuthErrorsModel {
   List<dynamic> confirmPassword;
 
   AuthErrorsModel.fromJson(Map<String, dynamic> json) {
-    message = json['message'];
-    email = json['errors']['email'];
-    password = json['errors']['password'];
+    if (json['errors'] != null && json['errors']['email'] != null) {
+      email = json['errors']['email'];
+    }
   }
 }

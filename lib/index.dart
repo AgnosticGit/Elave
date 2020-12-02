@@ -33,6 +33,7 @@ export 'modules/messages/models/message_model.dart';
 export 'modules/auth/models/auth_errors_model.dart';
 export 'modules/auth/models/auth_form_model.dart';
 export 'modules/auth/models/auth_credentials_model.dart';
+export 'modules/auth/models/auth_email_validate_model.dart';
 
 export 'modules/auth/views/auth_screen.dart';
 export 'modules/auth/views/widgets/auth_form.dart';

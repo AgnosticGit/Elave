@@ -25,6 +25,7 @@ class AuthFormController {
     authState.credentials.passwordHeight = null;
     authState.credentials.confirmPasswordOpacity = 1.0;
     authState.credentials.confirmPasswordHeight = null;
+    
     authState.cleanErrors();
     authState.update();
   }

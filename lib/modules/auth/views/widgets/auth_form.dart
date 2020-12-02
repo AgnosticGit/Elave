@@ -2,11 +2,13 @@ import 'package:elave/index.dart';
 
 class AuthForm extends StatelessWidget {
   Widget build(BuildContext context) {
+    final authState = Get.put(AuthState());
+
     return AnimatedContainer(
       duration: Duration(milliseconds: 300),
       constraints: BoxConstraints(maxWidth: 500),
       margin: const EdgeInsets.symmetric(horizontal: 15.0),
-      height: Get.put(AuthState()).form.height,
+      height: authState.form.height,
       decoration: BoxDecoration(
         border: Border.all(color: CustomColors.blue2F),
         borderRadius: BorderRadius.circular(12.0),
@@ -24,12 +26,9 @@ class AuthForm extends StatelessWidget {
                   textField: AuthTextField.email,
                   onChanged: AuthEmailController().onTapping,
                   icon: Opacity(
-                    opacity:
-                        Get.put(AuthState()).credentials.successMarkVisibility
-                            ? 1.0
-                            : 0.0,
+                    opacity: authState.credentials.emailMarkOpacity,
                     child: RotatingTile(
-                      controller: Get.put(AuthState()).emailTileController,
+                      controller: authState.emailTileController,
                       firstSide: Container(
                         height: 25.0,
                         width: 25.0,
@@ -50,10 +49,26 @@ class AuthForm extends StatelessWidget {
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  height: Get.put(AuthState()).credentials.passwordHeight,
-                  opacity: Get.put(AuthState()).credentials.passwordOpacity,
-                  initialValue: Get.put(AuthState()).credentials.password,
+                  height: authState.credentials.passwordHeight,
+                  opacity: authState.credentials.passwordOpacity,
+                  initialValue: authState.credentials.password,
                   onChanged: AuthPasswordController().onTappingPassword,
+                  icon: Opacity(
+                    opacity: authState.credentials.passwordMarkOpacity,
+                    child: RotatingTile(
+                      controller: authState.passwordTileController,
+                      firstSide: Container(
+                        height: 25.0,
+                        width: 25.0,
+                        child: Images.error,
+                      ),
+                      secondSide: Container(
+                        height: 25.0,
+                        width: 25.0,
+                        child: Images.success,
+                      ),
+                    ),
+                  ),
                 ),
                 AuthTextFormField(
                   hintText: 'Confirm Password',
@@ -61,13 +76,26 @@ class AuthForm extends StatelessWidget {
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  height:
-                      Get.put(AuthState()).credentials.confirmPasswordHeight,
-                  opacity:
-                      Get.put(AuthState()).credentials.confirmPasswordOpacity,
-                  initialValue:
-                      Get.put(AuthState()).credentials.confirmPassword,
+                  height: authState.credentials.confirmPasswordHeight,
+                  opacity: authState.credentials.confirmPasswordOpacity,
+                  initialValue: authState.credentials.confirmPassword,
                   onChanged: AuthPasswordController().onTappingConfirmPassword,
+                  icon: Opacity(
+                    opacity: authState.credentials.confirmPasswordMarkOpacity,
+                    child: RotatingTile(
+                      controller: authState.passwordConfirmTileController,
+                      firstSide: Container(
+                        height: 25.0,
+                        width: 25.0,
+                        child: Images.error,
+                      ),
+                      secondSide: Container(
+                        height: 25.0,
+                        width: 25.0,
+                        child: Images.success,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -81,7 +109,7 @@ class AuthForm extends StatelessWidget {
               child: FlatButton(
                 onPressed: AuthController().onTapSignIn,
                 color: _buildButtonColor(
-                  Get.put(AuthState()).form.currentForm == AuthFormState.signIn,
+                  authState.form.currentForm == AuthFormState.signIn,
                 ),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(color: CustomColors.blue2F),
@@ -106,8 +134,7 @@ class AuthForm extends StatelessWidget {
               child: FlatButton(
                 onPressed: AuthController().onTapRecoveryAccount,
                 color: _buildButtonColor(
-                  Get.put(AuthState()).form.currentForm ==
-                      AuthFormState.recovery,
+                  authState.form.currentForm == AuthFormState.recovery,
                 ),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(color: CustomColors.blue2F),
@@ -132,7 +159,7 @@ class AuthForm extends StatelessWidget {
               child: FlatButton(
                 onPressed: AuthController().onTapSignUp,
                 color: _buildButtonColor(
-                  Get.put(AuthState()).form.currentForm == AuthFormState.signUp,
+                  authState.form.currentForm == AuthFormState.signUp,
                 ),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(color: CustomColors.blue2F),

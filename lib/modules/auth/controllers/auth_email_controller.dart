@@ -8,7 +8,7 @@ class AuthEmailController {
     authState.credentials.email = text;
 
     if (text.length == 0) {
-      hideSuccessMark();
+      hideMark();
     } else {
       checkErrorsWithDebounce();
     }
@@ -21,7 +21,7 @@ class AuthEmailController {
     final authState = Get.put(AuthState());
 
     if (authState.debounce != null) authState.debounce.cancel();
-    
+
     authState.debounce = Timer.periodic(Duration(seconds: 1), (timer) {
       if (timer.tick == 1) {
         if (authState.credentials.email.length != 0) {
@@ -34,41 +34,44 @@ class AuthEmailController {
 
   void checkErrors(String text) async {
     final authState = Get.put(AuthState());
-    bool isEmailValide = await validateEmailOnServer(text);
 
-    showSuccessMark();
+    await validateEmailOnServer(text);
+    showMark();
 
-    if (text.length > 0 && isEmailValide) {
+    if (text.length > 0 && authState.credentials.isEmailValid) {
       authState.emailTileController.showFirstSide();
     } else {
       authState.emailTileController.showSecondSide();
     }
   }
 
-  Future<bool> validateEmailOnServer(String text) async {
-    var response;
+  Future validateEmailOnServer(String text) async {
+    final authState = Get.put(AuthState());
+
     try {
-      response = await Api(route: '/auth/validation/email').post(body: {
+      var response = await Api(route: '/auth/validation/email').post(body: {
         "email": text,
       });
-    } catch (errors) {}
-    return response['success'];
+      authState.credentials.isEmailValid = response['data']['isEmailValid'];
+    } catch (errors) {
+      authState.errors = AuthErrorsModel.fromJson(errors);
+    }
   }
 
   void onTapToAnotherField() {
     final authState = Get.put(AuthState());
-    if (authState.credentials.email != null) showSuccessMark();
+    if (authState.credentials.email != null) showMark();
   }
 
-  void showSuccessMark() {
+  void showMark() {
     final authState = Get.put(AuthState());
-    authState.credentials.successMarkVisibility = true;
+    authState.credentials.emailMarkOpacity = 1.0;
     authState.update();
   }
 
-  void hideSuccessMark() {
+  void hideMark() {
     final authState = Get.put(AuthState());
-    authState.credentials.successMarkVisibility = false;
+    authState.credentials.emailMarkOpacity = 0.0;
     authState.update();
   }
 }
