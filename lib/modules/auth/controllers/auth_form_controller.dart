@@ -3,39 +3,43 @@ import 'package:elave/modules/auth/models/auth_form_model.dart';
 
 class AuthFormController {
   void setSignInForm() {
-    final newAuthModel = AuthFormModel(
-      height: 200,
-      currentForm: AuthFormState.signIn,
-    );
     final authState = Get.put(AuthState());
 
+    authState.form.currentForm = AuthFormState.signIn;
+    authState.form.height = 200;
+    authState.credentials.passwordOpacity = 1.0;
+    authState.credentials.passwordHeight = null;
+    authState.credentials.confirmPasswordOpacity = 0.0;
+    authState.credentials.confirmPasswordHeight = 0.0;
+
     authState.cleanErrors();
-    authState.mutateAuthCredentialsView(1.0, null, 0.0, 0.0);
-    authState.mutateFormModel(newAuthModel);
+    authState.update();
   }
 
   void setSignUpForm() {
-    final newAuthModel = AuthFormModel(
-      height: 250,
-      currentForm: AuthFormState.signUp,
-    );
     final authState = Get.put(AuthState());
 
+    authState.form.currentForm = AuthFormState.signUp;
+    authState.form.height = 250;
+    authState.credentials.passwordOpacity = 1.0;
+    authState.credentials.passwordHeight = null;
+    authState.credentials.confirmPasswordOpacity = 1.0;
+    authState.credentials.confirmPasswordHeight = null;
     authState.cleanErrors();
-    authState.mutateAuthCredentialsView(1.0, null, 1.0, null);
-    authState.mutateFormModel(newAuthModel);
+    authState.update();
   }
 
   void setRecoveryForm() {
-    final newAuthModel = AuthFormModel(
-      height: 140,
-      currentForm: AuthFormState.recovery,
-    );
-
     final authState = Get.put(AuthState());
 
+    authState.form.currentForm = AuthFormState.recovery;
+    authState.form.height = 140;
+    authState.credentials.passwordOpacity = 0.0;
+    authState.credentials.passwordHeight = 0.0;
+    authState.credentials.confirmPasswordOpacity = 0.0;
+    authState.credentials.confirmPasswordHeight = 0.0;
+
     authState.cleanErrors();
-    authState.mutateFormModel(newAuthModel);
-    authState.mutateAuthCredentialsView(0.0, 0.0, 0.0, 0.0);
+    authState.update();
   }
 }

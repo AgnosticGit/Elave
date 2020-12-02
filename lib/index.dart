@@ -78,7 +78,6 @@ export 'utilities/images.dart';
 export 'utilities/constants.dart';
 export 'utilities/custom_colors.dart';
 export 'utilities/enums.dart';
-export 'utilities/debouncer.dart';
 
 export 'modules/common/views/animated_logo.dart';
 export 'modules/common/views/search.dart';

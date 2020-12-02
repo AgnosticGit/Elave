@@ -6,16 +6,16 @@ class AuthController {
   }
 
   void signUp() async {
-    final logoController = Get.put(LogoController());
     final authState = Get.put(AuthState());
+    final logoController = Get.put(LogoController());
     final authFormController = Get.put(AuthFormController());
 
     logoController.onLoadingStarted();
     try {
       final response = await Api(route: "/auth/registration").post(
         body: {
-          "email": authState.authCredentialsModel.email,
-          "password": authState.authCredentialsModel.password,
+          "email": authState.credentials.email,
+          "password": authState.credentials.password,
         },
       );
       print(response);
@@ -23,7 +23,8 @@ class AuthController {
       authFormController.setSignUpForm();
     } catch (errors) {
       print(errors);
-      // authState.mutateErrors(AuthErrorsModel.fromJson(errors));
+      authState.errors = AuthErrorsModel.fromJson(errors);
+      authState.update();
     }
     logoController.onLoadingFinished();
   }
@@ -36,7 +37,7 @@ class AuthController {
     final authState = Get.put(AuthState());
     final authFormController = AuthFormController();
 
-    if (authState.formModel.currentForm == AuthFormState.signIn) {
+    if (authState.form.currentForm == AuthFormState.signIn) {
       signIn();
     } else {
       authFormController.setSignInForm();
@@ -47,7 +48,7 @@ class AuthController {
     final authState = Get.put(AuthState());
     final authFormController = AuthFormController();
 
-    if (authState.formModel.currentForm == AuthFormState.signUp) {
+    if (authState.form.currentForm == AuthFormState.signUp) {
       signUp();
     } else {
       authFormController.setSignUpForm();
@@ -58,7 +59,7 @@ class AuthController {
     final authState = Get.put(AuthState());
     final authFormController = AuthFormController();
 
-    if (authState.formModel.currentForm == AuthFormState.recovery) {
+    if (authState.form.currentForm == AuthFormState.recovery) {
       recoveryAccount();
     } else {
       authFormController.setRecoveryForm();

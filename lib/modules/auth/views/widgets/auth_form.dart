@@ -6,7 +6,7 @@ class AuthForm extends StatelessWidget {
       duration: Duration(milliseconds: 300),
       constraints: BoxConstraints(maxWidth: 500),
       margin: const EdgeInsets.symmetric(horizontal: 15.0),
-      height: Get.put(AuthState()).formModel.height,
+      height: Get.put(AuthState()).form.height,
       decoration: BoxDecoration(
         border: Border.all(color: CustomColors.blue2F),
         borderRadius: BorderRadius.circular(12.0),
@@ -24,11 +24,10 @@ class AuthForm extends StatelessWidget {
                   textField: AuthTextField.email,
                   onChanged: AuthEmailController().onTapping,
                   icon: Opacity(
-                    opacity: Get.put(AuthState())
-                            .authCredentialsModel
-                            .successMarkVisibility
-                        ? 1.0
-                        : 0.0,
+                    opacity:
+                        Get.put(AuthState()).credentials.successMarkVisibility
+                            ? 1.0
+                            : 0.0,
                     child: RotatingTile(
                       controller: Get.put(AuthState()).emailTileController,
                       firstSide: Container(
@@ -51,12 +50,9 @@ class AuthForm extends StatelessWidget {
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  height:
-                      Get.put(AuthState()).authCredentialsModel.passwordHeight,
-                  opacity:
-                      Get.put(AuthState()).authCredentialsModel.passwordOpacity,
-                  initialValue:
-                      Get.put(AuthState()).authCredentialsModel.password,
+                  height: Get.put(AuthState()).credentials.passwordHeight,
+                  opacity: Get.put(AuthState()).credentials.passwordOpacity,
+                  initialValue: Get.put(AuthState()).credentials.password,
                   onChanged: AuthPasswordController().onTappingPassword,
                 ),
                 AuthTextFormField(
@@ -65,14 +61,12 @@ class AuthForm extends StatelessWidget {
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  height: Get.put(AuthState())
-                      .authCredentialsModel
-                      .confirmPasswordHeight,
-                  opacity: Get.put(AuthState())
-                      .authCredentialsModel
-                      .confirmPasswordOpacity,
+                  height:
+                      Get.put(AuthState()).credentials.confirmPasswordHeight,
+                  opacity:
+                      Get.put(AuthState()).credentials.confirmPasswordOpacity,
                   initialValue:
-                      Get.put(AuthState()).authCredentialsModel.confirmPassword,
+                      Get.put(AuthState()).credentials.confirmPassword,
                   onChanged: AuthPasswordController().onTappingConfirmPassword,
                 ),
               ],
@@ -87,8 +81,7 @@ class AuthForm extends StatelessWidget {
               child: FlatButton(
                 onPressed: AuthController().onTapSignIn,
                 color: _buildButtonColor(
-                  Get.put(AuthState()).formModel.currentForm ==
-                      AuthFormState.signIn,
+                  Get.put(AuthState()).form.currentForm == AuthFormState.signIn,
                 ),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(color: CustomColors.blue2F),
@@ -113,7 +106,7 @@ class AuthForm extends StatelessWidget {
               child: FlatButton(
                 onPressed: AuthController().onTapRecoveryAccount,
                 color: _buildButtonColor(
-                  Get.put(AuthState()).formModel.currentForm ==
+                  Get.put(AuthState()).form.currentForm ==
                       AuthFormState.recovery,
                 ),
                 shape: RoundedRectangleBorder(
@@ -139,8 +132,7 @@ class AuthForm extends StatelessWidget {
               child: FlatButton(
                 onPressed: AuthController().onTapSignUp,
                 color: _buildButtonColor(
-                  Get.put(AuthState()).formModel.currentForm ==
-                      AuthFormState.signUp,
+                  Get.put(AuthState()).form.currentForm == AuthFormState.signUp,
                 ),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(color: CustomColors.blue2F),

@@ -3,11 +3,11 @@ class AuthCredentialsModel {
     this.email,
     this.password,
     this.confirmPassword,
-    this.passwordOpacity,
+    this.passwordOpacity = 1.0,
     this.passwordHeight,
-    this.confirmPasswordOpacity,
-    this.confirmPasswordHeight,
-    this.successMarkVisibility,
+    this.confirmPasswordOpacity = 0.0,
+    this.confirmPasswordHeight = 0.0,
+    this.successMarkVisibility = false,
   });
 
   String email;

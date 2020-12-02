@@ -1,6 +1,6 @@
 import 'package:elave/index.dart';
 
-class AuthPasswordController extends GetxController {
+class AuthPasswordController {
   void onFocus() {
     AuthEmailController().onTapToAnotherField();
   }
@@ -8,20 +8,20 @@ class AuthPasswordController extends GetxController {
   void onTappingPassword(String text) {
     final logoController = Get.put(LogoController());
     final authState = Get.put(AuthState());
-    final authModel = AuthCredentialsModel(password: text);
 
-    authState.mutateAuthCredentialsModel(authModel);
+    authState.credentials.email = text;
+
     logoController.shuffle();
+    authState.update();
   }
 
   void onTappingConfirmPassword(String text) {
     final logoController = Get.put(LogoController());
     final authState = Get.put(AuthState());
-    final authModel = AuthCredentialsModel(confirmPassword: text);
 
-    authState.mutateAuthCredentialsModel(authModel);
+    authState.credentials.confirmPassword = text;
+
     logoController.shuffle();
+    authState.update();
   }
-
-  
 }
