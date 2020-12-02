@@ -2,17 +2,13 @@ import 'package:elave/index.dart';
 
 class AuthEmailController {
   void onTapping(String text) {
-    final logoController = Get.put(LogoController());
     final authState = Get.put(AuthState());
+    final currentForm = authState.form.currentForm;
+    final logoController = Get.put(LogoController());
 
     authState.credentials.email = text;
 
-    if (text.length == 0) {
-      hideMark();
-    } else {
-      checkErrorsWithDebounce();
-    }
-
+    if (currentForm == AuthFormState.signUp) checkErrorsWithDebounce();
     logoController.shuffle();
     authState.update();
   }
@@ -24,24 +20,24 @@ class AuthEmailController {
 
     authState.debounce = Timer.periodic(Duration(seconds: 1), (timer) {
       if (timer.tick == 1) {
-        if (authState.credentials.email.length != 0) {
-          checkErrors(authState.credentials.email);
-        }
+        checkErrors();
+
         timer.cancel();
       }
     });
   }
 
-  void checkErrors(String text) async {
+  void checkErrors() async {
     final authState = Get.put(AuthState());
 
-    await validateEmailOnServer(text);
+    await validateEmailOnServer(authState.credentials.email);
     showMark();
 
-    if (text.length > 0 && authState.credentials.isEmailValid) {
-      authState.emailTileController.showFirstSide();
-    } else {
+    if (authState.credentials.email.length > 0 &&
+        authState.credentials.isEmailValid) {
       authState.emailTileController.showSecondSide();
+    } else {
+      authState.emailTileController.showFirstSide();
     }
   }
 
@@ -65,7 +61,10 @@ class AuthEmailController {
 
   void showMark() {
     final authState = Get.put(AuthState());
-    authState.credentials.emailMarkOpacity = 1.0;
+
+    if (authState.form.currentForm == AuthFormState.signUp) {
+      authState.credentials.emailMarkOpacity = 1.0;
+    }
     authState.update();
   }
 

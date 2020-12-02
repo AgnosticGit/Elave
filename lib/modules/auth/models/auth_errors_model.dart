@@ -7,8 +7,8 @@ class AuthErrorsModel {
 
   String message;
   List<dynamic> email;
-  List<dynamic> password;
-  List<dynamic> confirmPassword;
+  String password;
+  String confirmPassword;
 
   AuthErrorsModel.fromJson(Map<String, dynamic> json) {
     if (json['errors'] != null && json['errors']['email'] != null) {

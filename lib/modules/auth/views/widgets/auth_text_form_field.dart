@@ -6,7 +6,6 @@ class AuthTextFormField extends StatelessWidget {
     this.textField,
     this.initialValue,
     this.opacity = 1,
-    this.height,
     this.enableSuggestions = true,
     this.autocorrect = true,
     this.obscureText = false,
@@ -14,13 +13,13 @@ class AuthTextFormField extends StatelessWidget {
     this.onChanged,
     this.focusNode,
     this.onTap,
+    this.visible = true,
   });
 
   final String hintText;
   final AuthTextField textField;
   final String initialValue;
   final double opacity;
-  final double height;
   final bool enableSuggestions;
   final bool autocorrect;
   final bool obscureText;
@@ -28,14 +27,15 @@ class AuthTextFormField extends StatelessWidget {
   final Function(String) onChanged;
   final FocusNode focusNode;
   final Function onTap;
+  final bool visible;
 
   Widget build(BuildContext contet) {
     return AnimatedOpacity(
       opacity: opacity,
       duration: Duration(milliseconds: 300),
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
-        height: height,
+      child: Visibility(
+        visible: visible,
+        maintainState: true,
         child: Stack(
           children: [
             TextFormField(

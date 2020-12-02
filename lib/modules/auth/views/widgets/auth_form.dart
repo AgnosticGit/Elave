@@ -25,7 +25,8 @@ class AuthForm extends StatelessWidget {
                   hintText: 'E-mail',
                   textField: AuthTextField.email,
                   onChanged: AuthEmailController().onTapping,
-                  icon: Opacity(
+                  icon: AnimatedOpacity(
+                    duration: Duration(milliseconds: 300),
                     opacity: authState.credentials.emailMarkOpacity,
                     child: RotatingTile(
                       controller: authState.emailTileController,
@@ -43,17 +44,18 @@ class AuthForm extends StatelessWidget {
                   ),
                 ),
                 AuthTextFormField(
+                  visible: authState.credentials.passwordVisibility,
                   onTap: AuthPasswordController().onFocus,
                   hintText: 'Password',
                   textField: AuthTextField.password,
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  height: authState.credentials.passwordHeight,
                   opacity: authState.credentials.passwordOpacity,
                   initialValue: authState.credentials.password,
                   onChanged: AuthPasswordController().onTappingPassword,
-                  icon: Opacity(
+                  icon: AnimatedOpacity(
+                    duration: Duration(milliseconds: 300),
                     opacity: authState.credentials.passwordMarkOpacity,
                     child: RotatingTile(
                       controller: authState.passwordTileController,
@@ -71,19 +73,21 @@ class AuthForm extends StatelessWidget {
                   ),
                 ),
                 AuthTextFormField(
+                  visible: authState.credentials.confirmPasswordVisibility,
+                  onTap: AuthPasswordController().onTapConfirmPassword,
                   hintText: 'Confirm Password',
                   textField: AuthTextField.confirmPassword,
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  height: authState.credentials.confirmPasswordHeight,
                   opacity: authState.credentials.confirmPasswordOpacity,
                   initialValue: authState.credentials.confirmPassword,
                   onChanged: AuthPasswordController().onTappingConfirmPassword,
-                  icon: Opacity(
+                  icon: AnimatedOpacity(
+                    duration: Duration(milliseconds: 300),
                     opacity: authState.credentials.confirmPasswordMarkOpacity,
                     child: RotatingTile(
-                      controller: authState.passwordConfirmTileController,
+                      controller: authState.confirmPasswordTileController,
                       firstSide: Container(
                         height: 25.0,
                         width: 25.0,

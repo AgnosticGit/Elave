@@ -5,9 +5,9 @@ class AuthCredentialsModel {
     this.confirmPassword,
     this.isEmailValid = false,
     this.passwordOpacity = 1.0,
-    this.passwordHeight,
     this.confirmPasswordOpacity = 0.0,
-    this.confirmPasswordHeight = 0.0,
+    this.passwordVisibility = true,
+    this.confirmPasswordVisibility = false,
     this.emailMarkOpacity = 0.0,
     this.passwordMarkOpacity = 0.0,
     this.confirmPasswordMarkOpacity = 0.0,
@@ -19,10 +19,10 @@ class AuthCredentialsModel {
 
   bool isEmailValid;
 
+  bool passwordVisibility;
+  bool confirmPasswordVisibility;
   double passwordOpacity;
-  double passwordHeight;
   double confirmPasswordOpacity;
-  double confirmPasswordHeight;
 
   double emailMarkOpacity;
   double passwordMarkOpacity;

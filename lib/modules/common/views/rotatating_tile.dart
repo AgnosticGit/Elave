@@ -45,7 +45,7 @@ class _RotatingTileState extends State<RotatingTile> {
     );
   }
 
-  void showFirstSide() {
+  void showSecondSide() {
     if (openTimer != null && closeTimer != null) {
       closeTimer.cancel();
       openTimer.cancel();
@@ -65,7 +65,7 @@ class _RotatingTileState extends State<RotatingTile> {
     );
   }
 
-  void showSecondSide() {
+  void showFirstSide() {
     if (openTimer != null && closeTimer != null) {
       closeTimer.cancel();
       openTimer.cancel();
