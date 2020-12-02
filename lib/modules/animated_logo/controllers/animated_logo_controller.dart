@@ -1,7 +1,7 @@
 import 'package:elave/index.dart';
 
-class LogoController extends GetxController {
-  LogoController({this.logoSize});
+class AnimatedLogoController extends GetxController {
+  AnimatedLogoController({this.logoSize});
 
   double logoSize;
   bool started = false;

@@ -6,8 +6,8 @@ class AnimatedLogo extends StatelessWidget {
   final double logoSize;
 
   Widget build(BuildContext context) {
-    return GetBuilder<LogoController>(
-      init: LogoController(logoSize: logoSize),
+    return GetBuilder<AnimatedLogoController>(
+      init: AnimatedLogoController(logoSize: logoSize),
       builder: (logoController) {
         return Container(
           width: logoController.logoSize,
@@ -72,7 +72,7 @@ class AnimatedLogo extends StatelessWidget {
   }
 
   AnimatedPositioned _buildLogoElement(
-    LogoController logoController,
+    AnimatedLogoController logoController,
     LogoElementModel logoElement,
   ) {
     return AnimatedPositioned(

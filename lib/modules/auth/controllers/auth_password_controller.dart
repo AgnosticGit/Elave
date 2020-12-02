@@ -6,7 +6,7 @@ class AuthPasswordController {
   }
 
   void onTappingPassword(String text) {
-    final logoController = Get.put(LogoController());
+    final logoController = Get.put(AnimatedLogoController());
     final authState = Get.put(AuthState());
 
     authState.credentials.password = text;
@@ -21,7 +21,7 @@ class AuthPasswordController {
   }
 
   void onTappingConfirmPassword(String text) {
-    final logoController = Get.put(LogoController());
+    final logoController = Get.put(AnimatedLogoController());
     final authState = Get.put(AuthState());
 
     authState.credentials.confirmPassword = text;

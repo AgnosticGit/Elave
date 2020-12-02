@@ -2,12 +2,12 @@ import 'package:elave/index.dart';
 
 class AuthController {
   void signIn() {
-    Get.put(LogoController()).onLoadingStarted();
+    Get.put(AnimatedLogoController()).onLoadingStarted();
   }
 
   void signUp() async {
     final authState = Get.put(AuthState());
-    final logoController = Get.put(LogoController());
+    final logoController = Get.put(AnimatedLogoController());
     final authFormController = Get.put(AuthFormController());
 
     logoController.onLoadingStarted();
@@ -30,7 +30,7 @@ class AuthController {
   }
 
   void recoveryAccount() {
-    Get.put(LogoController()).onLoadingStarted();
+    Get.put(AnimatedLogoController()).onLoadingStarted();
   }
 
   void onTapSignIn() {

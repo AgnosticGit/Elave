@@ -53,7 +53,7 @@ class AuthFormController {
     final authState = Get.put(AuthState());
 
     authState.form.currentForm = AuthFormState.recovery;
-    authState.form.height = 150;
+    authState.form.height = 140;
     authState.credentials.passwordOpacity = 0.0;
     authState.credentials.confirmPasswordOpacity = 0.0;
     authState.credentials.passwordVisibility = false;

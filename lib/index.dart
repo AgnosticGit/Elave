@@ -9,7 +9,7 @@ export 'package:get/get.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:elave/network/api.dart';
 
-export 'modules/common/controllers/logo_controller.dart';
+export 'modules/animated_logo/controllers/animated_logo_controller.dart';
 export 'modules/chats/controllers/appbar_with_search_controller.dart';
 export 'modules/main/controllers/bottom_bar_controller.dart';
 export 'modules/chats/controllers/chats_controller.dart';
@@ -27,12 +27,13 @@ export 'modules/auth/controllers/auth_form_controller.dart';
 export 'modules/auth/controllers/auth_email_controller.dart';
 export 'modules/auth/controllers/auth_password_controller.dart';
 
-export 'modules/common/models/logo_element_model.dart';
+export 'modules/animated_logo/models/logo_element_model.dart';
 export 'modules/chats/models/chat_model.dart';
 export 'modules/messages/models/message_model.dart';
 export 'modules/auth/models/auth_errors_model.dart';
 export 'modules/auth/models/auth_form_model.dart';
 export 'modules/auth/models/auth_credentials_model.dart';
+export 'modules/animated_logo/models/animated_logo_model.dart';
 
 export 'modules/auth/views/auth_screen.dart';
 export 'modules/auth/views/widgets/auth_form.dart';
@@ -79,13 +80,13 @@ export 'utilities/constants.dart';
 export 'utilities/custom_colors.dart';
 export 'utilities/enums.dart';
 
-export 'modules/common/views/animated_logo.dart';
+export 'modules/animated_logo/views/animated_logo.dart';
 export 'modules/common/views/search.dart';
 export 'modules/common/views/custom_appbar.dart';
 export 'modules/common/views/bottom_bar.dart';
 export 'modules/common/views/rotatating_tile.dart';
 export 'modules/common/views/blurred.dart';
-export 'modules/common/views/animated_logo.dart';
+export 'modules/animated_logo/views/animated_logo.dart';
 
 export 'states/auth_state.dart';
 export 'states/chats_state.dart';

@@ -4,7 +4,7 @@ class AuthEmailController {
   void onTapping(String text) {
     final authState = Get.put(AuthState());
     final currentForm = authState.form.currentForm;
-    final logoController = Get.put(LogoController());
+    final logoController = Get.put(AnimatedLogoController());
 
     authState.credentials.email = text;
 
