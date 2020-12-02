@@ -29,27 +29,30 @@ class AuthEmailController {
 
   void checkErrors() async {
     final authState = Get.put(AuthState());
+    final credentials = authState.credentials;
 
-    await validateEmailOnServer(authState.credentials.email);
-    showMark();
+    await validateEmailOnServer();
 
-    if (authState.credentials.email.length > 0 &&
-        authState.credentials.isEmailValid) {
-      authState.emailTileController.showSecondSide();
-    } else {
-      authState.emailTileController.showFirstSide();
+    if (credentials.email != null) {
+      showMark();
+      if (credentials.email.length > 0 && credentials.isEmailValid) {
+        authState.emailTileController.showSecondSide();
+      } else {
+        authState.emailTileController.showFirstSide();
+      }
     }
   }
 
-  Future validateEmailOnServer(String text) async {
+  Future validateEmailOnServer() async {
     final authState = Get.put(AuthState());
 
     try {
       var response = await Api(route: '/auth/validation/email').post(body: {
-        "email": text,
+        "email": authState.credentials.email ?? '',
       });
       authState.credentials.isEmailValid = response['data']['isEmailValid'];
     } catch (errors) {
+      authState.credentials.isEmailValid = false;
       authState.errors = AuthErrorsModel.fromJson(errors);
     }
   }

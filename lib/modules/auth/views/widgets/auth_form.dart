@@ -19,7 +19,7 @@ class AuthForm extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
               children: [
-                const SizedBox(height: 25.0),
+                const SizedBox(height: 30.0),
                 AuthTextFormField(
                   autocorrect: false,
                   hintText: 'E-mail',

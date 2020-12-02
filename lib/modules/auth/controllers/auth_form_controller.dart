@@ -33,7 +33,7 @@ class AuthFormController {
     if (credentials.email != null) {
       authState.credentials.emailMarkOpacity = 1.0;
     }
-    
+
     if (credentials.password != null) {
       authState.credentials.passwordMarkOpacity = 1.0;
     }
@@ -41,7 +41,10 @@ class AuthFormController {
     if (credentials.confirmPassword != null) {
       authState.credentials.confirmPasswordMarkOpacity = 1.0;
     }
-
+    
+    AuthEmailController().checkErrors();
+    AuthPasswordController().checkPasswordErrors();
+    AuthPasswordController().checkConfirmPasswordErrors();
     authState.cleanErrors();
     authState.update();
   }
@@ -50,7 +53,7 @@ class AuthFormController {
     final authState = Get.put(AuthState());
 
     authState.form.currentForm = AuthFormState.recovery;
-    authState.form.height = 140;
+    authState.form.height = 150;
     authState.credentials.passwordOpacity = 0.0;
     authState.credentials.confirmPasswordOpacity = 0.0;
     authState.credentials.passwordVisibility = false;
