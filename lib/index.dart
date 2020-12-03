@@ -24,8 +24,7 @@ export 'modules/common/controllers/rotating_tile_controller.dart';
 export 'modules/auth/controllers/sign_up_user_info_controller.dart';
 export 'modules/auth/controllers/auth_controller.dart';
 export 'modules/auth/controllers/auth_form_controller.dart';
-export 'modules/auth/controllers/auth_email_controller.dart';
-export 'modules/auth/controllers/auth_password_controller.dart';
+export 'modules/auth/controllers/auth_marks_controller.dart';
 
 export 'modules/animated_logo/models/logo_element_model.dart';
 export 'modules/chats/models/chat_model.dart';
@@ -87,6 +86,8 @@ export 'modules/common/views/bottom_bar.dart';
 export 'modules/common/views/rotatating_tile.dart';
 export 'modules/common/views/blurred.dart';
 export 'modules/animated_logo/views/animated_logo.dart';
+
+export 'services/validation_service.dart';
 
 export 'states/auth_state.dart';
 export 'states/chats_state.dart';

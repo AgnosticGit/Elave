@@ -1,6 +1,8 @@
 import 'package:elave/index.dart';
 
 class AuthState extends GetxController {
+  static AuthState get to => Get.put(AuthState());
+
   AuthCredentialsModel credentials = AuthCredentialsModel();
   AuthFormModel form = AuthFormModel();
   AuthErrorsModel errors = AuthErrorsModel();
@@ -11,7 +13,5 @@ class AuthState extends GetxController {
 
   Timer debounce;
 
-  void cleanErrors() {
-    errors = AuthErrorsModel();
-  }
+  void cleanErrors() => errors = AuthErrorsModel();
 }

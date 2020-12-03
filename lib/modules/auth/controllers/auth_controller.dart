@@ -6,27 +6,25 @@ class AuthController {
   }
 
   void signUp() async {
-    final authState = Get.put(AuthState());
-    final logoController = Get.put(AnimatedLogoController());
-    final authFormController = Get.put(AuthFormController());
+    Get.put(AnimatedLogoController()).onLoadingStarted();
 
-    logoController.onLoadingStarted();
     try {
       final response = await Api(route: "/auth/registration").post(
         body: {
-          "email": authState.credentials.email,
-          "password": authState.credentials.password,
+          "email": AuthState.to.credentials.email,
+          "password": AuthState.to.credentials.password,
         },
       );
       print(response);
-      authState.cleanErrors();
-      authFormController.setSignUpForm();
+      AuthState.to.cleanErrors();
+      AuthFormController().setSignUpForm();
     } catch (errors) {
       print(errors);
-      authState.errors = AuthErrorsModel.fromJson(errors);
-      authState.update();
+      AuthState.to.errors = AuthErrorsModel.fromJson(errors);
+      AuthState.to.update();
     }
-    logoController.onLoadingFinished();
+    
+    Get.put(AnimatedLogoController()).onLoadingFinished();
   }
 
   void recoveryAccount() {
@@ -34,10 +32,9 @@ class AuthController {
   }
 
   void onTapSignIn() {
-    final authState = Get.put(AuthState());
     final authFormController = AuthFormController();
 
-    if (authState.form.currentForm == AuthFormState.signIn) {
+    if (AuthState.to.form.currentForm == AuthFormState.signIn) {
       signIn();
     } else {
       authFormController.setSignInForm();
@@ -45,10 +42,9 @@ class AuthController {
   }
 
   void onTapSignUp() {
-    final authState = Get.put(AuthState());
     final authFormController = AuthFormController();
 
-    if (authState.form.currentForm == AuthFormState.signUp) {
+    if (AuthState.to.form.currentForm == AuthFormState.signUp) {
       signUp();
     } else {
       authFormController.setSignUpForm();
@@ -56,10 +52,9 @@ class AuthController {
   }
 
   void onTapRecoveryAccount() {
-    final authState = Get.put(AuthState());
     final authFormController = AuthFormController();
 
-    if (authState.form.currentForm == AuthFormState.recovery) {
+    if (AuthState.to.form.currentForm == AuthFormState.recovery) {
       recoveryAccount();
     } else {
       authFormController.setRecoveryForm();

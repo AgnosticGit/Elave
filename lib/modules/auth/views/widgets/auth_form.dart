@@ -1,14 +1,13 @@
 import 'package:elave/index.dart';
+import 'package:elave/modules/auth/controllers/auth_credentials_controller.dart';
 
 class AuthForm extends StatelessWidget {
   Widget build(BuildContext context) {
-    final authState = Get.put(AuthState());
-
     return AnimatedContainer(
       duration: Duration(milliseconds: 300),
       constraints: BoxConstraints(maxWidth: 500),
       margin: const EdgeInsets.symmetric(horizontal: 15.0),
-      height: authState.form.height,
+      height: AuthState.to.form.height,
       decoration: BoxDecoration(
         border: Border.all(color: CustomColors.blue2F),
         borderRadius: BorderRadius.circular(12.0),
@@ -24,12 +23,12 @@ class AuthForm extends StatelessWidget {
                   autocorrect: false,
                   hintText: 'E-mail',
                   textField: AuthTextField.email,
-                  onChanged: AuthEmailController().onTapping,
+                  onChanged: AuthCredentialsController().onTappingEmail,
                   icon: AnimatedOpacity(
                     duration: Duration(milliseconds: 300),
-                    opacity: authState.credentials.emailMarkOpacity,
+                    opacity: AuthState.to.credentials.emailMarkOpacity,
                     child: RotatingTile(
-                      controller: authState.emailTileController,
+                      controller: AuthState.to.emailTileController,
                       firstSide: Container(
                         height: 25.0,
                         width: 25.0,
@@ -44,21 +43,21 @@ class AuthForm extends StatelessWidget {
                   ),
                 ),
                 AuthTextFormField(
-                  visible: authState.credentials.passwordVisibility,
-                  onTap: AuthPasswordController().onFocus,
+                  visible: AuthState.to.credentials.passwordVisibility,
+                  onTap: AuthCredentialsController().onTapPassword,
                   hintText: 'Password',
                   textField: AuthTextField.password,
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  opacity: authState.credentials.passwordOpacity,
-                  initialValue: authState.credentials.password,
-                  onChanged: AuthPasswordController().onTappingPassword,
+                  opacity: AuthState.to.credentials.passwordOpacity,
+                  initialValue: AuthState.to.credentials.password,
+                  onChanged: AuthCredentialsController().onTappingPassword,
                   icon: AnimatedOpacity(
                     duration: Duration(milliseconds: 300),
-                    opacity: authState.credentials.passwordMarkOpacity,
+                    opacity: AuthState.to.credentials.passwordMarkOpacity,
                     child: RotatingTile(
-                      controller: authState.passwordTileController,
+                      controller: AuthState.to.passwordTileController,
                       firstSide: Container(
                         height: 25.0,
                         width: 25.0,
@@ -73,21 +72,23 @@ class AuthForm extends StatelessWidget {
                   ),
                 ),
                 AuthTextFormField(
-                  visible: authState.credentials.confirmPasswordVisibility,
-                  onTap: AuthPasswordController().onTapConfirmPassword,
+                  visible: AuthState.to.credentials.confirmPasswordVisibility,
+                  onTap: AuthCredentialsController().checkPasswordErrors,
                   hintText: 'Confirm Password',
                   textField: AuthTextField.confirmPassword,
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  opacity: authState.credentials.confirmPasswordOpacity,
-                  initialValue: authState.credentials.confirmPassword,
-                  onChanged: AuthPasswordController().onTappingConfirmPassword,
+                  opacity: AuthState.to.credentials.confirmPasswordOpacity,
+                  initialValue: AuthState.to.credentials.confirmPassword,
+                  onChanged:
+                      AuthCredentialsController().onTappingConfirmPassword,
                   icon: AnimatedOpacity(
                     duration: Duration(milliseconds: 300),
-                    opacity: authState.credentials.confirmPasswordMarkOpacity,
+                    opacity:
+                        AuthState.to.credentials.confirmPasswordMarkOpacity,
                     child: RotatingTile(
-                      controller: authState.confirmPasswordTileController,
+                      controller: AuthState.to.confirmPasswordTileController,
                       firstSide: Container(
                         height: 25.0,
                         width: 25.0,
@@ -113,7 +114,7 @@ class AuthForm extends StatelessWidget {
               child: FlatButton(
                 onPressed: AuthController().onTapSignIn,
                 color: _buildButtonColor(
-                  authState.form.currentForm == AuthFormState.signIn,
+                  AuthState.to.form.currentForm == AuthFormState.signIn,
                 ),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(color: CustomColors.blue2F),
@@ -138,7 +139,7 @@ class AuthForm extends StatelessWidget {
               child: FlatButton(
                 onPressed: AuthController().onTapRecoveryAccount,
                 color: _buildButtonColor(
-                  authState.form.currentForm == AuthFormState.recovery,
+                  AuthState.to.form.currentForm == AuthFormState.recovery,
                 ),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(color: CustomColors.blue2F),
@@ -163,7 +164,7 @@ class AuthForm extends StatelessWidget {
               child: FlatButton(
                 onPressed: AuthController().onTapSignUp,
                 color: _buildButtonColor(
-                  authState.form.currentForm == AuthFormState.signUp,
+                  AuthState.to.form.currentForm == AuthFormState.signUp,
                 ),
                 shape: RoundedRectangleBorder(
                   side: BorderSide(color: CustomColors.blue2F),
