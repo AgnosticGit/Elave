@@ -26,7 +26,7 @@ class AuthForm extends StatelessWidget {
                   onChanged: AuthCredentialsController().onTappingEmail,
                   icon: AnimatedOpacity(
                     duration: Duration(milliseconds: 300),
-                    opacity: AuthState.to.credentials.emailMarkOpacity,
+                    opacity: AuthState.to.credentialsView.emailMarkOpacity,
                     child: RotatingTile(
                       controller: AuthState.to.emailTileController,
                       firstSide: Container(
@@ -43,19 +43,19 @@ class AuthForm extends StatelessWidget {
                   ),
                 ),
                 AuthTextFormField(
-                  visible: AuthState.to.credentials.passwordVisibility,
+                  visible: AuthState.to.credentialsView.passwordVisibility,
                   onTap: AuthCredentialsController().onTapPassword,
                   hintText: 'Password',
                   textField: AuthTextField.password,
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  opacity: AuthState.to.credentials.passwordOpacity,
-                  initialValue: AuthState.to.credentials.password,
+                  opacity: AuthState.to.credentialsView.passwordOpacity,
+                  initialValue: AuthState.to.credentialsData.password,
                   onChanged: AuthCredentialsController().onTappingPassword,
                   icon: AnimatedOpacity(
                     duration: Duration(milliseconds: 300),
-                    opacity: AuthState.to.credentials.passwordMarkOpacity,
+                    opacity: AuthState.to.credentialsView.passwordMarkOpacity,
                     child: RotatingTile(
                       controller: AuthState.to.passwordTileController,
                       firstSide: Container(
@@ -72,21 +72,22 @@ class AuthForm extends StatelessWidget {
                   ),
                 ),
                 AuthTextFormField(
-                  visible: AuthState.to.credentials.confirmPasswordVisibility,
+                  visible:
+                      AuthState.to.credentialsView.confirmPasswordVisibility,
                   onTap: AuthCredentialsController().checkPasswordErrors,
                   hintText: 'Confirm Password',
                   textField: AuthTextField.confirmPassword,
                   enableSuggestions: false,
                   autocorrect: false,
                   obscureText: true,
-                  opacity: AuthState.to.credentials.confirmPasswordOpacity,
-                  initialValue: AuthState.to.credentials.confirmPassword,
+                  opacity: AuthState.to.credentialsView.confirmPasswordOpacity,
+                  initialValue: AuthState.to.credentialsData.confirmPassword,
                   onChanged:
                       AuthCredentialsController().onTappingConfirmPassword,
                   icon: AnimatedOpacity(
                     duration: Duration(milliseconds: 300),
                     opacity:
-                        AuthState.to.credentials.confirmPasswordMarkOpacity,
+                        AuthState.to.credentialsView.confirmPasswordMarkOpacity,
                     child: RotatingTile(
                       controller: AuthState.to.confirmPasswordTileController,
                       firstSide: Container(

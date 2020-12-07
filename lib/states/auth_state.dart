@@ -3,7 +3,8 @@ import 'package:elave/index.dart';
 class AuthState extends GetxController {
   static AuthState get to => Get.put(AuthState());
 
-  AuthCredentialsModel credentials = AuthCredentialsModel();
+  AuthCredentialsDataModel credentialsData = AuthCredentialsDataModel();
+  AuthCredentialsViewModel credentialsView = AuthCredentialsViewModel();
   AuthFormModel form = AuthFormModel();
   AuthErrorsModel errors = AuthErrorsModel();
 

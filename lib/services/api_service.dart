@@ -1,23 +1,22 @@
+import 'dart:io';
 import 'package:elave/index.dart';
 import 'package:http/http.dart' as http;
 
-class Api {
-  Api({this.url = "http://localhost:8090/api/v1", this.route});
-
-  final String url;
-
-  //example: "/auth/registration"
-  final String route;
-
+class ApiService {
   static String token;
 
   Future get() async {
-    await http.get(url + route);
+    // await http.get(url + route);
   }
 
   Future<dynamic> post({
+    String url = "http://localhost:8090/api/v1",
+    String route = '',
     Map<String, dynamic> body,
     Map<String, String> headers,
+    Function(dynamic json) onSuccess,
+    Function(dynamic json) onError,
+    VoidCallback onNetworkError,
   }) async {
     if (headers == null) headers = generateHeaders();
 
@@ -27,13 +26,16 @@ class Api {
         headers: headers,
         body: body,
       );
-      dynamic json = jsonDecode(response.body);
-      
-      if (response.statusCode == 200) return json;
 
-      throw (json);
-    } catch (errors) {
-      throw (errors);
+      dynamic json = jsonDecode(response.body);
+
+      if (response.statusCode == 200) {
+        onSuccess(json);
+      } else {
+        onError(json);
+      }
+    } on SocketException {
+      onNetworkError();
     }
   }
 

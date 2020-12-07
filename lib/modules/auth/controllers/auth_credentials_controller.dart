@@ -2,36 +2,36 @@ import 'package:elave/index.dart';
 
 class AuthCredentialsController {
   void onTappingEmail(String text) {
-    AuthState.to.credentials.email = text;
+    AuthState.to.credentialsData.email = text;
 
     if (AuthState.to.form.currentForm == AuthFormState.signUp) {
       checkErrorsWithDebounce();
     }
 
-    Get.put(AnimatedLogoController()).shuffle();
+    Get.put(LogoController()).shuffle();
     AuthState.to.update();
   }
 
   void onTappingPassword(String text) {
-    AuthState.to.credentials.password = text;
+    AuthState.to.credentialsData.password = text;
 
     if (AuthState.to.form.currentForm == AuthFormState.signUp) {
       checkPasswordErrors();
       checkConfirmPasswordErrors();
     }
 
-    Get.put(AnimatedLogoController()).shuffle();
+    Get.put(LogoController()).shuffle();
     AuthState.to.update();
   }
 
   void onTappingConfirmPassword(String text) {
-    AuthState.to.credentials.confirmPassword = text;
+    AuthState.to.credentialsData.confirmPassword = text;
 
     if (AuthState.to.form.currentForm == AuthFormState.signUp) {
       checkConfirmPasswordErrors();
     }
 
-    Get.put(AnimatedLogoController()).shuffle();
+    Get.put(LogoController()).shuffle();
     AuthState.to.update();
   }
 
@@ -47,7 +47,7 @@ class AuthCredentialsController {
   }
 
   void checkEmailErrors() async {
-    final credentials = AuthState.to.credentials;
+    final credentials = AuthState.to.credentialsData;
 
     await validateEmailOnServer();
 
@@ -62,7 +62,7 @@ class AuthCredentialsController {
   }
 
   void checkPasswordErrors() {
-    final password = AuthState.to.credentials.password;
+    final password = AuthState.to.credentialsData.password;
 
     if (password != null) {
       if (ValidationService.isPasswordValid(password)) {
@@ -74,13 +74,12 @@ class AuthCredentialsController {
         AuthState.to.passwordTileController.showFirstSide();
       }
     }
-
     AuthState.to.update();
   }
 
   void checkConfirmPasswordErrors() {
-    final password = AuthState.to.credentials.password;
-    final confirmPassword = AuthState.to.credentials.confirmPassword;
+    final password = AuthState.to.credentialsData.password;
+    final confirmPassword = AuthState.to.credentialsData.confirmPassword;
 
     if (confirmPassword != null) {
       if (ValidationService.passwordsHasMatch(password, confirmPassword)) {
@@ -96,19 +95,24 @@ class AuthCredentialsController {
   }
 
   Future validateEmailOnServer() async {
-    try {
-      var response = await Api(route: '/auth/validation/email').post(body: {
-        "email": AuthState.to.credentials.email ?? '',
-      });
-      AuthState.to.credentials.isEmailValid = response['data']['isEmailValid'];
-    } catch (errors) {
-      AuthState.to.credentials.isEmailValid = false;
-      AuthState.to.errors = AuthErrorsModel.fromJson(errors);
-    }
+    await ApiService().post(
+      route: '/auth/validation/email',
+      onSuccess: (json) {
+        AuthState.to.credentialsData.isEmailValid =
+            json['data']['isEmailValid'];
+      },
+      onError: (json) {
+        AuthState.to.credentialsData.isEmailValid = false;
+        AuthState.to.errors = AuthErrorsModel.fromJson(json);
+      },
+      onNetworkError: () {
+        print('No Internet Connection');
+      },
+    );
   }
 
   void onTapPassword() {
-    if (AuthState.to.credentials.email != null &&
+    if (AuthState.to.credentialsData.email != null &&
         AuthState.to.form.currentForm == AuthFormState.signUp) {
       AuthMarksController().showEmailMark();
     }

@@ -6,10 +6,10 @@ class AuthFormController {
   void setSignInForm() {
     AuthState.to.form.currentForm = AuthFormState.signIn;
     AuthState.to.form.height = 200;
-    AuthState.to.credentials.passwordOpacity = 1.0;
-    AuthState.to.credentials.confirmPasswordOpacity = 0.0;
-    AuthState.to.credentials.passwordVisibility = true;
-    AuthState.to.credentials.confirmPasswordVisibility = false;
+    AuthState.to.credentialsView.passwordOpacity = 1.0;
+    AuthState.to.credentialsView.confirmPasswordOpacity = 0.0;
+    AuthState.to.credentialsView.passwordVisibility = true;
+    AuthState.to.credentialsView.confirmPasswordVisibility = false;
 
     AuthMarksController().hideAllMarks();
     AuthState.to.update();
@@ -18,18 +18,18 @@ class AuthFormController {
   void setSignUpForm() {
     AuthState.to.form.currentForm = AuthFormState.signUp;
     AuthState.to.form.height = 250;
-    AuthState.to.credentials.passwordOpacity = 1.0;
-    AuthState.to.credentials.confirmPasswordOpacity = 1.0;
-    AuthState.to.credentials.passwordVisibility = true;
-    AuthState.to.credentials.confirmPasswordVisibility = true;
+    AuthState.to.credentialsView.passwordOpacity = 1.0;
+    AuthState.to.credentialsView.confirmPasswordOpacity = 1.0;
+    AuthState.to.credentialsView.passwordVisibility = true;
+    AuthState.to.credentialsView.confirmPasswordVisibility = true;
 
-    if (AuthState.to.credentials.email != null) {
+    if (AuthState.to.credentialsData.email != null) {
       AuthMarksController().showEmailMark();
     }
-    if (AuthState.to.credentials.password != null) {
+    if (AuthState.to.credentialsData.password != null) {
       AuthMarksController().showPasswordMark();
     }
-    if (AuthState.to.credentials.confirmPassword != null) {
+    if (AuthState.to.credentialsData.confirmPassword != null) {
       AuthMarksController().showConfirmPasswordMark();
     }
 
@@ -42,10 +42,10 @@ class AuthFormController {
   void setRecoveryForm() {
     AuthState.to.form.currentForm = AuthFormState.recovery;
     AuthState.to.form.height = 140;
-    AuthState.to.credentials.passwordOpacity = 0.0;
-    AuthState.to.credentials.confirmPasswordOpacity = 0.0;
-    AuthState.to.credentials.passwordVisibility = false;
-    AuthState.to.credentials.confirmPasswordVisibility = false;
+    AuthState.to.credentialsView.passwordOpacity = 0.0;
+    AuthState.to.credentialsView.confirmPasswordOpacity = 0.0;
+    AuthState.to.credentialsView.passwordVisibility = false;
+    AuthState.to.credentialsView.confirmPasswordVisibility = false;
 
     AuthMarksController().hideAllMarks();
     AuthState.to.update();

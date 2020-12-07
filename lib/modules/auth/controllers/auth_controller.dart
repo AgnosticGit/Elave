@@ -2,33 +2,30 @@ import 'package:elave/index.dart';
 
 class AuthController {
   void signIn() {
-    Get.put(AnimatedLogoController()).onLoadingStarted();
+    Get.put(LogoController()).onLoadingStarted();
   }
 
   void signUp() async {
-    Get.put(AnimatedLogoController()).onLoadingStarted();
-
-    try {
-      final response = await Api(route: "/auth/registration").post(
-        body: {
-          "email": AuthState.to.credentials.email,
-          "password": AuthState.to.credentials.password,
-        },
-      );
-      print(response);
-      AuthState.to.cleanErrors();
-      AuthFormController().setSignUpForm();
-    } catch (errors) {
-      print(errors);
-      AuthState.to.errors = AuthErrorsModel.fromJson(errors);
-      AuthState.to.update();
-    }
-    
-    Get.put(AnimatedLogoController()).onLoadingFinished();
+    Get.put(LogoController()).onLoadingStarted();
+    await ApiService().post(
+      route: '/auth/validation/email',
+      onSuccess: (json) {
+        AuthState.to.cleanErrors();
+        AuthFormController().setSignUpForm();
+      },
+      onError: (json) {
+        AuthState.to.errors = AuthErrorsModel.fromJson(json);
+        AuthState.to.update();
+      },
+      onNetworkError: () {
+        print('No Internet Connection');
+      },
+    );
+    Get.put(LogoController()).onLoadingFinished();
   }
 
   void recoveryAccount() {
-    Get.put(AnimatedLogoController()).onLoadingStarted();
+    Get.put(LogoController()).onLoadingStarted();
   }
 
   void onTapSignIn() {

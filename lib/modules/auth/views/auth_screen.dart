@@ -27,7 +27,7 @@ class AuthScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 15.0),
                 child: Column(
                   children: [
-                    AnimatedLogo(),
+                    Logo(),
                     const SizedBox(height: 20.0),
                     Text(
                       'Elave',
